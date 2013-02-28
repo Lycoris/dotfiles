@@ -1,0 +1,683 @@
+# この viminfo ファイルは Vim 7.2 によって生成されました.
+# 変更する際には十分注意してください!
+
+# このファイルが書かれた時の 'encoding' の値
+*encoding=utf-8
+
+
+# hlsearch on (H) or off (h):
+~h
+# 最後の 検索パターン:
+~MSle0~/header_access
+
+# 最後に置換された文字列:
+$
+
+# コマンドライン 項目の履歴 (新しいものから古いものへ):
+:wq
+:q
+:q!
+:set encoding=euc-jp
+:set encoding=euc
+:s
+
+# 検索文字列 項目の履歴 (新しいものから古いものへ):
+?/header_access
+?/forwarded_for o
+?/forwarded_for
+?/Lycoris
+? \<Lycoris\>
+?/@pass
+? \<LoadModule\>
+?/Pas
+?/Pass
+?/Root
+?/MaxClients
+??KeepAlive
+?/Start
+?/local_root
+?/pasv
+?/localtime
+?/userlist
+?/Welcome
+?/ascii
+?/umask
+? \<RewriteEngine\>
+? \<wgScript\>
+?/Article
+?/Logo
+?/wgScriptPath
+?/wgScript
+?/wgArticlePath
+?/Namespace
+?/timezone
+?/Timezone
+?/wgLogo
+?/EnableUploads
+?/wgGroup
+?/SiteCSS
+?/SiteCss
+?/wgLocal
+?/TimeZone
+?/prefork
+??DAEMON_USER
+?/fork
+?/prefork.c
+?/addhandler
+?/add
+?/Directory
+?/CGI
+?/Exec
+?/timeout
+?/UseDNS
+
+# 式 項目の履歴 (新しいものから古いものへ):
+
+# 入力行 項目の履歴 (新しいものから古いものへ):
+
+# 入力行 項目の履歴 (新しいものから古いものへ):
+
+# レジスタ:
+"0	LINE	0
+	# close the php security hole...
+	
+"1	LINE	0
+	chdir /home/lycoris_i/net-irc/examples
+"2	LINE	0
+	author  "Lycoris_i"
+"3	LINE	0
+	description "Github IRC Gateway"
+"4	LINE	0
+	chdir /home/lycoris_i/nadoka
+"5	LINE	0
+	chdir /home/lycoris_i/nadoka
+	exec /usr/local/bin/ruby nadoka.rb --rc nadokarc
+"6	LINE	0
+	chdir /home/lycoris_i/TwitterIrcGateway
+"7	LINE	0
+	op on runlever [016]
+"8	LINE	0
+	stop on runlevel [016]
+"9	LINE	0
+	stop on runlevel [016]
+""-	CHAR	0
+	 
+
+# ファイルマーク:
+'0  3118  6  /etc/squid/squid.conf
+'1  1  0  ~/nadoka/nohup.out
+'2  8  4  /etc/init/nadoka.conf
+'3  6  27  /etc/init/nadoka.conf
+'4  1  0  /etc/init/nadoka.conf
+'5  1  0  ~/nadoka.conf
+'6  4  22  /etc/init/tiarra.conf
+'7  4  19  /etc/init/nadoka.conf
+'8  1  0  /etc/init/tiarra.conf
+'9  7  0  /etc/init/tiarra.conf
+
+# ジャンプリスト (新しいものが先):
+-'  3118  6  /etc/squid/squid.conf
+-'  4717  16  /etc/squid/squid.conf
+-'  937  17  /etc/squid/squid.conf
+-'  874  12  /etc/squid/squid.conf
+-'  834  17  /etc/squid/squid.conf
+-'  1  0  /etc/squid/squid.conf
+-'  1  0  ~/nadoka/nohup.out
+-'  8  4  /etc/init/nadoka.conf
+-'  1  0  /etc/init/nadoka.conf
+-'  6  27  /etc/init/nadoka.conf
+-'  1  0  ~/nadoka.conf
+-'  4  22  /etc/init/tiarra.conf
+-'  1  0  /etc/init/tiarra.conf
+-'  4  19  /etc/init/nadoka.conf
+-'  7  0  /etc/init/tiarra.conf
+-'  78  100  /usr/local/lib/ruby/gems/1.9.1/gems/agig-0.0.6/lib/agig/session.rb
+-'  1  0  /usr/local/lib/ruby/gems/1.9.1/gems/agig-0.0.6/lib/agig/session.rb
+-'  6  28  /etc/init/gig.conf
+-'  1  0  /etc/init/gig.conf
+-'  2  0  /etc/apache2/httpd.conf
+-'  1  0  /etc/apache2/httpd.conf
+-'  3  32  ~/.ssh/config
+-'  1  0  ~/.ssh/config
+-'  11  15  /etc/apache2/httpd.conf
+-'  142  13  /etc/apache2/sites-enabled/000-default
+-'  1  0  /etc/apache2/sites-enabled/000-default
+-'  1  0  /etc/apache/conf/httpd.conf
+-'  1  0  /etc/httpd/conf/httpd.conf
+-'  7  57  /etc/init/tig.conf
+-'  1  0  /etc/init/tig.conf
+-'  8  0  /etc/init/tiarra.conf
+-'  6  38  /etc/init/tig.conf
+-'  5  0  /etc/init/nadoka.conf
+-'  5  0  /etc/init/tiarra.conf
+-'  5  0  /etc/init/tig.conf
+-'  8  6  /etc/init/tig.conf
+-'  52  24  /etc/ssh/sshd_config
+-'  45  16  /etc/ssh/sshd_config
+-'  28  6  /etc/ssh/sshd_config
+-'  1  0  /etc/ssh/sshd_config
+-'  37  0  /etc/services
+-'  1  0  /etc/services
+-'  1  0  nohup/out
+-'  10  0  ~/nadoka/nohup.out
+-'  107  0  /etc/apache2/apache2.conf
+-'  1  0  /etc/apache2/apache2.conf
+-'  103  26  /etc/apache2/apache2.conf
+-'  91  0  /etc/apache2/apache2.conf
+-'  2  46  ~/Reudy19/public/setting.yml
+-'  1  0  ~/Reudy19/public/setting.yml
+-'  1  8  /etc/ircd-hybrid/ircd.motd
+-'  144  8  /etc/vsftpd.conf
+-'  111  0  /etc/vsftpd.conf
+-'  98  0  /etc/vsftpd.conf
+-'  36  13  /etc/vsftpd.conf
+-'  1  18  /etc/vsftpd.conf
+-'  1  0  /etc/vsftpd
+-'  1  0  /etc/vsftpd/vsftpd.conf
+-'  126  0  /etc/apache2/sites-enabled/000-default
+-'  1  0  /etc/apache2/sites-enabled/ooo-default
+-'  1  8  /var/www/wiki/.htaccess
+-'  28  0  /var/www/wiki/LocalSettings.php
+-'  1  0  /var/www/wiki/LocalSettings.php
+-'  31  0  /var/www/wiki/LocalSettings.php
+-'  18  0  /var/www/wiki/LocalSettings.php
+-'  32  0  /var/www/wiki/LocalSettings.php
+-'  29  0  /var/www/wiki/LocalSettings.php
+-'  5  48  /var/www/wiki/.htaccess
+-'  1  0  /var/www/.htaccess
+-'  51  28  /etc/mediawiki/LocalSettings.php
+-'  1  0  /etc/mediawiki/LocalSettings.php
+-'  139  35  /var/lib/mediawiki/config/LocalSettings.php
+-'  1  0  /var/lib/mediawiki/config/LocalSettings.php
+-'  1  0  /etc/apache2/conf.d/mediawiki.conf
+-'  1  0  /etc/mediawiki/apache.conf
+-'  3  0  /etc/apache2/conf.d/mediawiki.conf
+-'  140  21  /etc/mediawiki/LocalSettings.php
+-'  140  21  /var/lib/mediawiki/config/LocalSettings.php
+-'  2  12  /var/www/.htaccess
+-'  137  31  /etc/mediawiki/LocalSettings.php
+-'  21  0  /etc/apache2/conf.d/mediawiki.conf
+-'  139  50  /etc/mediawiki/LocalSettings.php
+-'  141  0  /etc/mediawiki/LocalSettings.php
+-'  4  0  /etc/apache2/conf.d/mediawiki.conf
+-'  138  0  /var/lib/mediawiki/config/LocalSettings.php
+-'  57  0  /etc/mediawiki/LocalSettings.php
+-'  137  14  /var/lib/mediawiki/config/LocalSettings.php
+-'  38  0  /etc/mediawiki/LocalSettings.php
+-'  59  0  /etc/mediawiki/LocalSettings.php
+-'  4  55  /var/lib/mediawiki/.htaccess
+-'  1  0  /var/lib/mediawiki/.htaccess
+-'  8  0  /var/lib/mediawiki
+-'  1  0  /var/lib/mediawiki
+-'  20  0  /etc/mediawiki/apache.conf
+-'  141  21  /var/lib/mediawiki/config/LocalSettings.php
+-'  1  0  /var/lib/.htaccess
+-'  144  0  /var/lib/mediawiki/config/LocalSettings.php
+-'  50  24  /var/lib/mediawiki/config/LocalSettings.php
+
+# ファイル内マークの履歴 (新しいものから古いもの):
+
+> /etc/squid/squid.conf
+	"	3118	6
+	^	3118	7
+	.	3118	6
+	+	4717	17
+	+	3117	36
+	+	3118	6
+
+> ~/nadoka/nohup.out
+	"	1	0
+
+> /etc/init/nadoka.conf
+	"	8	4
+	^	8	5
+	.	8	4
+	+	1	20
+	+	2	18
+	+	6	34
+	+	6	33
+	+	5	0
+	+	6	75
+	+	6	27
+	+	6	33
+	+	4	19
+	+	6	40
+	+	8	43
+	+	8	41
+	+	6	38
+	+	8	5
+	+	6	40
+	+	8	11
+	+	8	0
+	+	7	10
+	+	8	0
+	+	7	12
+	+	8	4
+
+> ~/nadoka.conf
+	"	1	0
+
+> /etc/init/tiarra.conf
+	"	4	22
+	^	4	23
+	.	5	0
+	+	8	0
+	+	7	18
+	+	5	0
+	+	5	0
+
+> /usr/local/lib/ruby/gems/1.9.1/gems/agig-0.0.6/lib/agig/session.rb
+	"	78	100
+	^	78	101
+	.	78	85
+	+	78	85
+
+> /etc/init/gig.conf
+	"	6	28
+	^	6	29
+	.	6	28
+	+	7	0
+	+	1	0
+	+	6	28
+
+> /etc/apache2/httpd.conf
+	"	2	0
+	^	2	1
+	.	2	0
+	+	12	13
+	+	11	15
+	+	1	0
+	+	2	0
+
+> ~/.ssh/config
+	"	3	32
+	^	3	33
+	.	3	32
+	+	3	32
+
+> /etc/apache2/sites-enabled/000-default
+	"	142	13
+	^	126	1
+	.	56	29
+	+	124	16
+	+	125	0
+	+	129	54
+	+	126	0
+	+	56	29
+
+> /etc/apache/conf/httpd.conf
+	"	1	0
+
+> /etc/httpd/conf/httpd.conf
+	"	1	0
+
+> /etc/init/tig.conf
+	"	7	57
+	^	7	58
+	.	7	57
+	+	1	31
+	+	2	18
+	+	4	24
+	+	5	23
+	+	7	46
+	+	8	6
+	+	7	76
+	+	5	11
+	+	7	20
+	+	7	38
+	+	5	0
+	+	7	51
+	+	6	38
+	+	7	57
+
+> /etc/ssh/sshd_config
+	"	52	24
+	^	52	25
+	.	52	24
+	+	20	8
+	+	52	24
+
+> /etc/services
+	"	37	0
+
+> nohup/out
+	"	1	0
+
+> /etc/apache2/apache2.conf
+	"	107	0
+	^	107	29
+	.	107	28
+	+	106	26
+	+	103	26
+	+	104	26
+	+	105	26
+	+	106	26
+	+	105	26
+	+	106	26
+	+	107	28
+
+> ~/Reudy19/public/setting.yml
+	"	2	46
+
+> /etc/ircd-hybrid/ircd.motd
+	"	1	8
+
+> /etc/vsftpd.conf
+	"	144	8
+	^	33	14
+	.	101	0
+	+	33	13
+	+	97	0
+	+	98	0
+	+	101	0
+
+> /etc/vsftpd
+	"	1	0
+
+> /etc/vsftpd/vsftpd.conf
+	"	1	0
+
+> /etc/apache2/sites-enabled/ooo-default
+	"	1	0
+
+> /var/www/wiki/.htaccess
+	"	1	8
+	^	1	9
+	.	1	0
+	+	5	17
+	+	1	0
+	+	2	0
+	+	3	0
+	+	4	0
+	+	5	0
+	+	4	0
+	+	3	0
+	+	2	0
+	+	1	0
+
+> /var/www/wiki/LocalSettings.php
+	"	28	0
+	^	28	0
+	.	28	0
+	+	32	21
+	+	28	0
+	+	29	0
+	+	30	0
+	+	31	0
+	+	32	0
+	+	31	0
+	+	28	0
+	+	31	28
+	+	28	0
+
+> /var/www/.htaccess
+	"	1	0
+	^	1	14
+	.	2	0
+	+	1	13
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	16
+	+	1	32
+	+	1	13
+	+	1	0
+	+	1	35
+	+	1	0
+	+	1	30
+	+	1	0
+	+	1	0
+	+	1	53
+	+	2	13
+	+	2	0
+	+	2	27
+	+	2	16
+	+	2	16
+	+	2	41
+	+	2	43
+	+	2	0
+	+	2	18
+	+	2	0
+	+	2	0
+	+	2	13
+	+	1	0
+	+	2	16
+	+	2	13
+	+	2	13
+	+	2	36
+	+	2	0
+	+	2	46
+	+	2	27
+	+	2	29
+	+	2	21
+	+	2	23
+	+	2	38
+	+	2	0
+	+	2	13
+	+	2	0
+	+	1	14
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	13
+	+	1	22
+	+	1	25
+	+	1	28
+	+	1	39
+	+	1	14
+	+	2	0
+
+> /etc/mediawiki/LocalSettings.php
+	"	51	28
+	^	139	36
+	.	139	35
+	+	151	0
+	+	147	30
+	+	148	20
+	+	147	31
+	+	148	22
+	+	147	10
+	+	159	0
+	+	141	28
+	+	141	0
+	+	141	0
+	+	137	25
+	+	141	1
+	+	137	27
+	+	141	0
+	+	139	0
+	+	137	18
+	+	137	31
+	+	140	21
+	+	137	30
+	+	138	35
+	+	139	35
+
+> /var/lib/mediawiki/config/LocalSettings.php
+	"	139	35
+	^	139	36
+	.	139	36
+	+	50	24
+	+	141	0
+	+	142	122
+	+	143	22
+	+	142	0
+	+	50	28
+	+	143	21
+	+	50	24
+	+	141	28
+	+	141	0
+	+	137	41
+	+	138	22
+	+	137	0
+	+	138	20
+	+	137	15
+	+	138	48
+	+	139	0
+	+	138	27
+	+	139	27
+	+	141	0
+	+	137	31
+	+	138	23
+	+	139	51
+	+	140	21
+	+	137	30
+	+	138	35
+	+	139	36
+
+> /etc/apache2/conf.d/mediawiki.conf
+	"	1	0
+	^	3	1
+	.	3	0
+	+	3	8
+	+	4	34
+	+	4	0
+	+	4	0
+	+	3	7
+	+	4	49
+	+	4	0
+	+	3	0
+
+> /etc/mediawiki/apache.conf
+	"	1	0
+	.	3	0
+	+	3	0
+
+> /var/lib/mediawiki/.htaccess
+	"	4	55
+	^	4	56
+	.	4	13
+	+	1	2
+	+	1	16
+	+	4	13
+
+> /var/lib/.htaccess
+	"	1	0
+	.	1	0
+	+	1	13
+	+	1	0
+
+> /var/lib/mediawiki/LocalSettings.php
+	"	138	0
+	^	138	22
+	.	138	21
+	+	142	48
+	+	146	25
+	+	147	0
+	+	151	56
+	+	154	30
+	+	87	28
+	+	154	22
+	+	152	0
+	+	162	31
+	+	160	30
+	+	162	32
+	+	163	0
+	+	161	37
+	+	160	26
+	+	161	32
+	+	162	36
+	+	160	27
+	+	162	17
+	+	50	25
+	+	162	23
+	+	50	27
+	+	162	31
+	+	161	0
+	+	160	0
+	+	162	0
+	+	161	0
+	+	160	0
+	+	162	0
+	+	161	0
+	+	160	0
+	+	154	11
+	+	139	0
+	+	50	24
+	+	139	48
+	+	139	0
+	+	137	28
+	+	138	21
+
+> /etc/apache2/sites-enabled/000-enabled
+	"	1	0
+
+> /var/lib/mediawiki/.htacces
+	"	1	0
+
+> /etc/mediawiki/apache2.conf
+	"	1	0
+
+> /etc/apache2/conf.d/mediawiki.congf
+	"	1	0
+
+> /etc/init.d/skype
+	"	1	0
+	^	47	37
+	.	47	25
+	+	123	0
+	+	122	0
+	+	45	20
+	+	51	28
+	+	54	17
+	+	55	14
+	+	53	9
+	+	47	25
+
+> /etc/init.d/tig
+	"	52	0
+
+> /etc/init.d/tiarra
+	"	53	3
+	^	21	40
+	.	21	39
+	+	21	31
+	+	20	8
+	+	20	8
+	+	21	39
+
+> /etc/init.d/apache2
+	"	1	0
+
+> /etc/mysql/my.cnf
+	"	49	5
+	^	49	23
+	.	49	23
+	+	49	23
+
+> /etc/default/tomcat6
+	"	25	0
+	^	9	12
+	.	9	29
+	+	19	31
+	+	24	0
+	+	8	0
+	+	9	29
+
+> /etc/environment
+	"	2	0
+	.	2	0
+	+	1	125
+	+	4	45
+	+	2	0
+	+	3	0
+	+	4	0
+	+	2	0
+
+> /etc/environement
+	"	1	0
+
+> /etc/sysctl.conf
+	"	63	37
+	^	63	38
+	.	64	0
+	+	64	0
+
+> /etc/ntp.conf
+	"	18	17
+	^	18	18
+	.	18	17
+	+	16	17
+	+	17	18
+	+	18	17
