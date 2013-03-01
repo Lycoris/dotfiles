@@ -21,7 +21,6 @@ if has('vim_starting')
 	NeoBundle 'tsaleh/vim-matchit'
 	NeoBundle 'vim-scripts/svn-diff.vim'
 	NeoBundle 'janx/vim-rubytest'
-	NeoBundle 'vim-ruby/vim-ruby'
 	"  NeoBundle 'https://bitbucket.org/kovisoft/slimv'
 	
 	filetype plugin indent on     " required!
