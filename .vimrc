@@ -44,9 +44,25 @@ highlight ZenkakuSpace cterm=underline ctermfg=lightblue guibg=darkgray
 match ZenkakuSpace /　/" 全角スペースの表示
 colorscheme molokai "/usr/share/vim/vim72/colors or ~/.vim/colors
 
-imap {} {}<Left>  
-imap [] []<Left>  
-imap () ()<Left>  
-imap "" ""<Left>  
-imap '' ''<Left>  
-imap <> <><Left>  
+imap {} {}<Left>
+imap [] []<Left>
+imap () ()<Left>
+imap "" ""<Left>
+imap '' ''<Left>
+imap <> <><Left>
+
+let g:neocomplcache_enable_at_startup = 1
+let g:neocomplcache_enable_smart_case = 1
+let g:neocomplcache_enable_underbar_completion = 1
+let g:neocomplcache_min_syntax_length = 3
+
+" reference環境
+NeoBundleLazy 'vim-ruby/vim-ruby', {
+    \ 'autoload' : { 'filetypes': ['ruby', 'eruby', 'haml'] } }
+NeoBundleLazy 'taka84u9/vim-ref-ri', {
+      \ 'depends': ['Shougo/unite.vim', 'thinca/vim-ref'],
+      \ 'autoload': { 'filetypes': ['ruby', 'eruby', 'haml'] } }
+NeoBundleLazy 'skwp/vim-rspec', {
+      \ 'autoload': { 'filetypes': ['ruby', 'eruby', 'haml'] } }
+NeoBundleLazy 'ruby-matchit', {
+    \ 'autoload' : { 'filetypes': ['ruby', 'eruby', 'haml'] } }
