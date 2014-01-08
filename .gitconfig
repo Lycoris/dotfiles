@@ -1,3 +1,5 @@
 [user]
 	name = Lycoris_i
 	email = some.chicken@gmail.com
+[core]
+	quotepath = false
