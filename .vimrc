@@ -22,6 +22,8 @@ if has('vim_starting')
 	NeoBundle 'vim-scripts/svn-diff.vim'
 	NeoBundle 'janx/vim-rubytest'
 	NeoBundle 'tomasr/molokai'
+	NeoBundle 'thinca/vim-quickrun'
+	NeoBundle 'jcf/vim-latex'
 	filetype plugin indent on
 	filetype indent on
 syntax on "シンタックスハイライトを有効にする
@@ -41,7 +43,6 @@ set tabstop=4 "タブ文字数を4にする
 highlight ZenkakuSpace cterm=underline ctermfg=lightblue guibg=darkgray
 match ZenkakuSpace /　/" 全角スペースの表示
 colorscheme molokai
-set t_Co=256
 let g:molokai_original = 1
 
 
@@ -57,6 +58,7 @@ let g:neocomplcache_enable_at_startup = 1
 let g:neocomplcache_enable_smart_case = 1
 let g:neocomplcache_enable_underbar_completion = 1
 let g:neocomplcache_min_syntax_length = 3
+let g:Tex_AutoFolding = 1
 
 " reference環境
 NeoBundleLazy 'vim-ruby/vim-ruby', {
