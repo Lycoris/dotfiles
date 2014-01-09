@@ -1,5 +1,9 @@
 [user]
 	name = Lycoris_i
 	email = some.chicken@gmail.com
+[color]
+	ui = true
+	diff = true
 [core]
 	quotepath = false
+	editor = vim
