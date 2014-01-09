@@ -111,6 +111,7 @@ quickrun-module-outputter/null	quickrun.jax	/*quickrun-module-outputter\/null*
 quickrun-module-outputter/quickfix	quickrun.jax	/*quickrun-module-outputter\/quickfix*
 quickrun-module-outputter/variable	quickrun.jax	/*quickrun-module-outputter\/variable*
 quickrun-module-runner	quickrun.jax	/*quickrun-module-runner*
+quickrun-module-runner/process_manager	quickrun.jax	/*quickrun-module-runner\/process_manager*
 quickrun-module-runner/python	quickrun.jax	/*quickrun-module-runner\/python*
 quickrun-module-runner/remote	quickrun.jax	/*quickrun-module-runner\/remote*
 quickrun-module-runner/shell	quickrun.jax	/*quickrun-module-runner\/shell*
@@ -159,7 +160,6 @@ quickrun-settings	quickrun.jax	/*quickrun-settings*
 quickrun-synopsis	quickrun.jax	/*quickrun-synopsis*
 quickrun-syntax-option	quickrun.jax	/*quickrun-syntax-option*
 quickrun.txt	quickrun.jax	/*quickrun.txt*
-ref	ref.jax	/*ref*
 ref#available_source_names()	ref.jax	/*ref#available_source_names()*
 ref#available_sources()	ref.jax	/*ref#available_sources()*
 ref#cache()	ref.jax	/*ref#cache()*
@@ -251,3 +251,4 @@ ref-webdict-customizing	ref-webdict.jax	/*ref-webdict-customizing*
 ref-webdict-introduction	ref-webdict.jax	/*ref-webdict-introduction*
 ref-webdict.txt	ref-webdict.jax	/*ref-webdict.txt*
 ref.txt	ref.jax	/*ref.txt*
+ref.vim	ref.jax	/*ref.vim*

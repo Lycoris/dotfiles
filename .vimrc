@@ -24,6 +24,7 @@ if has('vim_starting')
 	NeoBundle 'tomasr/molokai'
 	NeoBundle 'thinca/vim-quickrun'
 	NeoBundle 'jcf/vim-latex'
+	NeoBundle 'itchyny/calendar.vim'
 	filetype plugin indent on
 	filetype indent on
 syntax on "シンタックスハイライトを有効にする
@@ -44,7 +45,8 @@ highlight ZenkakuSpace cterm=underline ctermfg=lightblue guibg=darkgray
 match ZenkakuSpace /　/" 全角スペースの表示
 colorscheme molokai
 let g:molokai_original = 1
-
+let g:calendar_google_calendar = 1
+let g:calendar_google_task = 1
 
 
 imap {} {}<Left>
