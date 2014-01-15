@@ -1,7 +1,6 @@
 set nocompatible
 filetype off
 
-
 if has('vim_starting')
   set runtimepath+=~/.vim/bundle/neobundle.vim
     call neobundle#rc(expand('~/.vim/bundle/'))
@@ -11,6 +10,7 @@ if has('vim_starting')
 	NeoBundle 'Shougo/vimproc'
 	NeoBundle 'VimClojure'
 	NeoBundle 'Shougo/vimshell'
+	NeoBundle 'Shougo/vimfiler'
 	NeoBundle 'Shougo/unite.vim'
 	NeoBundle 'Shougo/neocomplcache'
 	NeoBundle 'Shougo/neosnippet'
@@ -25,6 +25,9 @@ if has('vim_starting')
 	NeoBundle 'thinca/vim-quickrun'
 	NeoBundle 'jcf/vim-latex'
 	NeoBundle 'itchyny/calendar.vim'
+	NeoBundle 'bling/vim-airline'
+	NeoBundle 'tpope/vim-markdown'
+	NeoBundle 'tyru/open-browser.vim'
 	filetype plugin indent on
 	filetype indent on
 syntax on "シンタックスハイライトを有効にする
@@ -41,12 +44,17 @@ set showmode "モード表示する
 set title "編集中のファイル名を表示する
 set ruler "ルーラーの表示する
 set tabstop=4 "タブ文字数を4にする
+set laststatus=2
+set mouse=a
+set ttymouse=xterm2
 highlight ZenkakuSpace cterm=underline ctermfg=lightblue guibg=darkgray
 match ZenkakuSpace /　/" 全角スペースの表示
 colorscheme molokai
 let g:molokai_original = 1
 let g:calendar_google_calendar = 1
 let g:calendar_google_task = 1
+let g:airline#extensions#tabline#enabled = 1
+
 
 
 imap {} {}<Left>
