@@ -26,8 +26,9 @@ if has('vim_starting')
 	NeoBundle 'jcf/vim-latex'
 	NeoBundle 'itchyny/calendar.vim'
 	NeoBundle 'bling/vim-airline'
-	NeoBundle 'tpope/vim-markdown'
+	NeoBundle 'rcmdnk/vim-markdown'
 	NeoBundle 'tyru/open-browser.vim'
+	NeoBundle 'vim-scripts/sudo.vim'
 	filetype plugin indent on
 	filetype indent on
 syntax on "シンタックスハイライトを有効にする
