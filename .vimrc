@@ -70,6 +70,10 @@ let g:neocomplcache_enable_smart_case = 1
 let g:neocomplcache_enable_underbar_completion = 1
 let g:neocomplcache_min_syntax_length = 3
 let g:Tex_AutoFolding = 1
+let g:Tex_CompileRule_dvi = 'platex --interaction=nonstopmode $*'
+let g:Tex_CompileRule_pdf = 'dvipdfmx $*.dvi'
+let g:Tex_ViewRule_dvi = 'xdvi'
+let g:Tex_ViewRule_pdf = 'evince'
 
 " reference環境
 NeoBundleLazy 'vim-ruby/vim-ruby', {
