@@ -3,8 +3,8 @@ filetype off
 
 if has('vim_starting')
   set runtimepath+=~/.vim/bundle/neobundle.vim
-    call neobundle#rc(expand('~/.vim/bundle/'))
-	endif
+  call neobundle#rc(expand('~/.vim/bundle'))
+endif
 
 	NeoBundle 'Shougo/neobundle.vim'
 	NeoBundle 'Shougo/vimproc'
@@ -27,8 +27,15 @@ if has('vim_starting')
 	NeoBundle 'itchyny/calendar.vim'
 	NeoBundle 'bling/vim-airline'
 	NeoBundle 'rcmdnk/vim-markdown'
-	NeoBundle 'tyru/open-browser.vim'
 	NeoBundle 'vim-scripts/sudo.vim'
+	NeoBundle 'ujihisa/ref-hoogle'
+	NeoBundle 'vim-scripts/grep.vim'
+	NeoBundle 'tpope/vim-fugitive'
+	NeoBundle 'thinca/vim-ref'
+	NeoBundle 'w0ng/vim-hybrid'
+	NeoBundle 'nanotech/jellybeans.vim'
+	NeoBundle 'mrkn/mrkn256.vim'
+
 	filetype plugin indent on
 	filetype indent on
 syntax on "シンタックスハイライトを有効にする
@@ -50,7 +57,8 @@ set mouse=a
 set ttymouse=xterm2
 highlight ZenkakuSpace cterm=underline ctermfg=lightblue guibg=darkgray
 match ZenkakuSpace /　/" 全角スペースの表示
-colorscheme molokai
+
+colorscheme mrkn256
 let g:molokai_original = 1
 let g:calendar_google_calendar = 1
 let g:calendar_google_task = 1
@@ -74,6 +82,8 @@ let g:Tex_CompileRule_dvi = 'platex --interaction=nonstopmode $*'
 let g:Tex_CompileRule_pdf = 'dvipdfmx $*.dvi'
 let g:Tex_ViewRule_dvi = 'xdvi'
 let g:Tex_ViewRule_pdf = 'evince'
+let g:tex_flavor='latex'
+
 
 " reference環境
 NeoBundleLazy 'vim-ruby/vim-ruby', {
