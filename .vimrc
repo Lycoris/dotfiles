@@ -41,6 +41,8 @@ endif
 	NeoBundle 'taglist.vim'
 	NeoBundle 'glidenote/memolist.vim'
 	NeoBundle 'fuenor/qfixgrep'
+	NeoBundle 'vim-jp/vital.vim'
+	NeoBundle 'tyru/restart.vim'
 
 	filetype plugin indent on
 	filetype indent on
@@ -72,7 +74,8 @@ colorscheme mrkn256
 let g:calendar_google_calendar = 1
 let g:calendar_google_task = 1
 let g:airline#extensions#tabline#enabled = 1
-
+let g:unite_force_overwrite_statusline = 0
+let g:vimfiler_force_overwrite_statusline = 0
 
 let g:tmuxline_preset = {
       \'a'    : '#S',
