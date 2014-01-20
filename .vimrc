@@ -31,10 +31,16 @@ endif
 	NeoBundle 'ujihisa/ref-hoogle'
 	NeoBundle 'vim-scripts/grep.vim'
 	NeoBundle 'tpope/vim-fugitive'
+	NeoBundle 'gregsexton/gitv'
 	NeoBundle 'thinca/vim-ref'
 	NeoBundle 'w0ng/vim-hybrid'
 	NeoBundle 'nanotech/jellybeans.vim'
 	NeoBundle 'mrkn/mrkn256.vim'
+	NeoBundle 'cocopon/iceberg.vim'
+	NeoBundle 'edkolev/tmuxline.vim'
+	NeoBundle 'taglist.vim'
+	NeoBundle 'glidenote/memolist.vim'
+	NeoBundle 'fuenor/qfixgrep'
 
 	filetype plugin indent on
 	filetype indent on
@@ -42,7 +48,7 @@ syntax on "シンタックスハイライトを有効にする
 set nobackup "バックアップファイルを作らない設定にする
 set encoding=utf-8 "デフォルトの文字コード
 set fileencoding=utf-8
-set fileencodings=iso-2022-jp,euc-jp,utf-8,ucs-2,cp932,sjis "自動判別に使用する文字コード 
+set fileencodings=utf-8,iso-2022-jp,euc-jp,ucs-2,cp932,sjis "自動判別に使用する文字コード 
 set autoindent "オートインデントする
 set number "行番号を表示する
 set incsearch "インクリメンタルサーチ
@@ -55,14 +61,38 @@ set tabstop=4 "タブ文字数を4にする
 set laststatus=2
 set mouse=a
 set ttymouse=xterm2
+set noswapfile
+set wildmenu
+set wildmode=longest:full,full
+
 highlight ZenkakuSpace cterm=underline ctermfg=lightblue guibg=darkgray
 match ZenkakuSpace /　/" 全角スペースの表示
 
 colorscheme mrkn256
-let g:molokai_original = 1
 let g:calendar_google_calendar = 1
 let g:calendar_google_task = 1
 let g:airline#extensions#tabline#enabled = 1
+
+
+let g:tmuxline_preset = {
+      \'a'    : '#S',
+      \'b'    : '#H',
+      \'c'    : '',
+      \'win'  : '#I #W',
+      \'cwin' : '#I #W',
+      \'x'    : '',
+      \'y'    : '',
+      \'z'    : '%Y/%m/%d(%a) %H:%M:%S'}
+
+
+
+let g:tmuxline_powerline_separators = 0
+let g:tmuxline_separators = {
+    \ 'left' : '>',
+    \ 'left_alt': '|',
+    \ 'right' : '<',
+    \ 'right_alt' : '|',
+    \ 'space' : ' '}
 
 
 
@@ -73,16 +103,29 @@ imap "" ""<Left>
 imap '' ''<Left>
 imap <> <><Left>
 
+map <Leader>mn  :MemoNew<CR>
+map <Leader>ml  :MemoList<CR>
+map <Leader>mg  :MemoGrep<CR>
+
+nnoremap <Space>. :<C-u>tabedit $MYVIMRC<CR>
+
+
 let g:neocomplcache_enable_at_startup = 1
 let g:neocomplcache_enable_smart_case = 1
 let g:neocomplcache_enable_underbar_completion = 1
 let g:neocomplcache_min_syntax_length = 3
 let g:Tex_AutoFolding = 1
-let g:Tex_CompileRule_dvi = 'platex --interaction=nonstopmode $*'
-let g:Tex_CompileRule_pdf = 'dvipdfmx $*.dvi'
+let g:Tex_CompileRule_dvi = 'pl --interaction=nonstopmode $*'
+let g:Tex_CompileRule_pdf = 'dp $*.dvi'
 let g:Tex_ViewRule_dvi = 'xdvi'
 let g:Tex_ViewRule_pdf = 'evince'
 let g:tex_flavor='latex'
+let g:vimfiler_as_default_explorer = 1
+let g:memolist_path = "$HOME/Dropbox/Memo"
+let g:memolist_memo_date = "%Y/%m/%d %H:%m"
+let g:memolist_vimfiler = 1
+let g:memolist_qfixgrep = 1
+
 
 
 " reference環境
