@@ -42,7 +42,13 @@ endif
 	NeoBundle 'glidenote/memolist.vim'
 	NeoBundle 'fuenor/qfixgrep'
 	NeoBundle 'vim-jp/vital.vim'
-	NeoBundle 'tyru/restart.vim'
+	NeoBundle 'pentie/VimRepress'
+	NeoBundle 'basyura/TweetVim'
+	NeoBundle 'tyru/open-browser.vim'
+	NeoBundle 'basyura/twibill.vim'
+	NeoBundle 'yomi322/unite-tweetvim'
+	NeoBundle 'yuratomo/gmail.vim'
+
 
 	filetype plugin indent on
 	filetype indent on
@@ -76,6 +82,25 @@ let g:calendar_google_task = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:unite_force_overwrite_statusline = 0
 let g:vimfiler_force_overwrite_statusline = 0
+let g:gmail_user_name = 'some.chicken@gmail.com'
+let g:gmail_signature = ''
+
+let g:quickrun_config = {'*': {'split': 'vertical'}}
+"let g:quickrun_config = {
+"\ 'tex' : {
+"\   'command' : 'latexmk',
+"\	'cmdopt' : '-c -dvi',
+"\ 	'outputter' : 'error',
+"\ 	'outputter/error/error' : 'quickfix',
+"\   'exec': ['%c']}
+"\ }
+"let g:quickrun_config['_'] = {
+"\   'runner' : 'vimproc',
+"\   'runner/vimproc/updatetime' : 100,
+"\}
+
+
+
 
 let g:tmuxline_preset = {
       \'a'    : '#S',
@@ -86,9 +111,6 @@ let g:tmuxline_preset = {
       \'x'    : '',
       \'y'    : '',
       \'z'    : '%Y/%m/%d(%a) %H:%M:%S'}
-
-
-
 let g:tmuxline_powerline_separators = 0
 let g:tmuxline_separators = {
     \ 'left' : '>',
@@ -98,7 +120,6 @@ let g:tmuxline_separators = {
     \ 'space' : ' '}
 
 
-
 imap {} {}<Left>
 imap [] []<Left>
 imap () ()<Left>
@@ -106,11 +127,13 @@ imap "" ""<Left>
 imap '' ''<Left>
 imap <> <><Left>
 
+
 map <Leader>mn  :MemoNew<CR>
 map <Leader>ml  :MemoList<CR>
 map <Leader>mg  :MemoGrep<CR>
 
 nnoremap <Space>. :<C-u>tabedit $MYVIMRC<CR>
+nnoremap <Space>t :TweetVimSay<CR>
 
 
 let g:neocomplcache_enable_at_startup = 1
@@ -118,8 +141,9 @@ let g:neocomplcache_enable_smart_case = 1
 let g:neocomplcache_enable_underbar_completion = 1
 let g:neocomplcache_min_syntax_length = 3
 let g:Tex_AutoFolding = 1
-let g:Tex_CompileRule_dvi = 'pl --interaction=nonstopmode $*'
-let g:Tex_CompileRule_pdf = 'dp $*.dvi'
+let g:Tex_CompileRule_dvi = 'platex -kanji=utf8 --interaction=nonstopmode $*'
+
+
 let g:Tex_ViewRule_dvi = 'xdvi'
 let g:Tex_ViewRule_pdf = 'evince'
 let g:tex_flavor='latex'
@@ -128,7 +152,6 @@ let g:memolist_path = "$HOME/Dropbox/Memo"
 let g:memolist_memo_date = "%Y/%m/%d %H:%m"
 let g:memolist_vimfiler = 1
 let g:memolist_qfixgrep = 1
-
 
 
 " reference環境
