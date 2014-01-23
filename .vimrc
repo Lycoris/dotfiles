@@ -7,6 +7,7 @@ if has('vim_starting')
 endif
 
 	NeoBundle 'Shougo/neobundle.vim'
+	NeoBundle 'vim-jp/vimdoc-ja'
 	NeoBundle 'Shougo/vimproc', {
 	\ 'build' : {
 	\     'windows' : 'make -f make_mingw32.mak',
