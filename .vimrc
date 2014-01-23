@@ -79,10 +79,10 @@ endif
 	NeoBundle 'cocopon/iceberg.vim'
 	NeoBundle 'edkolev/tmuxline.vim'
 	NeoBundle 'taglist.vim'
-	NeoBundle 'glidenote/memolist.vim'
 	NeoBundle 'fuenor/qfixgrep'
 	NeoBundle 'vim-jp/vital.vim'
 	NeoBundle 'pentie/VimRepress'
+	NeoBundle 'fuenor/qfixhowm'
 	NeoBundle 'tyru/open-browser.vim'
 	NeoBundleLazy 'basyura/twibill.vim'
 	NeoBundleLazy 'basyura/TweetVim', 'dev', {
@@ -197,10 +197,11 @@ let g:Tex_ViewRule_pdf = 'evince'
 let g:tex_flavor='latex'
 let g:vimfiler_as_default_explorer = 1
 let g:vimfiler_safe_mode_by_default = 0
-let g:memolist_path = "$HOME/Dropbox/Memo"
-let g:memolist_memo_date = "%Y/%m/%d %H:%m"
-let g:memolist_vimfiler = 1
-let g:memolist_qfixgrep = 1
 
 
-
+set runtimepath+=~/path/to/qfixapp
+let QFixHowm_Key = 'g'
+let howm_dir             = '~/Dropbox/Memo'
+let howm_filename        = '%Y/%m/%Y-%m-%d-%H%M%S.txt'
+let howm_fileencoding    = 'utf-8'
+let howm_fileformat      = 'unix'
