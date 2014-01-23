@@ -7,10 +7,33 @@ if has('vim_starting')
 endif
 
 	NeoBundle 'Shougo/neobundle.vim'
-	NeoBundle 'Shougo/vimproc'
+	NeoBundle 'Shougo/vimproc', {
+	\ 'build' : {
+	\     'windows' : 'make -f make_mingw32.mak',
+	\     'cygwin' : 'make -f make_cygwin.mak',
+	\     'mac' : 'make -f make_mac.mak',
+	\     'unix' : 'make -f make_unix.mak',
+	\    },
+	\ }
 	NeoBundle 'VimClojure'
 	NeoBundle 'Shougo/vimshell'
-	NeoBundle 'Shougo/vimfiler'
+	"NeoBundleLazy 'Shougo/vimshell', {
+	"\ 'depends' : 'Shougo/vimproc',
+	"\ 'autoload' : {
+	"\   'commands' : [{ 'name' : 'VimShell',
+	"\                   'complete' : 'customlist,vimshell#complete'},
+	"\                 'VimShellExecute', 'VimShellInteractive',
+	"\                 'VimShellTerminal', 'VimShellPop'],
+	"\   'mappings' : ['<Plug>(vimshell_switch)']
+	"\ }}
+	NeoBundleLazy 'Shougo/vimfiler', {
+	\   'depends' : ["Shougo/unite.vim"],
+	\   'autoload' : {
+	\       'commands' : [ "VimFilerTab", "VimFiler", "VimFilerExplorer", "VimFilerBufferDir" ],
+	\       'mappings' : ['<Plug>(vimfiler_switch)'],
+	\       'explorer' : 1,
+	\   }
+	\}
 	NeoBundle 'Shougo/unite.vim'
 	NeoBundle 'Shougo/neocomplcache'
 	NeoBundle 'Shougo/neosnippet'
@@ -32,6 +55,18 @@ endif
 	NeoBundle 'vim-scripts/grep.vim'
 	NeoBundle 'tpope/vim-fugitive'
 	NeoBundle 'gregsexton/gitv'
+
+	" reference環境
+	NeoBundleLazy 'vim-ruby/vim-ruby', {
+	\ 'autoload' : { 'filetypes': ['ruby', 'eruby', 'haml'] } }
+	NeoBundleLazy 'taka84u9/vim-ref-ri', {
+	\ 'depends': ['Shougo/unite.vim', 'thinca/vim-ref'],
+	\ 'autoload': { 'filetypes': ['ruby', 'eruby', 'haml'] } }
+	NeoBundleLazy 'skwp/vim-rspec', {
+	\ 'autoload': { 'filetypes': ['ruby', 'eruby', 'haml'] } }
+	NeoBundleLazy 'ruby-matchit', {
+	\ 'autoload' : { 'filetypes': ['ruby', 'eruby', 'haml'] } }
+
 	NeoBundle 'thinca/vim-ref'
 	NeoBundle 'w0ng/vim-hybrid'
 	NeoBundle 'nanotech/jellybeans.vim'
@@ -43,13 +78,23 @@ endif
 	NeoBundle 'fuenor/qfixgrep'
 	NeoBundle 'vim-jp/vital.vim'
 	NeoBundle 'pentie/VimRepress'
-	NeoBundle 'basyura/TweetVim'
 	NeoBundle 'tyru/open-browser.vim'
-	NeoBundle 'basyura/twibill.vim'
+	NeoBundleLazy 'basyura/twibill.vim'
+	NeoBundleLazy 'basyura/TweetVim', 'dev', {
+	\   'depends' : ['basyura/twibill.vim', 'tyru/open-browser.vim' ],
+	\   'autoload' : {
+	\       'commands' : [ "TweetVimHomeTimeline", "TweetVimSay", "TweetVimUserStream", "TweetVimUserTimeline" ]
+	\   }
+	\}
 	NeoBundle 'yomi322/unite-tweetvim'
 	NeoBundle 'yuratomo/gmail.vim'
 	NeoBundle 'qtmplsel.vim'
-	NeoBundle 'mattn/gist-vim'
+	"NeoBundle 'mattn/gist-vim'
+	"NeoBundleLazy 'mattn/gist-vim', {
+	"\   'autoload' : {
+	"\       'commands' : [ "Gist" ]
+	"\   }
+	"\}
 
 
 	filetype plugin indent on
@@ -147,19 +192,11 @@ let g:Tex_ViewRule_dvi = 'xdvi'
 let g:Tex_ViewRule_pdf = 'evince'
 let g:tex_flavor='latex'
 let g:vimfiler_as_default_explorer = 1
+let g:vimfiler_safe_mode_by_default = 0
 let g:memolist_path = "$HOME/Dropbox/Memo"
 let g:memolist_memo_date = "%Y/%m/%d %H:%m"
 let g:memolist_vimfiler = 1
 let g:memolist_qfixgrep = 1
 
 
-" reference環境
-NeoBundleLazy 'vim-ruby/vim-ruby', {
-    \ 'autoload' : { 'filetypes': ['ruby', 'eruby', 'haml'] } }
-NeoBundleLazy 'taka84u9/vim-ref-ri', {
-      \ 'depends': ['Shougo/unite.vim', 'thinca/vim-ref'],
-      \ 'autoload': { 'filetypes': ['ruby', 'eruby', 'haml'] } }
-NeoBundleLazy 'skwp/vim-rspec', {
-      \ 'autoload': { 'filetypes': ['ruby', 'eruby', 'haml'] } }
-NeoBundleLazy 'ruby-matchit', {
-    \ 'autoload' : { 'filetypes': ['ruby', 'eruby', 'haml'] } }
+
