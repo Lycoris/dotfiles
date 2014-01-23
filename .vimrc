@@ -16,16 +16,15 @@ endif
 	\    },
 	\ }
 	NeoBundle 'VimClojure'
-	NeoBundle 'Shougo/vimshell'
-	"NeoBundleLazy 'Shougo/vimshell', {
-	"\ 'depends' : 'Shougo/vimproc',
-	"\ 'autoload' : {
-	"\   'commands' : [{ 'name' : 'VimShell',
-	"\                   'complete' : 'customlist,vimshell#complete'},
-	"\                 'VimShellExecute', 'VimShellInteractive',
-	"\                 'VimShellTerminal', 'VimShellPop'],
-	"\   'mappings' : ['<Plug>(vimshell_switch)']
-	"\ }}
+	NeoBundleLazy 'Shougo/vimshell', {
+	\ 'depends' : 'Shougo/vimproc',
+	\ 'autoload' : {
+	\   'commands' : [{ 'name' : 'VimShell',
+	\                   'complete' : 'customlist,vimshell#complete'},
+	\                 'VimShellExecute', 'VimShellInteractive',
+	\                 'VimShellTerminal', 'VimShellPop'],
+	\   'mappings' : ['<Plug>(vimshell_switch)']
+	\ }}
 	NeoBundleLazy 'Shougo/vimfiler', {
 	\   'depends' : ["Shougo/unite.vim"],
 	\   'autoload' : {
@@ -34,7 +33,11 @@ endif
 	\       'explorer' : 1,
 	\   }
 	\}
-	NeoBundle 'Shougo/unite.vim'
+	NeoBundleLazy 'Shougo/unite.vim', {
+	\   'autoload' : {
+	\       'commands' : [ "Unite", "UniteWithBufferDir", "UniteWithCurrentDir" ]
+	\   }
+	\}
 	NeoBundle 'Shougo/neocomplcache'
 	NeoBundle 'Shougo/neosnippet'
 	NeoBundle 'jpalardy/vim-slime'
@@ -55,6 +58,7 @@ endif
 	NeoBundle 'vim-scripts/grep.vim'
 	NeoBundle 'tpope/vim-fugitive'
 	NeoBundle 'gregsexton/gitv'
+	NeoBundle 'ujihisa/unite-gem'
 
 	" reference環境
 	NeoBundleLazy 'vim-ruby/vim-ruby', {
@@ -89,12 +93,11 @@ endif
 	NeoBundle 'yomi322/unite-tweetvim'
 	NeoBundle 'yuratomo/gmail.vim'
 	NeoBundle 'qtmplsel.vim'
-	"NeoBundle 'mattn/gist-vim'
-	"NeoBundleLazy 'mattn/gist-vim', {
-	"\   'autoload' : {
-	"\       'commands' : [ "Gist" ]
-	"\   }
-	"\}
+	NeoBundleLazy 'mattn/gist-vim', {
+	\   'autoload' : {
+	\       'commands' : [ "Gist" ]
+	\   }
+	\}
 
 
 	filetype plugin indent on
