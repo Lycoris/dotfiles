@@ -48,6 +48,8 @@ endif
 	NeoBundle 'basyura/twibill.vim'
 	NeoBundle 'yomi322/unite-tweetvim'
 	NeoBundle 'yuratomo/gmail.vim'
+	NeoBundle 'qtmplsel.vim'
+	NeoBundle 'mattn/gist-vim'
 
 
 	filetype plugin indent on
@@ -85,14 +87,11 @@ let g:vimfiler_force_overwrite_statusline = 0
 let g:gmail_user_name = 'some.chicken@gmail.com'
 let g:gmail_signature = ''
 
-let g:quickrun_config = {'*': {'split': 'vertical'}}
 "let g:quickrun_config = {
 "\ 'tex' : {
 "\   'command' : 'latexmk',
-"\	'cmdopt' : '-c -dvi',
-"\ 	'outputter' : 'error',
-"\ 	'outputter/error/error' : 'quickfix',
-"\   'exec': ['%c']}
+"\	'cmdopt' : '-dvi',
+"\   'exec': ['%c %s']}
 "\ }
 "let g:quickrun_config['_'] = {
 "\   'runner' : 'vimproc',

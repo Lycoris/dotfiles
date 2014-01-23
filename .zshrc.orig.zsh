@@ -18,6 +18,7 @@ alias pgrep='ps ax | grep'
 alias pl='platex -kanji=utf8 -interaction=nonstopmode'
 alias dvipdfmx='/usr/local/bin/dvipdfmx'
 alias dp='dvipdfmx'
+alias lmk='latexmk -dvi'
 
 #git
 alias gadd='git add'
