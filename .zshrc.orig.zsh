@@ -29,6 +29,8 @@ alias gpush='git push'
 alias gpull='git pull'
 alias gclone='glt clone'
 
+#vim関連
+alias wp='vim +":BlogNew"'
 
 bindkey -v
 
@@ -41,13 +43,17 @@ export INFOPATH="/usr/local/texlive/2013/texmf-dist/doc/info"
 export MANPATH="/usr/local/texlive/2013/texmf-dist/doc/man"
 eval "$(rbenv init -)"
 
-if [ -z $TMUX ]; then
-  if $(tmux has-session); then
-    tmux attach
-  else
-    tnew lycoris
-  fi
-fi
+#if [ -z $TMUX ]; then
+#  if $(tmux has-session); then
+#    tmux attach
+#  else
+#    tnew lycoris
+#  fi
+#fi
+
+# http://qiita.com/fieldville/items/e24500165be947db8eaa
+[[ -z "$TMUX" && ! -z "$PS1" ]] && tmux
+
 
 autoload -Uz compinit
 compinit
