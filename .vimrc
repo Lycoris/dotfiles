@@ -83,6 +83,7 @@ endif
 	NeoBundle 'vim-jp/vital.vim'
 	NeoBundle 'pentie/VimRepress'
 	NeoBundle 'fuenor/qfixhowm'
+	NeoBundle 'mattn/webapi-vim'
 	NeoBundle 'tyru/open-browser.vim'
 	NeoBundleLazy 'basyura/twibill.vim'
 	NeoBundleLazy 'basyura/TweetVim', 'dev', {
@@ -93,7 +94,7 @@ endif
 	\}
 	NeoBundle 'yomi322/unite-tweetvim'
 	NeoBundle 'yuratomo/gmail.vim'
-	NeoBundle 'qtmplsel.vim'
+  "NeoBundle 'qtmplsel.vim'
 	NeoBundleLazy 'mattn/gist-vim', {
 	\   'autoload' : {
 	\       'commands' : [ "Gist" ]
@@ -116,7 +117,9 @@ set showmatch "対応する括弧のハイライト表示する
 set showmode "モード表示する
 set title "編集中のファイル名を表示する
 set ruler "ルーラーの表示する
-set tabstop=4 "タブ文字数を4にする
+set tabstop=2 "タブ文字数を4にする
+set shiftwidth=2
+set expandtab
 set laststatus=2
 set mouse=a
 set ttymouse=xterm2
@@ -132,7 +135,6 @@ let g:calendar_google_calendar = 1
 let g:calendar_google_task = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:unite_force_overwrite_statusline = 0
-let g:vimfiler_force_overwrite_statusline = 0
 let g:gmail_user_name = 'some.chicken@gmail.com'
 let g:gmail_signature = ''
 
@@ -146,8 +148,6 @@ let g:gmail_signature = ''
 "\   'runner' : 'vimproc',
 "\   'runner/vimproc/updatetime' : 100,
 "\}
-
-
 
 
 let g:tmuxline_preset = {
@@ -176,18 +176,40 @@ imap '' ''<Left>
 imap <> <><Left>
 
 
-map <Leader>mn  :MemoNew<CR>
-map <Leader>ml  :MemoList<CR>
-map <Leader>mg  :MemoGrep<CR>
-
 nnoremap <Space>. :<C-u>tabedit $MYVIMRC<CR>
 nnoremap <Space>t :TweetVimSay<CR>
+nnoremap <F2> :VimFiler -buffer-name=explorer -split -winwidth=30 -toggle -auto-cd -no-quit -simple<Cr>
+autocmd! FileType vimfiler call g:my_vimfiler_settings()
+function! g:my_vimfiler_settings()
+  nmap     <buffer><expr><Cr> vimfiler#smart_cursor_map("\<Plug>(vimfiler_expand_tree)", "\<Plug>(vimfiler_edit_file)")
+endfunction
+
+
+" unite.vim {{{
+" The prefix key.
+nnoremap    [unite]   <Nop>
+nmap    <Leader>f [unite]
+" unite.vim keymap"
+" https://github.com/alwei/dotfiles/blob/3760650625663f3b08f24bc75762ec843ca7e112/.vimrc
+nnoremap [unite]u  :<C-u>Unite -no-split<Space>
+nnoremap <silent> [unite]f :<C-u>Unite<Space>buffer<CR>
+nnoremap <silent> [unite]b :<C-u>Unite<Space>bookmark<CR>
+nnoremap <silent> [unite]m :<C-u>Unite<Space>file_mru<CR>
+nnoremap <silent> [unite]r :<C-u>UniteWithBufferDir file<CR>
+nnoremap <silent> ,vr :UniteResume<CR>"
 
 
 let g:neocomplcache_enable_at_startup = 1
 let g:neocomplcache_enable_smart_case = 1
 let g:neocomplcache_enable_underbar_completion = 1
 let g:neocomplcache_min_syntax_length = 3
+let g:neocomplcache_auto_completion_start_length = 3
+let g:neocomplcache_enable_camel_case_completion = 1
+let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
+let g:neocomplcache_enable_quick_match = 1
+let g:neocomplcache_enable_auto_select = 1
+
+
 let g:Tex_AutoFolding = 1
 let g:Tex_CompileRule_dvi = 'platex -kanji=utf8 --interaction=nonstopmode $*'
 
@@ -195,13 +217,17 @@ let g:Tex_CompileRule_dvi = 'platex -kanji=utf8 --interaction=nonstopmode $*'
 let g:Tex_ViewRule_dvi = 'xdvi'
 let g:Tex_ViewRule_pdf = 'evince'
 let g:tex_flavor='latex'
+
 let g:vimfiler_as_default_explorer = 1
 let g:vimfiler_safe_mode_by_default = 0
+let g:vimfiler_edit_action = 'tabopen'
+let g:vimfiler_force_overwrite_statusline = 0
 
 
-set runtimepath+=~/path/to/qfixapp
 let QFixHowm_Key = 'g'
 let howm_dir             = '~/Dropbox/Memo'
-let howm_filename        = '%Y/%m/%Y-%m-%d-%H%M%S.txt'
+let howm_filename        = '%Y/%m/%Y-%m-%d-%H%M%S.md'
 let howm_fileencoding    = 'utf-8'
 let howm_fileformat      = 'unix'
+let QFixHowm_FileType = 'markdown'
+let QFixHowm_HolidayFile = '~/.vim/bundle/qfixhowm/misc/holiday/Sche-Hd-0000-00-00-000000.utf8'

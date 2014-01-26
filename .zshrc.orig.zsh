@@ -18,7 +18,7 @@ alias pgrep='ps ax | grep'
 alias pl='platex -kanji=utf8 -interaction=nonstopmode'
 alias dvipdfmx='/usr/local/bin/dvipdfmx'
 alias dp='dvipdfmx'
-alias lmk='latexmk -dvi'
+alias lmk='latexmk -dvi -f'
 
 #git
 alias gadd='git add'
@@ -52,7 +52,7 @@ eval "$(rbenv init -)"
 #fi
 
 # http://qiita.com/fieldville/items/e24500165be947db8eaa
-[[ -z "$TMUX" && ! -z "$PS1" ]] && tmux
+[[ -z "$TMUX" && ! -z "$PS1" ]] && ta lycoris
 
 
 autoload -Uz compinit
