@@ -52,7 +52,7 @@ eval "$(rbenv init -)"
 #fi
 
 # http://qiita.com/fieldville/items/e24500165be947db8eaa
-[[ -z "$TMUX" && ! -z "$PS1" ]] && ta lycoris
+[[ -z "$TMUX" && ! -z "$PS1" ]] && ta remote
 
 
 autoload -Uz compinit
