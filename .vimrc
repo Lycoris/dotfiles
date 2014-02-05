@@ -175,6 +175,14 @@ imap "" ""<Left>
 imap '' ''<Left>
 imap <> <><Left>
 
+" 挿入モードでのカーソル移動
+inoremap <C-j> <Down>
+inoremap <C-k> <Up>
+inoremap <C-h> <Left>
+inoremap <C-l> <Right>
+
+nmap <Tab>      gt
+nmap <S-Tab>    gT
 
 nnoremap <Space>. :<C-u>tabedit $MYVIMRC<CR>
 nnoremap <Space>t :TweetVimSay<CR>
