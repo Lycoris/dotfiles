@@ -100,6 +100,7 @@ endif
 	\       'commands' : [ "Gist" ]
 	\   }
 	\}
+  NeoBundle 'kakkyz81/evervim'
 
 
 	filetype plugin indent on
