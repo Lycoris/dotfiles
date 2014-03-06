@@ -109,7 +109,7 @@ syntax on "シンタックスハイライトを有効にする
 set nobackup "バックアップファイルを作らない設定にする
 set encoding=utf-8 "デフォルトの文字コード
 set fileencoding=utf-8
-set fileencodings=utf-8,iso-2022-jp,euc-jp,ucs-2,cp932,sjis "自動判別に使用する文字コード 
+set fileencodings=utf-8,iso-2022-jp,euc-jp,cp932,sjis,ucs-2 "自動判別に使用する文字コード 
 set autoindent "オートインデントする
 set number "行番号を表示する
 set incsearch "インクリメンタルサーチ
