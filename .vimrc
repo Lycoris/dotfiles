@@ -1,4 +1,5 @@
 set nocompatible
+set t_Co=256
 filetype off
 
 if has('vim_starting')
