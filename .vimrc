@@ -10,6 +10,8 @@ if has('vim_starting')
 endif
 
 	NeoBundle 'Shougo/neobundle.vim'
+  NeoBundle 'alpaca-tc/alpaca_powertabline'
+  NeoBundle 'Lokaltog/powerline', { 'rtp' : 'powerline/bindings/vim'}
 	NeoBundle 'vim-jp/vimdoc-ja'
 	NeoBundle 'Shougo/vimproc', {
 	\ 'build' : {
@@ -99,7 +101,6 @@ endif
 	NeoBundle 'thinca/vim-ref'
 	NeoBundle 'w0ng/vim-hybrid'
 	NeoBundle 'mrkn/mrkn256.vim'
-	NeoBundle 'edkolev/tmuxline.vim'
 	NeoBundle 'taglist.vim'
 	NeoBundle 'fuenor/qfixgrep'
 	NeoBundle 'vim-jp/vital.vim'
