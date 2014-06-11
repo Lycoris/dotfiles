@@ -14,6 +14,7 @@ POWERLINE_DISABLE_RPROMPT="true"
 POWERLINE_SHOW_GIT_ON_RIGHT="true"
 POWERLINE_NO_BLANK_LINE="true"
 POWERLINE_DETECT_SSH="true"
+POWERLINE_FULL_CURRENT_PATH="true"
 
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
