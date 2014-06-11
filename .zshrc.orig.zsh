@@ -19,7 +19,6 @@ alias pl='platex -kanji=utf8 -interaction=nonstopmode'
 alias dvipdfmx='/usr/local/bin/dvipdfmx'
 alias dp='dvipdfmx'
 alias lmk='latexmk -dvi -f'
-alias ndl='ruby niconicodl -s -m'
 
 #git
 alias gadd='git add'
