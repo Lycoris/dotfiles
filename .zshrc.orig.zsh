@@ -3,9 +3,32 @@ alias ls='ls -G'
 alias la='ls -aG'
 alias grep='grep -G'
 alias ll='ls -lG'
-alias vi='/Applications/MacVim.app/Contents/MacOS/Vim "$@"'
-alias vim='/Applications/MacVim.app/Contents/MacOS/Vim "$@"'
-alias emacs='/Applications/MacVim.app/Contents/MacOS/Vim "$@"'
+case ${OSTYPE} in
+darwin*)
+  alias vi='/Applications/MacVim.app/Contents/MacOS/Vim "$@"'
+  alias vim='/Applications/MacVim.app/Contents/MacOS/Vim "$@"'
+  alias emacs='/Applications/MacVim.app/Contents/MacOS/Vim "$@"'
+  if [ -z $TMUX ]; then
+    if $(tmux has-session); then
+      tmux attach
+    else
+      tnew macbook-pro
+    fi
+  fi
+  ;;
+linux*)
+  alias vi='vim'
+  alias emacs='vim'
+  if [ -z $TMUX ]; then
+    if $(tmux has-session); then
+      tmux attach
+    else
+      tnew remote
+    fi
+  fi
+  ;;
+esac
+
 alias tv='tmux -v'
 alias tmux='tmux -2 -u'
 alias tnew='tmux new -s'
@@ -30,17 +53,6 @@ export EDITOR="vim"
 #export PATH="$HOME/.rbenv/bin:$PATH"
 #eval "$(rbenv init -)"
 
-if [ -z $TMUX ]; then
-  if $(tmux has-session); then
-    tmux attach
-  else
-    tnew macbook-pro
-  fi
-fi
-
-if [ -d "$HOME/Library/Python/2.7/bin" ]; then
-      PATH="$HOME/Library/Python/2.7/bin:$PATH"
-fi
 
 autoload -Uz compinit
 compinit
