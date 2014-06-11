@@ -168,24 +168,6 @@ let g:gmail_signature = ''
 "\}
 
 
-let g:tmuxline_preset = {
-      \'a'    : '#S',
-      \'b'    : '#H',
-      \'c'    : '',
-      \'win'  : '#I #W',
-      \'cwin' : '#I #W',
-      \'x'    : '',
-      \'y'    : '',
-      \'z'    : '%Y/%m/%d(%a) %H:%M:%S'}
-let g:tmuxline_powerline_separators = 0
-let g:tmuxline_separators = {
-    \ 'left' : '>',
-    \ 'left_alt': '|',
-    \ 'right' : '<',
-    \ 'right_alt' : '|',
-    \ 'space' : ' '}
-
-
 imap {} {}<Left>
 imap [] []<Left>
 imap () ()<Left>
