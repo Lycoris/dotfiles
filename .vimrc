@@ -15,6 +15,7 @@ endif
   set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
   let g:Powerline_symbols = 'fancy'
   set noshowmode
+  set ambiwidth=double
 	NeoBundle 'vim-jp/vimdoc-ja'
 	NeoBundle 'Shougo/vimproc', {
 	\ 'build' : {
@@ -71,6 +72,7 @@ endif
     let g:neocomplcache_enable_auto_select = 1
   endif
 	NeoBundle 'Shougo/neosnippet'
+  NeoBundle 'Shougo/neosnippet-snippets'
 	NeoBundle 'jpalardy/vim-slime'
 	NeoBundle 'scrooloose/syntastic'
 	NeoBundle 'hrp/EnhancedCommentify'
