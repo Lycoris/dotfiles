@@ -12,7 +12,6 @@ endif
 	NeoBundle 'Shougo/neobundle.vim'
   NeoBundle 'alpaca-tc/alpaca_powertabline'
   NeoBundle 'Lokaltog/powerline', { 'rtp' : 'powerline/bindings/vim'}
-  set laststatus=2
   set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
   let g:Powerline_symbols = 'fancy'
   set noshowmode
@@ -104,6 +103,7 @@ endif
 	NeoBundle 'thinca/vim-ref'
 	NeoBundle 'w0ng/vim-hybrid'
 	NeoBundle 'mrkn/mrkn256.vim'
+  NeoBundle 'tomasr/molokai'
 	NeoBundle 'taglist.vim'
 	NeoBundle 'fuenor/qfixgrep'
 	NeoBundle 'vim-jp/vital.vim'
@@ -134,7 +134,6 @@ set number "行番号を表示する
 set incsearch "インクリメンタルサーチ
 set ignorecase "検索時に大文字小文字を無視する
 set showmatch "対応する括弧のハイライト表示する
-set showmode "モード表示する
 set title "編集中のファイル名を表示する
 set ruler "ルーラーの表示する
 set tabstop=2 "タブ文字数を4にする
@@ -151,12 +150,10 @@ set noundofile
 highlight ZenkakuSpace cterm=underline ctermfg=lightblue guibg=darkgray
 match ZenkakuSpace /　/" 全角スペースの表示
 
-colorscheme mrkn256
+colorscheme molokai
 let g:calendar_google_calendar = 1
 let g:calendar_google_task = 1
 let g:unite_force_overwrite_statusline = 0
-let g:gmail_user_name = 'some.chicken@gmail.com'
-let g:gmail_signature = ''
 
 "let g:quickrun_config = {
 "\ 'tex' : {
