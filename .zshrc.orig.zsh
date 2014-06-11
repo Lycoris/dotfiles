@@ -17,35 +17,27 @@ alias tkill='tmux kill-session -t'
 alias sr='source ~/.zshrc'
 alias pgrep='ps ax | grep'
 alias pl='platex -kanji=utf8 -interaction=nonstopmode'
-alias dvipdfmx='/usr/local/bin/dvipdfmx'
-alias dp='dvipdfmx'
-alias lmk='latexmk -dvi -f'
-alias ndl='ruby niconicodl -s -m'
+alias lmk='latexmk -pvc -pdfdvi'
 
 #vim関連
 alias wp='vim +":BlogNew"'
 
 bindkey -v
 
-export PATH="/usr/local/texlive/2013/bin/x86_64-linux:$PATH"
 export TERM=xterm-256color
 export LANG=ja_JP.UTF-8
 export EDITOR="vim"
 #export PATH="$HOME/.rbenv/bin:$PATH"
-export INFOPATH="/usr/local/texlive/2013/texmf-dist/doc/info"
-export MANPATH="/usr/local/texlive/2013/texmf-dist/doc/man"
 #eval "$(rbenv init -)"
 
-#if [ -z $TMUX ]; then
-#  if $(tmux has-session); then
-#    tmux attach
-#  else
-#    tnew lycoris
-#  fi
-#fi
+if [ -z $TMUX ]; then
+  if $(tmux has-session); then
+    tmux attach
+  else
+    tnew macbook-pro
+  fi
+fi
 
-# http://qiita.com/fieldville/items/e24500165be947db8eaa
-[[ -z "$TMUX" && ! -z "$PS1" ]] && ta remote
 
 
 autoload -Uz compinit
@@ -53,12 +45,12 @@ compinit
 autoload -Uz colors
 colors
 
-function chpwd() { ls -G }
 HISTFILE=~/.zsh_histfile
 HISTSIZE=10000
 SAVEHIST=10000
 
 setopt auto_cd
+function chpwd() { ls -G }
 setopt auto_pushd
 setopt nolistbeep
 setopt no_check_jobs

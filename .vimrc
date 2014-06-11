@@ -1,6 +1,8 @@
 set nocompatible
 set t_Co=256
 filetype off
+python sys.path.append('/usr/local/lib/python2.7/site-packages')  
+python import markdown
 
 if has('vim_starting')
   set runtimepath+=~/.vim/bundle/neobundle.vim
@@ -40,16 +42,37 @@ endif
 	\       'commands' : [ "Unite", "UniteWithBufferDir", "UniteWithCurrentDir" ]
 	\   }
 	\}
-	NeoBundle 'Shougo/neocomplcache'
+  NeoBundle has('lua') ? 'Shougo/neocomplete' : 'Shougo/neocomplcache'
+  if neobundle#is_installed('neocomplete')
+    let g:neocomplete#enable_at_startup = 1
+    let g:neocomplete#enable_ignore_case = 1
+    let g:neocomplete#enable_smart_case = 1
+    let g:neocomplete#enable_underbar_completion = 1
+    let g:neocomplete#min_syntax_length = 3
+    let g:neocomplete#auto_completion_start_length = 3
+    let g:neocomplete#enable_camel_case_completion = 1
+    let g:neocomplete#enable_quick_match = 1
+    let g:neocomplete#enable_auto_select = 1
+  elseif neobundle#is_installed('neocomplcache')
+    let g:neocomplcache_enable_at_startup = 1
+    let g:neocomplcache_enable_ignore_case = 1
+    let g:neocomplcache_enable_smart_case = 1
+    let g:neocomplcache_enable_underbar_completion = 1
+    let g:neocomplcache_min_syntax_length = 3
+    let g:neocomplcache_auto_completion_start_length = 3
+    let g:neocomplcache_enable_camel_case_completion = 1
+    let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
+    let g:neocomplcache_enable_quick_match = 1
+    let g:neocomplcache_enable_auto_select = 1
+  endif
 	NeoBundle 'Shougo/neosnippet'
 	NeoBundle 'jpalardy/vim-slime'
 	NeoBundle 'scrooloose/syntastic'
 	NeoBundle 'hrp/EnhancedCommentify'
 	NeoBundle 'vim-scripts/yanktmp.vim'
-	NeoBundle 'tsaleh/vim-matchit'
+	"NeoBundle 'tsaleh/vim-matchit'
 	NeoBundle 'vim-scripts/svn-diff.vim'
 	NeoBundle 'janx/vim-rubytest'
-	NeoBundle 'tomasr/molokai'
 	NeoBundle 'thinca/vim-quickrun'
 	NeoBundle 'jcf/vim-latex'
 	NeoBundle 'itchyny/calendar.vim'
@@ -75,26 +98,16 @@ endif
 
 	NeoBundle 'thinca/vim-ref'
 	NeoBundle 'w0ng/vim-hybrid'
-	NeoBundle 'nanotech/jellybeans.vim'
 	NeoBundle 'mrkn/mrkn256.vim'
-	NeoBundle 'cocopon/iceberg.vim'
 	NeoBundle 'edkolev/tmuxline.vim'
 	NeoBundle 'taglist.vim'
 	NeoBundle 'fuenor/qfixgrep'
 	NeoBundle 'vim-jp/vital.vim'
 	NeoBundle 'pentie/VimRepress'
-	NeoBundle 'fuenor/qfixhowm'
 	NeoBundle 'mattn/webapi-vim'
 	NeoBundle 'tyru/open-browser.vim'
 	NeoBundleLazy 'basyura/twibill.vim'
-	NeoBundleLazy 'basyura/TweetVim', 'dev', {
-	\   'depends' : ['basyura/twibill.vim', 'tyru/open-browser.vim' ],
-	\   'autoload' : {
-	\       'commands' : [ "TweetVimHomeTimeline", "TweetVimSay", "TweetVimUserStream", "TweetVimUserTimeline" ]
-	\   }
-	\}
 	NeoBundle 'yomi322/unite-tweetvim'
-	NeoBundle 'yuratomo/gmail.vim'
   "NeoBundle 'qtmplsel.vim'
 	NeoBundleLazy 'mattn/gist-vim', {
 	\   'autoload' : {
@@ -102,10 +115,11 @@ endif
 	\   }
 	\}
   NeoBundle 'kakkyz81/evervim'
+let g:evervim_devtoken ='S=s20:U=203711:E=14de0828269:C=14688d1566d:P=1cd:A=en-devtoken:V=2:H=33eda0319b804dbe6913961b538a6fe9'
+let g:evervim_usemarkdown = 0 
 
-
-	filetype plugin indent on
-	filetype indent on
+filetype plugin indent on
+filetype indent on
 syntax on "シンタックスハイライトを有効にする
 set nobackup "バックアップファイルを作らない設定にする
 set encoding=utf-8 "デフォルトの文字コード
@@ -128,6 +142,7 @@ set ttymouse=xterm2
 set noswapfile
 set wildmenu
 set wildmode=longest:full,full
+set noundofile
 
 highlight ZenkakuSpace cterm=underline ctermfg=lightblue guibg=darkgray
 match ZenkakuSpace /　/" 全角スペースの表示
@@ -209,15 +224,6 @@ nnoremap <silent> [unite]r :<C-u>UniteWithBufferDir file<CR>
 nnoremap <silent> ,vr :UniteResume<CR>"
 
 
-let g:neocomplcache_enable_at_startup = 1
-let g:neocomplcache_enable_smart_case = 1
-let g:neocomplcache_enable_underbar_completion = 1
-let g:neocomplcache_min_syntax_length = 3
-let g:neocomplcache_auto_completion_start_length = 3
-let g:neocomplcache_enable_camel_case_completion = 1
-let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
-let g:neocomplcache_enable_quick_match = 1
-let g:neocomplcache_enable_auto_select = 1
 
 
 let g:Tex_AutoFolding = 1
@@ -234,10 +240,3 @@ let g:vimfiler_edit_action = 'tabopen'
 let g:vimfiler_force_overwrite_statusline = 0
 
 
-let QFixHowm_Key = 'g'
-let howm_dir             = '~/Dropbox/Memo'
-let howm_filename        = '%Y/%m/%Y-%m-%d-%H%M%S.md'
-let howm_fileencoding    = 'utf-8'
-let howm_fileformat      = 'unix'
-let QFixHowm_FileType = 'markdown'
-let QFixHowm_HolidayFile = '~/.vim/bundle/qfixhowm/misc/holiday/Sche-Hd-0000-00-00-000000.utf8'
