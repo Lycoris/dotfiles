@@ -12,6 +12,10 @@ endif
 	NeoBundle 'Shougo/neobundle.vim'
   NeoBundle 'alpaca-tc/alpaca_powertabline'
   NeoBundle 'Lokaltog/powerline', { 'rtp' : 'powerline/bindings/vim'}
+  set laststatus=2
+  set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
+  let g:Powerline_symbols = 'fancy'
+  set noshowmode
 	NeoBundle 'vim-jp/vimdoc-ja'
 	NeoBundle 'Shougo/vimproc', {
 	\ 'build' : {
@@ -78,7 +82,6 @@ endif
 	NeoBundle 'thinca/vim-quickrun'
 	NeoBundle 'jcf/vim-latex'
 	NeoBundle 'itchyny/calendar.vim'
-	NeoBundle 'bling/vim-airline'
 	NeoBundle 'rcmdnk/vim-markdown'
 	NeoBundle 'vim-scripts/sudo.vim'
 	NeoBundle 'ujihisa/ref-hoogle'
@@ -151,7 +154,6 @@ match ZenkakuSpace /　/" 全角スペースの表示
 colorscheme mrkn256
 let g:calendar_google_calendar = 1
 let g:calendar_google_task = 1
-let g:airline#extensions#tabline#enabled = 1
 let g:unite_force_overwrite_statusline = 0
 let g:gmail_user_name = 'some.chicken@gmail.com'
 let g:gmail_signature = ''
@@ -166,24 +168,6 @@ let g:gmail_signature = ''
 "\   'runner' : 'vimproc',
 "\   'runner/vimproc/updatetime' : 100,
 "\}
-
-
-let g:tmuxline_preset = {
-      \'a'    : '#S',
-      \'b'    : '#H',
-      \'c'    : '',
-      \'win'  : '#I #W',
-      \'cwin' : '#I #W',
-      \'x'    : '',
-      \'y'    : '',
-      \'z'    : '%Y/%m/%d(%a) %H:%M:%S'}
-let g:tmuxline_powerline_separators = 0
-let g:tmuxline_separators = {
-    \ 'left' : '>',
-    \ 'left_alt': '|',
-    \ 'right' : '<',
-    \ 'right_alt' : '|',
-    \ 'space' : ' '}
 
 
 imap {} {}<Left>
