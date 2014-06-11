@@ -5,7 +5,15 @@ ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="gallois"
+ZSH_THEME="powerline"
+
+# Powerline
+POWERLINE_HIDE_USER_NAME="true"
+POWERLINE_HIDE_HOST_NAME="true"
+POWERLINE_DISABLE_RPROMPT="true"
+POWERLINE_SHOW_GIT_ON_RIGHT="true"
+POWERLINE_NO_BLANK_LINE="true"
+POWERLINE_DETECT_SSH="true"
 
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
