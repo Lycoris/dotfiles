@@ -9,6 +9,15 @@ if has('vim_starting')
   call neobundle#rc(expand('~/.vim/bundle'))
 endif
 
+
+"let OSTYPE = system('uname')
+"if OSTYPE == "Darwin\n"
+"  "ここにMac向けの設定
+"elseif OSTYPE == "Linux\n"
+"  "ここにLinux向けの設定
+"endif
+
+
 	NeoBundle 'Shougo/neobundle.vim'
   NeoBundle 'alpaca-tc/alpaca_powertabline'
   NeoBundle 'Lokaltog/powerline', { 'rtp' : 'powerline/bindings/vim'}
@@ -206,8 +215,6 @@ nnoremap <silent> [unite]b :<C-u>Unite<Space>bookmark<CR>
 nnoremap <silent> [unite]m :<C-u>Unite<Space>file_mru<CR>
 nnoremap <silent> [unite]r :<C-u>UniteWithBufferDir file<CR>
 nnoremap <silent> ,vr :UniteResume<CR>"
-
-
 
 
 let g:Tex_AutoFolding = 1
