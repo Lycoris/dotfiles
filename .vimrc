@@ -10,6 +10,10 @@ if has('vim_starting')
 endif
 
 
+set ambiwidth=double
+set guifontwide=Monaco_for_Powerline:h12
+set imdisable
+
 "let OSTYPE = system('uname')
 "if OSTYPE == "Darwin\n"
 "  "ここにMac向けの設定
@@ -24,7 +28,6 @@ endif
   set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
   let g:Powerline_symbols = 'fancy'
   set noshowmode
-  set ambiwidth=double
 	NeoBundle 'vim-jp/vimdoc-ja'
 	NeoBundle 'Shougo/vimproc', {
 	\ 'build' : {
@@ -67,6 +70,7 @@ endif
     let g:neocomplete#auto_completion_start_length = 3
     let g:neocomplete#enable_camel_case_completion = 1
     let g:neocomplete#enable_quick_match = 1
+    let g:neocomplete#force_overwrite_completefunc = 1
     let g:neocomplete#enable_auto_select = 1
   elseif neobundle#is_installed('neocomplcache')
     let g:neocomplcache_enable_at_startup = 1
@@ -140,6 +144,7 @@ set nobackup "バックアップファイルを作らない設定にする
 set encoding=utf-8 "デフォルトの文字コード
 set fileencoding=utf-8
 set fileencodings=utf-8,iso-2022-jp,euc-jp,cp932,sjis,ucs-2 "自動判別に使用する文字コード 
+set fillchars+=stl:\ ,stlnc:\
 set autoindent "オートインデントする
 set number "行番号を表示する
 set incsearch "インクリメンタルサーチ
