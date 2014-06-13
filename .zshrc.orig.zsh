@@ -3,6 +3,14 @@ alias ls='ls -G'
 alias la='ls -aG'
 alias grep='grep -G'
 alias ll='ls -lG'
+alias tv='tmux -v'
+alias tmux='tmux -2 -u'
+alias tnew='tmux new -s'
+alias tls='tmux ls'
+alias ta='tmux a -t'
+alias tm='tmux move-window -t'
+alias ts='tmux swap-window -t'
+alias tkill='tmux kill-session -t'
 case ${OSTYPE} in
 darwin*)
   alias vi='/Applications/MacVim.app/Contents/MacOS/Vim "$@"'
@@ -17,6 +25,7 @@ darwin*)
   fi
   ;;
 linux*)
+  alias vim='/usr/bin/vim'
   alias vi='vim'
   alias emacs='vim'
   if [ -z $TMUX ]; then
@@ -29,14 +38,6 @@ linux*)
   ;;
 esac
 
-alias tv='tmux -v'
-alias tmux='tmux -2 -u'
-alias tnew='tmux new -s'
-alias tls='tmux ls'
-alias ta='tmux a -t'
-alias tm='tmux move-window -t'
-alias ts='tmux swap-window -t'
-alias tkill='tmux kill-session -t'
 alias sr='source ~/.zshrc'
 alias pgrep='ps ax | grep'
 alias pl='platex -kanji=utf8 -interaction=nonstopmode'
