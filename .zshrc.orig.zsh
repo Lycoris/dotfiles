@@ -11,6 +11,7 @@ alias ta='tmux a -t'
 alias tm='tmux move-window -t'
 alias ts='tmux swap-window -t'
 alias tkill='tmux kill-session -t'
+alias gf='git fetch'
 case ${OSTYPE} in
 darwin*)
   alias vi='/Applications/MacVim.app/Contents/MacOS/Vim "$@"'
