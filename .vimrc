@@ -86,6 +86,17 @@ set imdisable
   endif
 	NeoBundle 'Shougo/neosnippet'
   NeoBundle 'Shougo/neosnippet-snippets'
+  " Plugin key-mappings.
+  imap <C-k> <Plug>(neosnippet_expand_or_jump)
+  smap <C-k> <Plug>(neosnippet_expand_or_jump)
+  xmap <C-k> <Plug>(neosnippet_expand_target)
+  " SuperTab like snippets behavior.
+  imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+  \ "\<Plug>(neosnippet_expand_or_jump)"
+  \: pumvisible() ? "\<C-n>" : "\<TAB>"
+  smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+  \ "\<Plug>(neosnippet_expand_or_jump)"
+  \: "\<TAB>"
 	NeoBundle 'jpalardy/vim-slime'
 	NeoBundle 'scrooloose/syntastic'
 	NeoBundle 'hrp/EnhancedCommentify'
@@ -155,6 +166,7 @@ set ruler "ルーラーの表示する
 set tabstop=2 "タブ文字数を4にする
 set shiftwidth=2
 set expandtab
+set showtabline=2
 set laststatus=2
 set mouse=a
 set ttymouse=xterm2
@@ -191,10 +203,10 @@ imap '' ''<Left>
 imap <> <><Left>
 
 " 挿入モードでのカーソル移動
-inoremap <C-j> <Down>
-inoremap <C-k> <Up>
-inoremap <C-h> <Left>
-inoremap <C-l> <Right>
+"inoremap <C-j> <Down>
+"inoremap <C-k> <Up>
+"inoremap <C-h> <Left>
+"inoremap <C-l> <Right>
 
 nmap <Tab>      gt
 nmap <S-Tab>    gT
