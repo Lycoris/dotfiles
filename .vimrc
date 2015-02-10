@@ -6,7 +6,9 @@ python import markdown
 
 if has('vim_starting')
   set runtimepath+=~/.vim/bundle/neobundle.vim
-  call neobundle#rc(expand('~/.vim/bundle'))
+  call neobundle#begin(expand('~/.vim/bundle/'))
+  NeoBundleFetch 'Shougo/neobundle.vim'
+  call neobundle#end()
 endif
 
 
@@ -24,7 +26,7 @@ set imdisable
 
 	NeoBundle 'Shougo/neobundle.vim'
   NeoBundle 'alpaca-tc/alpaca_powertabline'
-  NeoBundle 'Lokaltog/powerline', { 'rtp' : 'powerline/bindings/vim'}
+  NeoBundle 'powerline/powerline', { 'rtp' : 'powerline/bindings/vim'}
   set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
   let g:Powerline_symbols = 'fancy'
   set noshowmode
@@ -107,7 +109,7 @@ set imdisable
 	NeoBundle 'thinca/vim-quickrun'
 	NeoBundle 'jcf/vim-latex'
 	NeoBundle 'itchyny/calendar.vim'
-	NeoBundle 'rcmdnk/vim-markdown'
+	"NeoBundle 'rcmdnk/vim-markdown'
 	NeoBundle 'vim-scripts/sudo.vim'
 	NeoBundle 'ujihisa/ref-hoogle'
 	NeoBundle 'vim-scripts/grep.vim'
@@ -166,8 +168,8 @@ set ruler "ルーラーの表示する
 set tabstop=2 "タブ文字数を4にする
 set shiftwidth=2
 set expandtab
-set showtabline=2
 set laststatus=2
+set showtabline=2
 set mouse=a
 set ttymouse=xterm2
 set noswapfile
@@ -215,7 +217,7 @@ nnoremap <Space>. :<C-u>tabedit $MYVIMRC<CR>
 nnoremap <Space>t :TweetVimSay<CR>
 nnoremap <F2> :VimFiler -buffer-name=explorer -split -winwidth=30 -toggle -auto-cd -no-quit -simple<Cr>
 autocmd! FileType vimfiler call g:my_vimfiler_settings()
-function! g:my_vimfiler_settings()
+function! s:my_vimfiler_settings()
   nmap     <buffer><expr><Cr> vimfiler#smart_cursor_map("\<Plug>(vimfiler_expand_tree)", "\<Plug>(vimfiler_edit_file)")
 endfunction
 
