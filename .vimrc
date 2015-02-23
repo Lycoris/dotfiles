@@ -21,7 +21,7 @@ endif
 
 	NeoBundle 'Shougo/neobundle.vim'
   NeoBundle 'alpaca-tc/alpaca_powertabline'
-  NeoBundle 'Lokaltog/powerline', { 'rtp' : 'powerline/bindings/vim'}
+  NeoBundle 'powerline/powerline', { 'rtp' : 'powerline/bindings/vim'}
   set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
   let g:Powerline_symbols = 'fancy'
   set noshowmode
