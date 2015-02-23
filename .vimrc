@@ -98,13 +98,11 @@ endif
 	NeoBundle 'scrooloose/syntastic'
 	NeoBundle 'hrp/EnhancedCommentify'
 	NeoBundle 'vim-scripts/yanktmp.vim'
-	"NeoBundle 'tsaleh/vim-matchit'
 	NeoBundle 'vim-scripts/svn-diff.vim'
 	NeoBundle 'janx/vim-rubytest'
 	NeoBundle 'thinca/vim-quickrun'
   NeoBundle 'lervag/vim-latex'
 	NeoBundle 'itchyny/calendar.vim'
-	"NeoBundle 'rcmdnk/vim-markdown'
 	NeoBundle 'vim-scripts/sudo.vim'
 	NeoBundle 'ujihisa/ref-hoogle'
 	NeoBundle 'vim-scripts/grep.vim'
@@ -135,7 +133,6 @@ endif
 	NeoBundle 'tyru/open-browser.vim'
 	NeoBundleLazy 'basyura/twibill.vim'
 	NeoBundle 'yomi322/unite-tweetvim'
-  "NeoBundle 'qtmplsel.vim'
 	NeoBundleLazy 'mattn/gist-vim', {
 	\   'autoload' : {
 	\       'commands' : [ "Gist" ]
@@ -229,12 +226,6 @@ nnoremap <silent> [unite]m :<C-u>Unite<Space>file_mru<CR>
 nnoremap <silent> [unite]r :<C-u>UniteWithBufferDir file<CR>
 nnoremap <silent> ,vr :UniteResume<CR>"
 
-
-"let g:Tex_AutoFolding = 1
-"let g:Tex_ViewRule_dvi = 'xdvi'
-"let g:Tex_ViewRule_pdf = 'evince'
-"let g:tex_flavor='latex'
-"let g:tex_conceal=''
 let g:latex_latexmk_enabled = 1
 let g:latex_latexmk_options = '-pdfdvi'
 let g:latex_view_method = 'general'
