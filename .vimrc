@@ -6,8 +6,18 @@ python import markdown
 
 if has('vim_starting')
   set runtimepath+=~/.vim/bundle/neobundle.vim
-  call neobundle#rc(expand('~/.vim/bundle'))
+  call neobundle#begin(expand('~/.vim/bundle/'))
+  NeoBundleFetch 'Shougo/neobundle.vim'
+  call neobundle#end()
 endif
+
+"let OSTYPE = system('uname')
+"if OSTYPE == "Darwin\n"
+"  "ここにMac向けの設定
+"elseif OSTYPE == "Linux\n"
+"  "ここにLinux向けの設定
+"endif
+
 
 	NeoBundle 'Shougo/neobundle.vim'
   NeoBundle 'alpaca-tc/alpaca_powertabline'
@@ -57,6 +67,7 @@ endif
     let g:neocomplete#auto_completion_start_length = 3
     let g:neocomplete#enable_camel_case_completion = 1
     let g:neocomplete#enable_quick_match = 1
+    let g:neocomplete#force_overwrite_completefunc = 1
     let g:neocomplete#enable_auto_select = 1
   elseif neobundle#is_installed('neocomplcache')
     let g:neocomplcache_enable_at_startup = 1
@@ -71,6 +82,18 @@ endif
     let g:neocomplcache_enable_auto_select = 1
   endif
 	NeoBundle 'Shougo/neosnippet'
+  NeoBundle 'Shougo/neosnippet-snippets'
+  " Plugin key-mappings.
+  imap <C-k> <Plug>(neosnippet_expand_or_jump)
+  smap <C-k> <Plug>(neosnippet_expand_or_jump)
+  xmap <C-k> <Plug>(neosnippet_expand_target)
+  " SuperTab like snippets behavior.
+  imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+  \ "\<Plug>(neosnippet_expand_or_jump)"
+  \: pumvisible() ? "\<C-n>" : "\<TAB>"
+  smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+  \ "\<Plug>(neosnippet_expand_or_jump)"
+  \: "\<TAB>"
 	NeoBundle 'jpalardy/vim-slime'
 	NeoBundle 'scrooloose/syntastic'
 	NeoBundle 'hrp/EnhancedCommentify'
@@ -79,9 +102,9 @@ endif
 	NeoBundle 'vim-scripts/svn-diff.vim'
 	NeoBundle 'janx/vim-rubytest'
 	NeoBundle 'thinca/vim-quickrun'
-	NeoBundle 'jcf/vim-latex'
+  NeoBundle 'lervag/vim-latex'
 	NeoBundle 'itchyny/calendar.vim'
-	NeoBundle 'rcmdnk/vim-markdown'
+	"NeoBundle 'rcmdnk/vim-markdown'
 	NeoBundle 'vim-scripts/sudo.vim'
 	NeoBundle 'ujihisa/ref-hoogle'
 	NeoBundle 'vim-scripts/grep.vim'
@@ -118,9 +141,6 @@ endif
 	\       'commands' : [ "Gist" ]
 	\   }
 	\}
-  NeoBundle 'kakkyz81/evervim'
-let g:evervim_devtoken ='S=s20:U=203711:E=14de0828269:C=14688d1566d:P=1cd:A=en-devtoken:V=2:H=33eda0319b804dbe6913961b538a6fe9'
-let g:evervim_usemarkdown = 0 
 
 filetype plugin indent on
 filetype indent on
@@ -129,6 +149,9 @@ set nobackup "バックアップファイルを作らない設定にする
 set encoding=utf-8 "デフォルトの文字コード
 set fileencoding=utf-8
 set fileencodings=utf-8,iso-2022-jp,euc-jp,cp932,sjis,ucs-2 "自動判別に使用する文字コード 
+set fillchars+=stl:\ ,stlnc:\
+set guifont=Monaco\ for\ Powerline:h12
+set guifontwide=Monaco\ for\ Powerline:h12
 set autoindent "オートインデントする
 set number "行番号を表示する
 set incsearch "インクリメンタルサーチ
@@ -140,6 +163,7 @@ set tabstop=2 "タブ文字数を4にする
 set shiftwidth=2
 set expandtab
 set laststatus=2
+set showtabline=2
 set mouse=a
 set ttymouse=xterm2
 set noswapfile
@@ -155,16 +179,16 @@ let g:calendar_google_calendar = 1
 let g:calendar_google_task = 1
 let g:unite_force_overwrite_statusline = 0
 
-"let g:quickrun_config = {
-"\ 'tex' : {
-"\   'command' : 'latexmk',
-"\	'cmdopt' : '-dvi',
-"\   'exec': ['%c %s']}
-"\ }
-"let g:quickrun_config['_'] = {
-"\   'runner' : 'vimproc',
-"\   'runner/vimproc/updatetime' : 100,
-"\}
+let g:quickrun_config = {
+\ 'tex' : {
+\   'command' : 'latexmk',
+\	'cmdopt' : '-pdfdvi -pvc',
+\   'exec': ['%c %o %s']}
+\ }
+let g:quickrun_config['_'] = {
+\   'runner' : 'vimproc',
+\   'runner/vimproc/updatetime' : 60,
+\}
 
 
 imap {} {}<Left>
@@ -175,10 +199,10 @@ imap '' ''<Left>
 imap <> <><Left>
 
 " 挿入モードでのカーソル移動
-inoremap <C-j> <Down>
-inoremap <C-k> <Up>
-inoremap <C-h> <Left>
-inoremap <C-l> <Right>
+"inoremap <C-j> <Down>
+"inoremap <C-k> <Up>
+"inoremap <C-h> <Left>
+"inoremap <C-l> <Right>
 
 nmap <Tab>      gt
 nmap <S-Tab>    gT
@@ -186,8 +210,8 @@ nmap <S-Tab>    gT
 nnoremap <Space>. :<C-u>tabedit $MYVIMRC<CR>
 nnoremap <Space>t :TweetVimSay<CR>
 nnoremap <F2> :VimFiler -buffer-name=explorer -split -winwidth=30 -toggle -auto-cd -no-quit -simple<Cr>
-autocmd! FileType vimfiler call g:my_vimfiler_settings()
-function! g:my_vimfiler_settings()
+autocmd! FileType vimfiler call s:my_vimfiler_settings()
+function! s:my_vimfiler_settings()
   nmap     <buffer><expr><Cr> vimfiler#smart_cursor_map("\<Plug>(vimfiler_expand_tree)", "\<Plug>(vimfiler_edit_file)")
 endfunction
 
@@ -206,15 +230,27 @@ nnoremap <silent> [unite]r :<C-u>UniteWithBufferDir file<CR>
 nnoremap <silent> ,vr :UniteResume<CR>"
 
 
+"let g:Tex_AutoFolding = 1
+"let g:Tex_ViewRule_dvi = 'xdvi'
+"let g:Tex_ViewRule_pdf = 'evince'
+"let g:tex_flavor='latex'
+"let g:tex_conceal=''
+let g:latex_latexmk_enabled = 1
+let g:latex_latexmk_options = '-pdfdvi'
+let g:latex_view_method = 'general'
+let g:latex_view_general_viewer = 'open'
+let g:latex_fold_sections = [
+      \ "part",
+      \ "chapter",
+      \ "section",
+      \ "subsection",
+      \ "subsubsection",
+      \ ]
+let g:latex_fold_enabled = 1
+let g:latex_latexmk_continuous = 1
+let g:latex_latexmk_background = 1
+let g:latex_latexmk_callback = 0
 
-
-let g:Tex_AutoFolding = 1
-let g:Tex_CompileRule_dvi = 'platex -kanji=utf8 --interaction=nonstopmode $*'
-
-
-let g:Tex_ViewRule_dvi = 'xdvi'
-let g:Tex_ViewRule_pdf = 'evince'
-let g:tex_flavor='latex'
 
 let g:vimfiler_as_default_explorer = 1
 let g:vimfiler_safe_mode_by_default = 0

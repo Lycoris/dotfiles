@@ -10,11 +10,12 @@ ZSH_THEME="powerline"
 # Powerline
 POWERLINE_HIDE_USER_NAME="true"
 POWERLINE_HIDE_HOST_NAME="true"
-POWERLINE_DISABLE_RPROMPT="true"
 POWERLINE_SHOW_GIT_ON_RIGHT="true"
+POWERLINE_RIGHT_B="none"
 POWERLINE_NO_BLANK_LINE="true"
 POWERLINE_DETECT_SSH="true"
 POWERLINE_FULL_CURRENT_PATH="true"
+
 
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
@@ -61,6 +62,7 @@ source $ZSH/oh-my-zsh.sh
 # User configuration
 
 export PATH=$HOME/bin:/usr/local/bin:/usr/bin:$PATH
+
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # # Preferred editor for local and remote sessions
