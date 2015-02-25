@@ -167,6 +167,7 @@ set noswapfile
 set wildmenu
 set wildmode=longest:full,full
 set noundofile
+set splitright
 
 highlight ZenkakuSpace cterm=underline ctermfg=lightblue guibg=darkgray
 match ZenkakuSpace /　/" 全角スペースの表示
@@ -186,7 +187,6 @@ let g:quickrun_config['_'] = {
 \   'runner' : 'vimproc',
 \   'runner/vimproc/updatetime' : 60,
 \}
-set splitright
 nnoremap <expr><silent> <C-c> quickrun#is_running( ? quickrun#sweep_sessions( : "\<C-c>"))
 
 
