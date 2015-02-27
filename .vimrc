@@ -229,7 +229,7 @@ nnoremap <silent> [unite]r :<C-u>UniteWithBufferDir file<CR>
 nnoremap <silent> ,vr :UniteResume<CR>"
 
 let g:latex_latexmk_enabled = 1
-let g:latex_latexmk_options = '-pdfdvi'
+let g:latex_latexmk_options = '-pdfdvi -pvc'
 let g:latex_view_method = 'general'
 let g:latex_view_general_viewer = 'open'
 let g:latex_fold_sections = [
