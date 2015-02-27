@@ -1,7 +1,8 @@
 #!/usr/bin/perl
-$latex         = 'platex %O -src-specials -kanji=utf8 -interaction=nonstopmode %S';
-$bibtex        = 'pbibtex %O %B';
-$dvipdf        = '/usr/texbin/dvipdfmx %O %S';
+$latex         = 'uplatex %O -halt-on-error -interaction=nonstopmode %S';
+$bibtex        = 'upbibtex %O %B';
+$dvipdf        = 'dvipdfmx %O -o %S';
+$makeindex     = 'mendex %O -o %D %S';
 $pdf_mode      = 3; # use dvipdf
 $pdf_update_method = 4;
-$pdf_update_command = 'open -a Preview %S';
+$pdf_update_command = 'open -ga Preview %S';
