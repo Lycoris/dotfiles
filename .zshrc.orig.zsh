@@ -41,7 +41,6 @@ esac
 
 alias sr='source ~/.zshrc'
 alias pgrep='ps ax | grep'
-alias pl='platex -kanji=utf8 -interaction=nonstopmode'
 alias lmk='latexmk -pvc -pdfdvi'
 
 #vim関連
