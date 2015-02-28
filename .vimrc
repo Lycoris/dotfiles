@@ -180,7 +180,7 @@ let g:unite_force_overwrite_statusline = 0
 let g:quickrun_config = {
 \ 'tex' : {
 \   'command' : 'latexmk',
-\	'cmdopt' : '-pdfdvi -pvc',
+\	'cmdopt' : '-pdfdvi',
 \   'exec': ['%c %o %s']}
 \ }
 let g:quickrun_config['_'] = {
@@ -229,7 +229,7 @@ nnoremap <silent> [unite]r :<C-u>UniteWithBufferDir file<CR>
 nnoremap <silent> ,vr :UniteResume<CR>"
 
 let g:latex_latexmk_enabled = 1
-let g:latex_latexmk_options = '-pdfdvi -pvc'
+let g:latex_latexmk_options = '-pdfdvi'
 let g:latex_view_method = 'general'
 let g:latex_view_general_viewer = 'open'
 let g:latex_fold_sections = [
@@ -243,6 +243,7 @@ let g:latex_fold_enabled = 1
 let g:latex_latexmk_continuous = 1
 let g:latex_latexmk_background = 1
 let g:latex_latexmk_callback = 0
+let g:latex_quickfix_ignore_all_warnings = 0
 
 
 let g:vimfiler_as_default_explorer = 1
