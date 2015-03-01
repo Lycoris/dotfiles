@@ -32,6 +32,7 @@ alias vi='/Applications/MacVim.app/Contents/MacOS/Vim "$@"'
 alias vim='/Applications/MacVim.app/Contents/MacOS/Vim "$@"'
 alias emacs='/Applications/MacVim.app/Contents/MacOS/Vim "$@"'
 alias wp='vim +":BlogNew"'
+source ~/.vim/bundle/powerline/powerline/bindings/tmux/powerline.conf
 
 # TeX関連
 alias lmk='latexmk -pvc -pdfdvi'
