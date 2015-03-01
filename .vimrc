@@ -1,4 +1,3 @@
-set nocompatible
 set t_Co=256
 filetype off
 python sys.path.append('/usr/local/lib/python2.7/site-packages')  
@@ -10,14 +9,6 @@ if has('vim_starting')
   NeoBundleFetch 'Shougo/neobundle.vim'
   call neobundle#end()
 endif
-
-"let OSTYPE = system('uname')
-"if OSTYPE == "Darwin\n"
-"  "ここにMac向けの設定
-"elseif OSTYPE == "Linux\n"
-"  "ここにLinux向けの設定
-"endif
-
 
 	NeoBundle 'Shougo/neobundle.vim'
   NeoBundle 'alpaca-tc/alpaca_powertabline'
@@ -140,7 +131,6 @@ endif
 	\}
 
 filetype plugin indent on
-filetype indent on
 syntax on "シンタックスハイライトを有効にする
 set nobackup "バックアップファイルを作らない設定にする
 set encoding=utf-8 "デフォルトの文字コード
