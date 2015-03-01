@@ -102,7 +102,6 @@ set nobackup
 " デフォルトの文字コード
 set encoding=utf-8 
 " 自動判別に使用する文字コード
-set encoding=utf-8
 set fileencoding=utf-8
 set fileencodings=utf-8,iso-2022-jp,euc-jp,cp932,sjis,ucs-2 
 set fillchars+=stl:\ ,stlnc:\
@@ -141,9 +140,7 @@ set noswapfile
 set wildmenu
 set wildmode=longest:full,full
 " http://www.kaoriya.net/blog/2014/03/30/
-if v:version > 740
-    set noundofile
-endif
+set noundofile
 " splitする時には右側に新しいウインドウを開く
 set splitright
 
