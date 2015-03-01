@@ -26,64 +26,37 @@ NeoBundle 'Shougo/vimproc', {
 \     'unix' : 'make -f make_unix.mak',
 \    },
 \ }
-NeoBundleLazy 'Shougo/vimshell', {
-\ 'depends' : 'Shougo/vimproc',
-\ 'autoload' : {
-\   'commands' : [{ 'name' : 'VimShell',
-\                   'complete' : 'customlist,vimshell#complete'},
-\                 'VimShellExecute', 'VimShellInteractive',
-\                 'VimShellTerminal', 'VimShellPop'],
-\   'mappings' : ['<Plug>(vimshell_switch)']
-\ }}
-NeoBundleLazy 'Shougo/vimfiler', {
-\   'depends' : ["Shougo/unite.vim"],
-\   'autoload' : {
-\       'commands' : [ "VimFilerTab", "VimFiler", "VimFilerExplorer", "VimFilerBufferDir" ],
-\       'mappings' : ['<Plug>(vimfiler_switch)'],
-\       'explorer' : 1,
-\   }
-\}
-NeoBundleLazy 'Shougo/unite.vim', {
-\   'autoload' : {
-\       'commands' : [ "Unite", "UniteWithBufferDir", "UniteWithCurrentDir" ]
-\   }
-\}
-NeoBundle 'Shougo/neomru.vim'
-NeoBundle has('lua') ? 'Shougo/neocomplete' : 'Shougo/neocomplcache'
-NeoBundle 'Shougo/neosnippet'
+NeoBundleLazy 'Shougo/vimshell', { 'depends' : [ 'Shougo/vimproc' ] }
+NeoBundleLazy 'Shougo/vimfiler', { 'depends' : [ 'Shougo/unite.vim' ] }
+NeoBundleLazy 'Shougo/unite.vim'
+NeoBundle 'Shougo/neomru.vim', { 'depends' : [ 'Shougo/unite.vim' ] }
+NeoBundleLazy has('lua') ? 'Shougo/neocomplete' : 'Shougo/neocomplcache'
+NeoBundleLazy 'Shougo/neosnippet'
 NeoBundle 'Shougo/neosnippet-snippets'
-NeoBundle 'scrooloose/syntastic'
+NeoBundleLazy 'scrooloose/syntastic'
 NeoBundle 'hrp/EnhancedCommentify'
 NeoBundle 'vim-scripts/yanktmp.vim'
-NeoBundle 'thinca/vim-quickrun'
+NeoBundleLazy 'thinca/vim-quickrun'
 NeoBundleLazy 'lervag/vim-latex'
 NeoBundle 'vim-scripts/sudo.vim'
 NeoBundle 'tpope/vim-surround'
-NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'gregsexton/gitv'
-NeoBundle 'ujihisa/unite-gem'
+NeoBundleLazy 'tpope/vim-fugitive'
+NeoBundleLazy 'gregsexton/gitv', { 'depends' : [ 'tpope/vim-fugitive' ] }
 
 " reference環境
 NeoBundleLazy 'vim-ruby/vim-ruby', { 'autoload' : { 'filetypes': ['ruby', 'eruby', 'haml'] } }
-NeoBundleLazy 'taka84u9/vim-ref-ri', {
-\ 'depends': ['Shougo/unite.vim', 'thinca/vim-ref'],
-\ 'autoload': { 'filetypes': ['ruby', 'eruby', 'haml'] } }
-"NeoBundleLazy 'taka84u9/vim-ref-ri', { 'depends' : [ 'Shougo/unite.vim', ' thinca/vim-ref'] }
+NeoBundleLazy 'taka84u9/vim-ref-ri', { 'depends' : [ 'Shougo/unite.vim', 'thinca/vim-ref'] }
 NeoBundleLazy 'skwp/vim-rspec', { 'autoload' : { 'filetypes': ['ruby', 'eruby', 'haml'] } }
 NeoBundleLazy 'ruby-matchit', { 'autoload' : { 'filetypes': ['ruby', 'eruby', 'haml'] } }
 
 NeoBundleLazy 'thinca/vim-ref'
-NeoBundle 'taglist.vim'
+NeoBundleLazy 'taglist.vim'
 NeoBundle 'fuenor/qfixgrep'
-NeoBundle 'pentie/VimRepress'
+NeoBundleLazy 'pentie/VimRepress'
 NeoBundle 'mattn/webapi-vim'
-NeoBundle 'tyru/open-browser.vim'
-NeoBundleLazy 'mattn/gist-vim', {
-\   'autoload' : {
-\       'commands' : [ "Gist" ]
-\   }
-\}
-NeoBundle 'mattn/emmet-vim'
+NeoBundleLazy 'tyru/open-browser.vim'
+NeoBundleLazy 'mattn/gist-vim'
+NeoBundleLazy 'mattn/emmet-vim'
 
 " colorschemes
 NeoBundle 'tomasr/molokai'
@@ -174,30 +147,60 @@ nnoremap <Space>. :<C-u>tabedit $MYVIMRC<CR>
 " Plugin Settings
 " ------------------------------------------
 " Shougo/vimfiler
-nnoremap <F2> :VimFiler -buffer-name=explorer -split -winwidth=30 -toggle -auto-cd -no-quit -simple<Cr>
-function! s:my_vimfiler_settings()
-  nmap     <buffer><expr><Cr> vimfiler#smart_cursor_map("\<Plug>(vimfiler_expand_tree)", "\<Plug>(vimfiler_edit_file)")
-endfunction
-autocmd! FileType vimfiler call s:my_vimfiler_settings()
-let g:vimfiler_as_default_explorer = 1
-let g:vimfiler_safe_mode_by_default = 0
-let g:vimfiler_edit_action = 'tabopen'
-let g:vimfiler_force_overwrite_statusline = 0
+if neobundle#tap('vimfiler')
+
+  call neobundle#config({
+      \   'autoload' : {
+      \     'commands' : [ "VimFilerTab", "VimFiler", "VimFilerExplorer", "VimFilerBufferDir" ],
+      \     'mappings' : ['<Plug>(vimfiler_switch)'],
+      \     'explorer' : 1,
+      \   }
+      \ })
+
+  nnoremap <F2> :VimFiler -buffer-name=explorer -split -winwidth=30 -toggle -auto-cd -no-quit -simple<Cr>
+  function! s:my_vimfiler_settings()
+    nmap     <buffer><expr><Cr> vimfiler#smart_cursor_map("\<Plug>(vimfiler_expand_tree)", "\<Plug>(vimfiler_edit_file)")
+  endfunction
+  autocmd! FileType vimfiler call s:my_vimfiler_settings()
+  let g:vimfiler_as_default_explorer = 1
+  let g:vimfiler_safe_mode_by_default = 0
+  let g:vimfiler_edit_action = 'tabopen'
+  let g:vimfiler_force_overwrite_statusline = 0
+
+endif
 
 " Shougo/unite.vim
-nnoremap    [unite]   <Nop>
-nmap    <Leader>f [unite]
-" https://github.com/alwei/dotfiles/blob/3760650625663f3b08f24bc75762ec843ca7e112/.vimrc
-nnoremap [unite]u  :<C-u>Unite -no-split<Space>
-nnoremap <silent> [unite]f :<C-u>Unite<Space>buffer<CR>
-nnoremap <silent> [unite]b :<C-u>Unite<Space>bookmark<CR>
-nnoremap <silent> [unite]m :<C-u>Unite<Space>file_mru<CR>
-nnoremap <silent> [unite]r :<C-u>UniteWithBufferDir file<CR>
-nnoremap <silent> ,vr :UniteResume<CR>"
-let g:unite_force_overwrite_statusline = 0
+if neobundle#tap('unite.vim')
+
+  call neobundle#config({
+      \   'autoload' : {
+      \     'commands' : [ "Unite", "UniteWithBufferDir", "UniteWithCurrentDir" ]
+      \   }
+      \ })
+
+  nnoremap    [unite]   <Nop>
+  nmap    <Leader>f [unite]
+  " https://github.com/alwei/dotfiles/blob/3760650625663f3b08f24bc75762ec843ca7e112/.vimrc
+  nnoremap [unite]u  :<C-u>Unite -no-split<Space>
+  nnoremap <silent> [unite]f :<C-u>Unite<Space>buffer<CR>
+  nnoremap <silent> [unite]b :<C-u>Unite<Space>bookmark<CR>
+  nnoremap <silent> [unite]m :<C-u>Unite<Space>file_mru<CR>
+  nnoremap <silent> [unite]r :<C-u>UniteWithBufferDir file<CR>
+  nnoremap <silent> ,vr :UniteResume<CR>"
+  let g:unite_force_overwrite_statusline = 0
+
+endif
 
 " thinca/vim-quickrun
 if neobundle#tap('vim-quickrun')
+
+  call neobundle#config({
+      \   'autoload' : {
+      \     'commands' : 'QuickRun',
+      \     'mappings' : '[<Plug>(quickrun)]',
+      \   }
+      \ })
+
   nnoremap <expr><silent> <C-c> quickrun#is_running( ? quickrun#sweep_sessions( : "\<C-c>"))
   let g:quickrun_config = {
   \ 'tex' : {
@@ -209,16 +212,26 @@ if neobundle#tap('vim-quickrun')
   \   'runner' : 'vimproc',
   \   'runner/vimproc/updatetime' : 60,
   \}
+
 endif
 
 " tpope/vim-fugitive
 if neobundle#tap('vim-fugitive')
+
   command Ga Gwrite
   command Gc Gcommit
+
 endif
 
-" Shougo/neocomplete or Shougo/neocomplcache
-if neobundle#is_installed('neocomplete')
+" Shougo/neocomplete
+if neobundle#tap('neocomplete')
+
+  call neobundle#config({
+      \   'autoload' : {
+      \     'insert' : 1,
+      \   }
+      \ })
+
   let g:neocomplete#enable_at_startup = 1
   let g:neocomplete#enable_ignore_case = 1
   let g:neocomplete#enable_smart_case = 1
@@ -229,7 +242,18 @@ if neobundle#is_installed('neocomplete')
   let g:neocomplete#enable_quick_match = 1
   let g:neocomplete#force_overwrite_completefunc = 1
   let g:neocomplete#enable_auto_select = 1
-elseif neobundle#is_installed('neocomplcache')
+
+endif
+
+" Shougo/neocomplcache
+if neobundle#tap('neocomplcache')
+
+  call neobundle#config({
+      \   'autoload' : {
+      \     'insert' : 1,
+      \   }
+      \ })
+
   let g:neocomplcache_enable_at_startup = 1
   let g:neocomplcache_enable_ignore_case = 1
   let g:neocomplcache_enable_smart_case = 1
@@ -240,18 +264,33 @@ elseif neobundle#is_installed('neocomplcache')
   let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
   let g:neocomplcache_enable_quick_match = 1
   let g:neocomplcache_enable_auto_select = 1
+
 endif
 
 " Shougo/neosnippet
-imap <C-k> <Plug>(neosnippet_expand_or_jump)
-smap <C-k> <Plug>(neosnippet_expand_or_jump)
-xmap <C-k> <Plug>(neosnippet_expand_target)
-imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-\ "\<Plug>(neosnippet_expand_or_jump)"
-\: pumvisible() ? "\<C-n>" : "\<TAB>"
-smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-\ "\<Plug>(neosnippet_expand_or_jump)"
-\: "\<TAB>"
+if neobundle#tap('neosnippet')
+
+  call neobundle#config({
+      \   'autoload' : {
+      \     'insert' : 1,
+      \     'filetype' : 'snippet',
+      \     'commands' : [ "NeoSnippetEdit", "NeoSnippetSource" ],
+      \     'filetypes' : [ 'nsnippet' ],
+      \     'unite_sources' : [ 'snippet', 'neosnippet/user', 'neosnippet/runtime' ]
+      \   }
+      \ })
+
+  imap <C-k> <Plug>(neosnippet_expand_or_jump)
+  smap <C-k> <Plug>(neosnippet_expand_or_jump)
+  xmap <C-k> <Plug>(neosnippet_expand_target)
+  imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+  \ "\<Plug>(neosnippet_expand_or_jump)"
+  \: pumvisible() ? "\<C-n>" : "\<TAB>"
+  smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+  \ "\<Plug>(neosnippet_expand_or_jump)"
+  \: "\<TAB>"
+
+endif
 
 " powerline/powerline
 set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
@@ -301,18 +340,119 @@ endif
 
 " tyru/open-browser.vim
 if neobundle#tap('open-browser.vim')
+
+  call neobundle#config({
+      \   'autoload' : {
+      \     'mappings' : '<Plug>(openbrowser-smart-search)',
+      \     'commands' : [
+      \       'OpenBrowserSmartSearch',
+      \       'OpenBrowser',
+      \     ]},
+      \ })
+
   nmap gx <Plug>(openbrowser-smart-search)
   vmap gx <Plug>(openbrowser-smart-search)
+
+  call neobundle#untap()
+
 endif
 
 " taka84u9/vim-ref-ri
-"if neobundle#tap('vim-ref-ri')
-"
-"call neobundle#config({
-"      \   'autoload' : {
-"      \     'filetypes' : [ 'ruby', 'eruby', 'haml' ],
-"      \     'unite_sources' : [ 'ref-ri' ]
-"      \   },
-"      \ })
-"
-"endif
+if neobundle#tap('vim-ref-ri')
+
+  call neobundle#config({
+      \   'autoload' : {
+      \     'filetypes' : [ 'ruby', 'eruby', 'haml' ]
+      \   }
+      \ })
+
+endif
+
+" Shougo/vimshell
+if neobundle#tap('vimshell')
+
+  call neobundle#config({
+      \   'autoload' : {
+      \     'commands' : [{ 'name' : 'VimShell',
+      \                     'complete' : 'customlist,vimshell#complete'},
+      \                     'VimShellExecute', 'VimShellInteractive',
+      \                     'VimShellTerminal', 'VimShellPop'],
+      \     'mappings' : ['<Plug>(vimshell_switch)']
+      \   }
+      \ })
+
+endif
+
+" mattn/emmet-vim
+if neobundle#tap('emmet-vim')
+
+  call neobundle#config({
+      \   'autoload' : {
+      \     'filetypes' : [ 'html', 'xhtml', 'php', 'css', 'xml', 'xls', 'markdown', 'erb' ],
+      \   }
+      \ })
+  call neobundle#untap()
+
+endif
+
+" scrooloose/syntastic
+if neobundle#tap('syntastic')
+
+  call neobundle#config({
+      \   'autoload' : {
+      \     'insert' : 1,
+      \   }
+      \ })
+
+endif
+
+" tpope/vim-fugitive
+if neobundle#tap('vim-fugitive')
+
+  call neobundle#config({
+      \   'autoload' : {
+      \     'commands' : [
+      \       'Gstatus', 'Gcommit', 'Gwrite', 'Gdiff', 'Gblame', 'Git', 'Ggrep'
+      \     ]
+      \   }
+      \ })
+
+endif
+
+" gregsexton/gitv
+if neobundle#tap('gitv')
+
+  call neobundle#config({
+      \   'autoload' : {
+      \     'commands' : [ 'Gitv' ]
+      \   }
+      \ })
+  call neobundle#untap()
+
+endif
+
+" mattn/gist-vim
+if neobundle#tap('gist-vim')
+
+  call neobundle#config({
+      \   'autoload' : {
+      \     'commands' : [ "Gist" ]
+      \   }
+      \ })
+
+endif
+
+" pentie/VimRepress
+if neobundle#tap('VimRepress')
+
+  call neobundle#config({
+      \   'autoload' : {
+      \     'commands' : [
+      \       'BlogNew', 'BlogList'
+      \     ],
+      \   }
+      \ })
+  call neobundle#untap()
+
+endif
+
