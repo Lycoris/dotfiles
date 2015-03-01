@@ -3,10 +3,13 @@
 " ------------------------------------------
 if has('vim_starting')
   set runtimepath+=~/.vim/bundle/neobundle.vim
-  call neobundle#begin(expand('~/.vim/bundle/'))
-  NeoBundleFetch 'Shougo/neobundle.vim'
-  call neobundle#end()
 endif
+
+call neobundle#begin(expand('~/.vim/bundle/'))
+NeoBundleFetch 'Shougo/neobundle.vim'
+call neobundle#end()
+
+filetype plugin indent on
 
 " ------------------------------------------
 " NeoBundle Plugin Management
@@ -95,10 +98,8 @@ NeoBundleCheck
 " ------------------------------------------
 " 256色設定
 set t_Co=256
-filetype off
 python sys.path.append('/usr/local/lib/python2.7/site-packages')  
 python import markdown
-filetype plugin indent on
 " シンタックスハイライトを有効にする
 syntax on 
 " バックアップファイルを作らない設定にする
