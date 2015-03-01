@@ -52,12 +52,11 @@ NeoBundle 'Shougo/neomru.vim'
 NeoBundle has('lua') ? 'Shougo/neocomplete' : 'Shougo/neocomplcache'
 NeoBundle 'Shougo/neosnippet'
 NeoBundle 'Shougo/neosnippet-snippets'
-NeoBundle 'Townk/vim-autoclose'
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'hrp/EnhancedCommentify'
 NeoBundle 'vim-scripts/yanktmp.vim'
 NeoBundle 'thinca/vim-quickrun'
-NeoBundle 'lervag/vim-latex'
+NeoBundleLazy 'lervag/vim-latex'
 NeoBundle 'vim-scripts/sudo.vim'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'tpope/vim-fugitive'
@@ -65,18 +64,15 @@ NeoBundle 'gregsexton/gitv'
 NeoBundle 'ujihisa/unite-gem'
 
 " reference環境
-NeoBundleLazy 'vim-ruby/vim-ruby', {
-\ 'autoload' : { 'filetypes': ['ruby', 'eruby', 'haml'] } }
+NeoBundleLazy 'vim-ruby/vim-ruby', { 'autoload' : { 'filetypes': ['ruby', 'eruby', 'haml'] } }
 NeoBundleLazy 'taka84u9/vim-ref-ri', {
 \ 'depends': ['Shougo/unite.vim', 'thinca/vim-ref'],
 \ 'autoload': { 'filetypes': ['ruby', 'eruby', 'haml'] } }
 "NeoBundleLazy 'taka84u9/vim-ref-ri', { 'depends' : [ 'Shougo/unite.vim', ' thinca/vim-ref'] }
-NeoBundleLazy 'skwp/vim-rspec', {
-\ 'autoload': { 'filetypes': ['ruby', 'eruby', 'haml'] } }
-NeoBundleLazy 'ruby-matchit', {
-\ 'autoload' : { 'filetypes': ['ruby', 'eruby', 'haml'] } }
+NeoBundleLazy 'skwp/vim-rspec', { 'autoload' : { 'filetypes': ['ruby', 'eruby', 'haml'] } }
+NeoBundleLazy 'ruby-matchit', { 'autoload' : { 'filetypes': ['ruby', 'eruby', 'haml'] } }
 
-NeoBundleLazy 'thinca/vim-ref', {'autoload': {'unite_sources': ['ref'], 'mappings': [['sxn', '<Plug>(ref-keyword)']], 'commands': [{'complete': 'customlist,ref#complete', 'name': 'Ref'}, 'RefHistory']}}
+NeoBundleLazy 'thinca/vim-ref'
 NeoBundle 'taglist.vim'
 NeoBundle 'fuenor/qfixgrep'
 NeoBundle 'pentie/VimRepress'
@@ -202,7 +198,7 @@ let g:unite_force_overwrite_statusline = 0
 
 " thinca/vim-quickrun
 if neobundle#tap('vim-quickrun')
-    nnoremap <expr><silent> <C-c> quickrun#is_running( ? quickrun#sweep_sessions( : "\<C-c>"))
+  nnoremap <expr><silent> <C-c> quickrun#is_running( ? quickrun#sweep_sessions( : "\<C-c>"))
   let g:quickrun_config = {
   \ 'tex' : {
   \   'command' : 'latexmk',
@@ -264,6 +260,13 @@ set noshowmode
 
 " lervag/vim-latex
 if neobundle#tap('vim-latex')
+  
+  call neobundle#config({
+      \   'autoload' : {
+      \     'filetypes' : [ 'tex' ],
+      \   }
+      \ })
+
   let g:latex_latexmk_enabled = 1
   let g:latex_latexmk_options = '-pdfdvi'
   let g:latex_view_method = 'general'
@@ -280,6 +283,7 @@ if neobundle#tap('vim-latex')
   let g:latex_latexmk_background = 1
   let g:latex_latexmk_callback = 0
   let g:latex_quickfix_ignore_all_warnings = 0
+
 endif
 
 " scrooloose/syntastic
