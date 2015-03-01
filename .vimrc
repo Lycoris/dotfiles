@@ -52,6 +52,7 @@ NeoBundle 'Shougo/neomru.vim'
 NeoBundle has('lua') ? 'Shougo/neocomplete' : 'Shougo/neocomplcache'
 NeoBundle 'Shougo/neosnippet'
 NeoBundle 'Shougo/neosnippet-snippets'
+NeoBundle 'Townk/vim-autoclose'
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'hrp/EnhancedCommentify'
 NeoBundle 'vim-scripts/yanktmp.vim'
@@ -86,6 +87,7 @@ NeoBundleLazy 'mattn/gist-vim', {
 \       'commands' : [ "Gist" ]
 \   }
 \}
+NeoBundle 'mattn/emmet-vim'
 
 " colorschemes
 NeoBundle 'tomasr/molokai'
