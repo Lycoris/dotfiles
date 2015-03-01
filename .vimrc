@@ -51,14 +51,10 @@ NeoBundle 'Shougo/neosnippet-snippets'
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'hrp/EnhancedCommentify'
 NeoBundle 'vim-scripts/yanktmp.vim'
-NeoBundle 'vim-scripts/svn-diff.vim'
-NeoBundle 'janx/vim-rubytest'
 NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'lervag/vim-latex'
 NeoBundle 'itchyny/calendar.vim'
 NeoBundle 'vim-scripts/sudo.vim'
-NeoBundle 'ujihisa/ref-hoogle'
-NeoBundle 'vim-scripts/grep.vim'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'gregsexton/gitv'
 NeoBundle 'ujihisa/unite-gem'
@@ -75,17 +71,11 @@ NeoBundleLazy 'ruby-matchit', {
 \ 'autoload' : { 'filetypes': ['ruby', 'eruby', 'haml'] } }
 
 NeoBundle 'thinca/vim-ref'
-NeoBundle 'w0ng/vim-hybrid'
-NeoBundle 'mrkn/mrkn256.vim'
-NeoBundle 'tomasr/molokai'
 NeoBundle 'taglist.vim'
 NeoBundle 'fuenor/qfixgrep'
-NeoBundle 'vim-jp/vital.vim'
 NeoBundle 'pentie/VimRepress'
 NeoBundle 'mattn/webapi-vim'
 NeoBundle 'tyru/open-browser.vim'
-NeoBundleLazy 'basyura/twibill.vim'
-NeoBundle 'yomi322/unite-tweetvim'
 NeoBundleLazy 'mattn/gist-vim', {
 \   'autoload' : {
 \       'commands' : [ "Gist" ]
@@ -93,12 +83,13 @@ NeoBundleLazy 'mattn/gist-vim', {
 \}
 
 " colorschemes
-NeoBundle 'mrkn/mrkn256.vim'
 NeoBundle 'tomasr/molokai'
+NeoBundle 'chriskempson/vim-tomorrow-theme'
 
 " ------------------------------------------
 " Vim General Settings
 " ------------------------------------------
+" 256色設定
 set t_Co=256
 filetype off
 python sys.path.append('/usr/local/lib/python2.7/site-packages')  
@@ -132,24 +123,35 @@ set showmatch
 set title 
 " ルーラーの表示する
 set ruler 
-" タブ文字数を2にする
+" 見た目のタブ文字数を2にする
 set tabstop=2 
+" autoindentの際に挿入される幅
 set shiftwidth=2
+" タブの入力を空白文字に置き換える
 set expandtab
+" ステータスラインを常時表示
 set laststatus=2
+" タブバーを常時表示
 set showtabline=2
 set mouse=a
 set ttymouse=xterm2
+" スワップファイルを作らない
 set noswapfile
+" exモードの補完
 set wildmenu
 set wildmode=longest:full,full
-set noundofile
+" http://www.kaoriya.net/blog/2014/03/30/
+if v:version > 740
+    set noundofile
+endif
+" splitする時には右側に新しいウインドウを開く
 set splitright
 
 highlight ZenkakuSpace cterm=underline ctermfg=lightblue guibg=darkgray
 match ZenkakuSpace /　/" 全角スペースの表示
 
 colorscheme molokai
+" colorscheme Tomorrow-Night-Bright
 
 " ------------------------------------------
 " Mappings (General)
@@ -161,17 +163,10 @@ imap "" ""<Left>
 imap '' ''<Left>
 imap <> <><Left>
 
-" 挿入モードでのカーソル移動
-"inoremap <C-j> <Down>
-"inoremap <C-k> <Up>
-"inoremap <C-h> <Left>
-"inoremap <C-l> <Right>
-
 nmap <Tab>      gt
 nmap <S-Tab>    gT
 
 nnoremap <Space>. :<C-u>tabedit $MYVIMRC<CR>
-nnoremap <Space>t :TweetVimSay<CR>
 
 " ------------------------------------------
 " Plugin Settings
@@ -282,3 +277,12 @@ let g:latex_quickfix_ignore_all_warnings = 0
 " scrooloose/syntastic
 let g:syntastic_tex_chktex_quiet_messages = { "level": "warnings" }
 let g:syntastic_tex_lacheck_quiet_messages = { "level": "warnings" }
+
+" vim-scripts/yanktmp.vim
+map <silent> sy :call YanktmpYank(<CR>
+map <silent> sp :call YanktmpPaste_p(<CR>
+map <silent> sP :call YanktmpPaste_P(<CR>)))
+
+" tyru/open-browser.vim
+nmap gx <Plug>(openbrowser-smart-search)
+vmap gx <Plug>(openbrowser-smart-search)
