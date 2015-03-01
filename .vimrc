@@ -11,7 +11,7 @@ endif
 " ------------------------------------------
 " NeoBundle Plugin Management
 " ------------------------------------------
-NeoBundle 'Shougo/neobundle.vim'
+NeoBundle 'LeafCage/nebula.vim'
 NeoBundle 'taichouchou2/alpaca_powertabline'
 NeoBundle 'powerline/powerline', { 'rtp' : 'powerline/bindings/vim'}
 NeoBundle 'vim-jp/vimdoc-ja'
@@ -45,6 +45,7 @@ NeoBundleLazy 'Shougo/unite.vim', {
 \       'commands' : [ "Unite", "UniteWithBufferDir", "UniteWithCurrentDir" ]
 \   }
 \}
+NeoBundle 'Shougo/neomru.vim'
 NeoBundle has('lua') ? 'Shougo/neocomplete' : 'Shougo/neocomplcache'
 NeoBundle 'Shougo/neosnippet'
 NeoBundle 'Shougo/neosnippet-snippets'
@@ -53,8 +54,8 @@ NeoBundle 'hrp/EnhancedCommentify'
 NeoBundle 'vim-scripts/yanktmp.vim'
 NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'lervag/vim-latex'
-NeoBundle 'itchyny/calendar.vim'
 NeoBundle 'vim-scripts/sudo.vim'
+NeoBundle 'tpope/vim-surround'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'gregsexton/gitv'
 NeoBundle 'ujihisa/unite-gem'
@@ -65,12 +66,13 @@ NeoBundleLazy 'vim-ruby/vim-ruby', {
 NeoBundleLazy 'taka84u9/vim-ref-ri', {
 \ 'depends': ['Shougo/unite.vim', 'thinca/vim-ref'],
 \ 'autoload': { 'filetypes': ['ruby', 'eruby', 'haml'] } }
+"NeoBundleLazy 'taka84u9/vim-ref-ri', { 'depends' : [ 'Shougo/unite.vim', ' thinca/vim-ref'] }
 NeoBundleLazy 'skwp/vim-rspec', {
 \ 'autoload': { 'filetypes': ['ruby', 'eruby', 'haml'] } }
 NeoBundleLazy 'ruby-matchit', {
 \ 'autoload' : { 'filetypes': ['ruby', 'eruby', 'haml'] } }
 
-NeoBundle 'thinca/vim-ref'
+NeoBundleLazy 'thinca/vim-ref', {'autoload': {'unite_sources': ['ref'], 'mappings': [['sxn', '<Plug>(ref-keyword)']], 'commands': [{'complete': 'customlist,ref#complete', 'name': 'Ref'}, 'RefHistory']}}
 NeoBundle 'taglist.vim'
 NeoBundle 'fuenor/qfixgrep'
 NeoBundle 'pentie/VimRepress'
@@ -85,6 +87,8 @@ NeoBundleLazy 'mattn/gist-vim', {
 " colorschemes
 NeoBundle 'tomasr/molokai'
 NeoBundle 'chriskempson/vim-tomorrow-theme'
+
+NeoBundleCheck
 
 " ------------------------------------------
 " Vim General Settings
@@ -132,6 +136,7 @@ set expandtab
 set laststatus=2
 " タブバーを常時表示
 set showtabline=2
+" マウスを有効にする
 set mouse=a
 set ttymouse=xterm2
 " スワップファイルを作らない
@@ -143,12 +148,13 @@ set wildmode=longest:full,full
 set noundofile
 " splitする時には右側に新しいウインドウを開く
 set splitright
+" 記号とかでカーソルがずれないようにする
+set ambiwidth=double
 
 highlight ZenkakuSpace cterm=underline ctermfg=lightblue guibg=darkgray
 match ZenkakuSpace /　/" 全角スペースの表示
 
 colorscheme molokai
-" colorscheme Tomorrow-Night-Bright
 
 " ------------------------------------------
 " Mappings (General)
@@ -189,28 +195,28 @@ nnoremap <silent> [unite]b :<C-u>Unite<Space>bookmark<CR>
 nnoremap <silent> [unite]m :<C-u>Unite<Space>file_mru<CR>
 nnoremap <silent> [unite]r :<C-u>UniteWithBufferDir file<CR>
 nnoremap <silent> ,vr :UniteResume<CR>"
-
-" thinca/vim-quickrun
-nnoremap <expr><silent> <C-c> quickrun#is_running( ? quickrun#sweep_sessions( : "\<C-c>"))
-let g:quickrun_config = {
-\ 'tex' : {
-\   'command' : 'latexmk',
-\	'cmdopt' : '-pdfdvi',
-\   'exec': ['%c %o %s']}
-\ }
-let g:quickrun_config['_'] = {
-\   'runner' : 'vimproc',
-\   'runner/vimproc/updatetime' : 60,
-\}
-
-" itchyny/calendar.vim
-let g:calendar_google_calendar = 1
-let g:calendar_google_task = 1
 let g:unite_force_overwrite_statusline = 0
 
+" thinca/vim-quickrun
+if neobundle#tap('vim-quickrun')
+    nnoremap <expr><silent> <C-c> quickrun#is_running( ? quickrun#sweep_sessions( : "\<C-c>"))
+  let g:quickrun_config = {
+  \ 'tex' : {
+  \   'command' : 'latexmk',
+  \	'cmdopt' : '-pdfdvi',
+  \   'exec': ['%c %o %s']}
+  \ }
+  let g:quickrun_config['_'] = {
+  \   'runner' : 'vimproc',
+  \   'runner/vimproc/updatetime' : 60,
+  \}
+endif
+
 " tpope/vim-fugitive
-command Ga Gwrite
-command Gc Gcommit
+if neobundle#tap('vim-fugitive')
+  command Ga Gwrite
+  command Gc Gcommit
+endif
 
 " Shougo/neocomplete or Shougo/neocomplcache
 if neobundle#is_installed('neocomplete')
@@ -254,32 +260,52 @@ let g:Powerline_symbols = 'fancy'
 set noshowmode
 
 " lervag/vim-latex
-let g:latex_latexmk_enabled = 1
-let g:latex_latexmk_options = '-pdfdvi'
-let g:latex_view_method = 'general'
-let g:latex_view_general_viewer = 'open'
-let g:latex_fold_sections = [
-      \ "part",
-      \ "chapter",
-      \ "section",
-      \ "subsection",
-      \ "subsubsection",
-      \ ]
-let g:latex_fold_enabled = 1
-let g:latex_latexmk_continuous = 1
-let g:latex_latexmk_background = 1
-let g:latex_latexmk_callback = 0
-let g:latex_quickfix_ignore_all_warnings = 0
+if neobundle#tap('vim-latex')
+  let g:latex_latexmk_enabled = 1
+  let g:latex_latexmk_options = '-pdfdvi'
+  let g:latex_view_method = 'general'
+  let g:latex_view_general_viewer = 'open'
+  let g:latex_fold_sections = [
+        \ "part",
+        \ "chapter",
+        \ "section",
+        \ "subsection",
+        \ "subsubsection",
+        \ ]
+  let g:latex_fold_enabled = 1
+  let g:latex_latexmk_continuous = 1
+  let g:latex_latexmk_background = 1
+  let g:latex_latexmk_callback = 0
+  let g:latex_quickfix_ignore_all_warnings = 0
+endif
 
 " scrooloose/syntastic
-let g:syntastic_tex_chktex_quiet_messages = { "level": "warnings" }
-let g:syntastic_tex_lacheck_quiet_messages = { "level": "warnings" }
+if neobundle#tap('syntastic')
+  let g:syntastic_tex_chktex_quiet_messages = { "level": "warnings" }
+  let g:syntastic_tex_lacheck_quiet_messages = { "level": "warnings" }
+endif
 
 " vim-scripts/yanktmp.vim
-map <silent> sy :call YanktmpYank(<CR>
-map <silent> sp :call YanktmpPaste_p(<CR>
-map <silent> sP :call YanktmpPaste_P(<CR>)))
+if neobundle#tap('yanktmp.vim')
+  map <silent> sy :call YanktmpYank(<CR>
+  map <silent> sp :call YanktmpPaste_p(<CR>
+  map <silent> sP :call YanktmpPaste_P(<CR>)))
+endif
 
 " tyru/open-browser.vim
-nmap gx <Plug>(openbrowser-smart-search)
-vmap gx <Plug>(openbrowser-smart-search)
+if neobundle#tap('open-browser.vim')
+  nmap gx <Plug>(openbrowser-smart-search)
+  vmap gx <Plug>(openbrowser-smart-search)
+endif
+
+" taka84u9/vim-ref-ri
+"if neobundle#tap('vim-ref-ri')
+"
+"call neobundle#config({
+"      \   'autoload' : {
+"      \     'filetypes' : [ 'ruby', 'eruby', 'haml' ],
+"      \     'unite_sources' : [ 'ref-ri' ]
+"      \   },
+"      \ })
+"
+"endif
