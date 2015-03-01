@@ -1,8 +1,19 @@
-# Created by newuser for 4.3.10
+# shell関連
 alias ls='ls -G'
 alias la='ls -aG'
 alias grep='grep -G'
+alias pgrep='ps ax | grep'
 alias ll='ls -lG'
+alias sr='source ~/.zshrc'
+
+# tmux関連
+if [ -z $TMUX ]; then
+  if $(tmux has-session); then
+    tmux attach
+  else
+    tnew macbook-pro
+  fi
+fi
 alias tv='tmux -v'
 alias tmux='tmux -2 -u'
 alias tnew='tmux new -s'
@@ -11,40 +22,19 @@ alias ta='tmux a -t'
 alias tm='tmux move-window -t'
 alias ts='tmux swap-window -t'
 alias tkill='tmux kill-session -t'
+
+# git関連
 alias gf='git fetch'
-case ${OSTYPE} in
-darwin*)
-  alias vi='/Applications/MacVim.app/Contents/MacOS/Vim "$@"'
-  alias vim='/Applications/MacVim.app/Contents/MacOS/Vim "$@"'
-  alias emacs='/Applications/MacVim.app/Contents/MacOS/Vim "$@"'
-  if [ -z $TMUX ]; then
-    if $(tmux has-session); then
-      tmux attach
-    else
-      tnew macbook-pro
-    fi
-  fi
-  ;;
-linux*)
-  alias vim='/usr/bin/vim'
-  alias vi='vim'
-  alias emacs='vim'
-  if [ -z $TMUX ]; then
-    if $(tmux has-session); then
-      tmux attach
-    else
-      tnew remote
-    fi
-  fi
-  ;;
-esac
+alias gbl='git blame'
 
-alias sr='source ~/.zshrc'
-alias pgrep='ps ax | grep'
-alias lmk='latexmk -pvc -pdfdvi'
-
-#vim関連
+# vim関連
+alias vi='/Applications/MacVim.app/Contents/MacOS/Vim "$@"'
+alias vim='/Applications/MacVim.app/Contents/MacOS/Vim "$@"'
+alias emacs='/Applications/MacVim.app/Contents/MacOS/Vim "$@"'
 alias wp='vim +":BlogNew"'
+
+# TeX関連
+alias lmk='latexmk -pvc -pdfdvi'
 
 bindkey -v
 
