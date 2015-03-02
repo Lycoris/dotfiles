@@ -1,3 +1,30 @@
+# OSで分岐する設定
+darwin*)
+  alias vi='/Applications/MacVim.app/Contents/MacOS/Vim "$@"'
+  alias vim='/Applications/MacVim.app/Contents/MacOS/Vim "$@"'
+  alias emacs='/Applications/MacVim.app/Contents/MacOS/Vim "$@"'
+  if [ -z $TMUX ]; then
+    if $(tmux has-session); then
+      tmux attach
+    else
+      tnew macbook-pro
+    fi
+  fi
+  ;;
+linux*)
+  alias vim='/usr/bin/vim'
+  alias vi='vim'
+  alias emacs='vim'
+  if [ -z $TMUX ]; then
+    if $(tmux has-session); then
+      tmux attach
+    else
+      tnew remote
+    fi
+  fi
+  ;;
+esac
+
 # shell関連
 alias ls='ls -G'
 alias la='ls -aG'
@@ -7,13 +34,6 @@ alias ll='ls -lG'
 alias sr='source ~/.zshrc'
 
 # tmux関連
-if [ -z $TMUX ]; then
-  if $(tmux has-session); then
-    tmux attach
-  else
-    tnew macbook-pro
-  fi
-fi
 alias tv='tmux -v'
 alias tmux='tmux -2 -u'
 alias tnew='tmux new -s'
@@ -28,9 +48,6 @@ alias gf='git fetch'
 alias gbl='git blame'
 
 # vim関連
-alias vi='/Applications/MacVim.app/Contents/MacOS/Vim "$@"'
-alias vim='/Applications/MacVim.app/Contents/MacOS/Vim "$@"'
-alias emacs='/Applications/MacVim.app/Contents/MacOS/Vim "$@"'
 alias wp='vim +":BlogNew"'
 source ~/.vim/bundle/powerline/powerline/bindings/tmux/powerline.conf
 
@@ -64,6 +81,4 @@ setopt listpacked
 setopt hist_ignore_all_dups
 setopt print_eight_bit
 setopt extended_glob
-
-
 
