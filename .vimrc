@@ -16,7 +16,7 @@ filetype plugin indent on
 " ------------------------------------------
 NeoBundle 'LeafCage/nebula.vim'
 NeoBundle 'taichouchou2/alpaca_powertabline'
-NeoBundle 'powerline/powerline', { 'rtp' : 'powerline/bindings/vim'}
+"NeoBundle 'powerline/powerline', { 'rtp' : 'powerline/bindings/vim'}
 NeoBundle 'vim-jp/vimdoc-ja'
 NeoBundle 'Shougo/vimproc', {
 \ 'build' : {
@@ -127,6 +127,11 @@ highlight ZenkakuSpace cterm=underline ctermfg=lightblue guibg=darkgray
 match ZenkakuSpace /　/" 全角スペースの表示
 
 colorscheme molokai
+
+" Powerline
+python from powerline.vim import setup as powerline_setup
+python powerline_setup()
+python del powerline_setup
 
 " ------------------------------------------
 " Mappings (General)
@@ -291,11 +296,6 @@ if neobundle#tap('neosnippet')
   \: "\<TAB>"
 
 endif
-
-" powerline/powerline
-set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
-let g:Powerline_symbols = 'fancy'
-set noshowmode
 
 " lervag/vim-latex
 if neobundle#tap('vim-latex')

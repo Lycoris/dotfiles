@@ -1,4 +1,5 @@
 # OSで分岐する設定
+case ${OSTYPE} in
 darwin*)
   alias vi='/Applications/MacVim.app/Contents/MacOS/Vim "$@"'
   alias vim='/Applications/MacVim.app/Contents/MacOS/Vim "$@"'
@@ -25,6 +26,11 @@ linux*)
   ;;
 esac
 
+# Powerline関連
+export PATH=$PATH:~/Library/Python/2.7/bin
+powerline-daemon -q
+. ~/Library/Python/2.7/lib/python/site-packages/powerline/bindings/zsh/powerline.zsh
+
 # shell関連
 alias ls='ls -G'
 alias la='ls -aG'
@@ -49,7 +55,6 @@ alias gbl='git blame'
 
 # vim関連
 alias wp='vim +":BlogNew"'
-source ~/.vim/bundle/powerline/powerline/bindings/tmux/powerline.conf
 
 # TeX関連
 alias lmk='latexmk -pvc -pdfdvi'
