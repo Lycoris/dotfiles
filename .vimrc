@@ -121,7 +121,7 @@ set noundofile
 " splitする時には右側に新しいウインドウを開く
 set splitright
 " 記号とかでカーソルがずれないようにする
-set ambiwidth=double
+set ambiwidth=single
 
 highlight ZenkakuSpace cterm=underline ctermfg=lightblue guibg=darkgray
 match ZenkakuSpace /　/" 全角スペースの表示
