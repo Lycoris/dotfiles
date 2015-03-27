@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 $latex         = 'uplatex -halt-on-error -interaction=nonstopmode';
-$bibtex        = 'pbibtex %O %B';
+$bibtex        = 'pbibtex';
 $biber         = 'biber --bblencoding=utf8 -u -U --output_safechars';
 $dvipdf        = 'dvipdfmx %O %S';
 $makeindex     = 'mendex %O -U -o %D %S';
