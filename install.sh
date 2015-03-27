@@ -27,6 +27,7 @@ ln -sf ~/dotfiles/.vim/ ~/.vim/
 ln -sf ~/dotfiles/.vimrc ~/.vimrc
 ln -sf ~/dotfiles/.zshrc ~/.zshrc
 ln -sf ~/dotfiles/.zshrc.orig.zsh ~/.zshrc.orig
+ln -sf ~/dotfiles/.zshrc.orig.zsh ~/dotfiles/.oh-my-zsh/custom/zshrc.orig.zsh
 
 # use zsh
 chsh -s /bin/zsh
