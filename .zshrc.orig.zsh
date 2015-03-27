@@ -64,8 +64,8 @@ bindkey -v
 export TERM=xterm-256color
 export LANG=ja_JP.UTF-8
 export EDITOR="vim"
-#export PATH="$HOME/.rbenv/bin:$PATH"
-#eval "$(rbenv init -)"
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
 
 
 autoload -Uz compinit
