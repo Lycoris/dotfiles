@@ -1,7 +1,9 @@
 #!/bin/sh
 
 # current dir
-cd $(dirname $0)
+# cd $(dirname $0)
+
+git clone git@github.com:Lycoris/dotfiles.git
 
 # download neobundle
 if [ -e ~/dotfiles/.vim/bundle/neobundle.vim ]; then
@@ -20,7 +22,12 @@ ln -sf ~/dotfiles/.gitconfig ~/.gitconfig
 ln -sf ~/dotfiles/.gitignore_global ~/.gitignore
 ln -sf ~/dotfiles/.gvimrc ~/.gvimrc
 ln -sf ~/dotfiles/.latexmkrc ~/.latexmkrc
+cd ~/dotfiles
+git clone git@github.com:robbyrussell/oh-my-zsh.git .oh-my-zsh
 ln -sf ~/dotfiles/.oh-my-zsh/ ~/.oh-my-zsh/
+cd ~/.oh-my-zsh/custom/plugins
+git clone git://github.com/zsh-users/zsh-syntax-highlighting.git
+cd
 ln -sf ~/dotfiles/.pydistutils.cfg ~/.pydistutils.cfg
 ln -sf ~/dotfiles/.tmux.conf ~/.tmux.conf
 ln -sf ~/dotfiles/.vim/ ~/.vim/
