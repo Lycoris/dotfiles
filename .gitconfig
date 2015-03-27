@@ -7,7 +7,11 @@
 [core]
 	quotepath = false
 	editor = vim
-  excludesfile = /Users/kazuki/.gitignore
+  excludesfile = ~/.gitignore
+[merge]
+  ff = false
+[pull]
+	ff = only
 [tig "bind"]
 	generic = g move-first-line
 	generic = G move-last-line
