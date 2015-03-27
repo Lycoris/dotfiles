@@ -16,7 +16,6 @@ filetype plugin indent on
 " ------------------------------------------
 NeoBundle 'LeafCage/nebula.vim'
 NeoBundle 'taichouchou2/alpaca_powertabline'
-"NeoBundle 'powerline/powerline', { 'rtp' : 'powerline/bindings/vim'}
 NeoBundle 'vim-jp/vimdoc-ja'
 NeoBundle 'Shougo/vimproc', {
 \ 'build' : {
@@ -34,7 +33,7 @@ NeoBundleLazy has('lua') ? 'Shougo/neocomplete' : 'Shougo/neocomplcache'
 NeoBundleLazy 'Shougo/neosnippet'
 NeoBundle 'Shougo/neosnippet-snippets'
 NeoBundleLazy 'scrooloose/syntastic'
-NeoBundle 'hrp/EnhancedCommentify'
+"NeoBundle 'hrp/EnhancedCommentify'
 NeoBundle 'vim-scripts/yanktmp.vim'
 NeoBundleLazy 'thinca/vim-quickrun'
 NeoBundleLazy 'lervag/vim-latex'
