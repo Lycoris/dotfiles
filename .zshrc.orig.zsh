@@ -11,6 +11,10 @@ darwin*)
       tnew macbook-pro
     fi
   fi
+  # Powerline関連
+  export PATH=$PATH:~/Library/Python/2.7/bin
+  powerline-daemon -q
+  . ~/Library/Python/2.7/lib/python/site-packages/powerline/bindings/zsh/powerline.zsh
   ;;
 linux*)
   alias vim='/usr/bin/vim'
@@ -23,13 +27,13 @@ linux*)
       tnew remote
     fi
   fi
+  # Powerline関連
+  export PATH=$PATH:/usr/lib/python2.7
+  powerline-daemon -q
+  . /usr/local/lib/python2.7/dist-packages/powerline/bindings/zsh/powerline.zsh
   ;;
 esac
 
-# Powerline関連
-export PATH=$PATH:~/Library/Python/2.7/bin
-powerline-daemon -q
-. ~/Library/Python/2.7/lib/python/site-packages/powerline/bindings/zsh/powerline.zsh
 
 # shell関連
 alias ls='ls -G'
