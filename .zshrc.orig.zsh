@@ -15,6 +15,11 @@ darwin*)
   export PATH=$PATH:~/Library/Python/2.7/bin
   powerline-daemon -q
   . ~/Library/Python/2.7/lib/python/site-packages/powerline/bindings/zsh/powerline.zsh
+  # lsの色付け
+  alias ls='ls -G'
+  alias la='ls -aG'
+  alias grep='grep -G'
+  alias ll='ls -lG'
   ;;
 linux*)
   alias vim='/usr/bin/vim'
@@ -31,16 +36,17 @@ linux*)
   export PATH=$PATH:/usr/lib/python2.7
   powerline-daemon -q
   . /usr/local/lib/python2.7/dist-packages/powerline/bindings/zsh/powerline.zsh
+  # lsの色付け
+  alias ls='ls --color=auto'
+  alias la='ls -a --color=auto'
+  alias grep='grep --color=auto'
+  alias ll='ls -l --color=auto'
   ;;
 esac
 
 
 # shell関連
-alias ls='ls -G'
-alias la='ls -aG'
-alias grep='grep -G'
 alias pgrep='ps ax | grep'
-alias ll='ls -lG'
 alias sr='source ~/.zshrc'
 
 # tmux関連
