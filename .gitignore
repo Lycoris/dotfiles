@@ -2,4 +2,3 @@
 .vim/bundle/*
 vendor/bundle
 .oh-my-zsh/*
-.config/*
