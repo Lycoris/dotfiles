@@ -8,6 +8,7 @@
 	quotepath = false
 	editor = vim
   excludesfile = ~/.gitignore
+  precomposeunicode = true
 [merge]
   ff = false
 [pull]
