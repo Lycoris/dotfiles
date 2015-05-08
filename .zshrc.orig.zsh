@@ -62,6 +62,7 @@ alias tkill='tmux kill-session -t'
 # git関連
 alias gf='git fetch'
 alias gbl='git blame'
+alias gt='git tag'
 
 # vim関連
 alias wp='vim +":BlogNew"'
