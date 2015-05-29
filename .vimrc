@@ -5,15 +5,11 @@ if has('vim_starting')
   set runtimepath+=~/.vim/bundle/neobundle.vim
 endif
 
-call neobundle#begin(expand('~/.vim/bundle/'))
-NeoBundleFetch 'Shougo/neobundle.vim'
-call neobundle#end()
-
-filetype plugin indent on
-
 " ------------------------------------------
 " NeoBundle Plugin Management
 " ------------------------------------------
+call neobundle#begin(expand('~/.vim/bundle/'))
+NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'LeafCage/nebula.vim'
 NeoBundle 'taichouchou2/alpaca_powertabline'
 NeoBundle 'vim-jp/vimdoc-ja'
@@ -36,7 +32,7 @@ NeoBundleLazy 'scrooloose/syntastic'
 "NeoBundle 'hrp/EnhancedCommentify'
 NeoBundle 'vim-scripts/yanktmp.vim'
 NeoBundleLazy 'thinca/vim-quickrun'
-NeoBundleLazy 'lervag/vim-latex'
+NeoBundleLazy 'lervag/vimtex'
 NeoBundle 'vim-scripts/sudo.vim'
 NeoBundle 'tpope/vim-surround'
 NeoBundleLazy 'tpope/vim-fugitive'
@@ -60,6 +56,9 @@ NeoBundleLazy 'mattn/emmet-vim'
 " colorschemes
 NeoBundle 'tomasr/molokai'
 NeoBundle 'chriskempson/vim-tomorrow-theme'
+call neobundle#end()
+
+filetype plugin indent on
 
 NeoBundleCheck
 
