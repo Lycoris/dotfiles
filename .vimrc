@@ -120,11 +120,28 @@ set noundofile
 set splitright
 " 記号とかでカーソルがずれないようにする
 set ambiwidth=single
+" ビープ音を鳴らさない
+set visualbell t_vb=
+set noerrorbells
+" 検索語が画面の真ん中に来るようにする
+set clipboard=unnamed,autoselect
+" ヤンクをクリップボードへコピー
+nmap n nzz 
+nmap N Nzz 
+nmap * *zz 
+nmap # #zz 
+nmap g* g*zz 
+nmap g# g#zz
 
 highlight ZenkakuSpace cterm=underline ctermfg=lightblue guibg=darkgray
 match ZenkakuSpace /　/" 全角スペースの表示
 
+" カラースキームの指定
 colorscheme molokai
+
+" filetypeの追加設定
+au BufNewFile,BufRead *.bbx :set filetype=tex
+au BufNewFile,BufRead *.cbx :set filetype=tex
 
 " Powerline
 python from powerline.vim import setup as powerline_setup
@@ -145,6 +162,9 @@ nmap <Tab>      gt
 nmap <S-Tab>    gT
 
 nnoremap <Space>. :<C-u>tabedit $MYVIMRC<CR>
+
+nnoremap <Down> gj
+nnoremap <Up>   gk
 
 " ------------------------------------------
 " Plugin Settings
@@ -295,8 +315,8 @@ if neobundle#tap('neosnippet')
 
 endif
 
-" lervag/vim-latex
-if neobundle#tap('vim-latex')
+" lervag/vimtex
+if neobundle#tap('vimtex')
   
   call neobundle#config({
       \   'autoload' : {
@@ -304,22 +324,22 @@ if neobundle#tap('vim-latex')
       \   }
       \ })
 
-  let g:latex_latexmk_enabled = 1
-  let g:latex_latexmk_options = '-pdfdvi'
-  let g:latex_view_method = 'general'
-  let g:latex_view_general_viewer = 'open'
-  let g:latex_fold_sections = [
+  let g:vimtex_latexmk_enabled = 1
+  let g:vimtex_latexmk_options = '-pdfdvi'
+  let g:vimtex_view_method = 'general'
+  let g:vimtex_view_general_viewer = 'open'
+  let g:vimtex_fold_sections = [
         \ "part",
         \ "chapter",
         \ "section",
         \ "subsection",
         \ "subsubsection",
         \ ]
-  let g:latex_fold_enabled = 1
-  let g:latex_latexmk_continuous = 1
-  let g:latex_latexmk_background = 1
-  let g:latex_latexmk_callback = 0
-  let g:latex_quickfix_ignore_all_warnings = 0
+  let g:vimtex_fold_enabled = 1
+  let g:vimtex_latexmk_continuous = 1
+  let g:vimtex_latexmk_background = 1
+  let g:vimtex_latexmk_callback = 0
+  let g:vimtex_quickfix_ignore_all_warnings = 0
 
 endif
 
