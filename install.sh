@@ -3,6 +3,15 @@
 # current dir
 # cd $(dirname $0)
 
+# install homebrew
+ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go/install)"
+
+# install git, tig, python
+brew update
+brew install git
+brew install tig
+brew install python
+
 git clone git@github.com:Lycoris/dotfiles.git
 
 # download neobundle
@@ -29,12 +38,16 @@ cd ~/.oh-my-zsh/custom/plugins
 git clone git://github.com/zsh-users/zsh-syntax-highlighting.git
 cd
 ln -sf ~/dotfiles/.pydistutils.cfg ~/.pydistutils.cfg
+ln -sf ~/dotfiles/.tigrc ~/.tigrc
 ln -sf ~/dotfiles/.tmux.conf ~/.tmux.conf
 ln -sf ~/dotfiles/.vim/ ~/.vim/
 ln -sf ~/dotfiles/.vimrc ~/.vimrc
 ln -sf ~/dotfiles/.zshrc ~/.zshrc
 ln -sf ~/dotfiles/.zshrc.orig.zsh ~/.zshrc.orig
 ln -sf ~/dotfiles/.zshrc.orig.zsh ~/dotfiles/.oh-my-zsh/custom/zshrc.orig.zsh
+
+# install powerline
+pip install powerline-status
 
 # use zsh
 chsh -s /bin/zsh
