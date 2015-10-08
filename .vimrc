@@ -124,8 +124,6 @@ set ambiwidth=single
 set visualbell t_vb=
 set noerrorbells
 " 検索語が画面の真ん中に来るようにする
-set clipboard=unnamed,autoselect
-" ヤンクをクリップボードへコピー
 nmap n nzz 
 nmap N Nzz 
 nmap * *zz 
