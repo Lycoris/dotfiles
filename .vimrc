@@ -10,7 +10,7 @@ endif
 " ------------------------------------------
 call neobundle#begin(expand('~/.vim/bundle/'))
 NeoBundleFetch 'Shougo/neobundle.vim'
-NeoBundle 'LeafCage/nebula.vim'
+NeoBundleLazy 'LeafCage/nebula.vim'
 NeoBundle 'taichouchou2/alpaca_powertabline'
 NeoBundle 'vim-jp/vimdoc-ja'
 NeoBundle 'Shougo/vimproc', {
@@ -23,8 +23,8 @@ NeoBundle 'Shougo/vimproc', {
 \ }
 NeoBundleLazy 'Shougo/vimshell', { 'depends' : [ 'Shougo/vimproc' ] }
 NeoBundleLazy 'Shougo/vimfiler', { 'depends' : [ 'Shougo/unite.vim' ] }
-NeoBundleLazy 'Shougo/unite.vim'
-NeoBundle 'Shougo/neomru.vim', { 'depends' : [ 'Shougo/unite.vim' ] }
+NeoBundleLazy 'Shougo/unite.vim', { 'depends' : [ 'Shougo/neomru.vim', 'Shougo/vimproc' ] }
+NeoBundle 'Shougo/neomru.vim'
 NeoBundleLazy has('lua') ? 'Shougo/neocomplete' : 'Shougo/neocomplcache'
 NeoBundleLazy 'Shougo/neosnippet'
 NeoBundle 'Shougo/neosnippet-snippets'
@@ -130,6 +130,8 @@ nmap * *zz
 nmap # #zz 
 nmap g* g*zz 
 nmap g# g#zz
+" ヤンクをクリップボードへコピー
+set clipboard=unnamed,autoselect
 
 highlight ZenkakuSpace cterm=underline ctermfg=lightblue guibg=darkgray
 match ZenkakuSpace /　/" 全角スペースの表示
@@ -472,3 +474,13 @@ if neobundle#tap('VimRepress')
 
 endif
 
+" LeafCage/nebula.vim
+if neobundle#tap('nebula.vim')
+
+  function! neobundle#tapped.hooks.on_source(bundle)
+  endfunction
+
+  call neobundle#config('nebula.vim',
+        \ {'autoload': {'commands': ['NebulaPutLazy', 'NebulaPutFromClipboard', 'NebulaYankOptions', 'NebulaYankConfig', 'NebulaPutConfig', 'NebulaYankTap']}})
+
+endif " }}}
