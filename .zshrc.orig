@@ -12,9 +12,9 @@ darwin*)
     fi
   fi
   # Powerline関連
-  export PATH=$PATH:~/Library/Python/2.7/bin
-  powerline-daemon -q
-  . ~/Library/Python/2.7/lib/python/site-packages/powerline/bindings/zsh/powerline.zsh
+  # export PATH=$PATH:~/Library/Python/2.7/bin
+  # powerline-daemon -q
+  # . ~/Library/Python/2.7/lib/python/site-packages/powerline/bindings/zsh/powerline.zsh
   # lsの色付け
   alias ls='ls -G'
   alias la='ls -aG'
@@ -33,9 +33,9 @@ linux*)
     fi
   fi
   # Powerline関連
-  export PATH=$PATH:/usr/lib/python2.7
-  powerline-daemon -q
-  . /usr/local/lib/python2.7/dist-packages/powerline/bindings/zsh/powerline.zsh
+  # export PATH=$PATH:/usr/lib/python2.7
+  # powerline-daemon -q
+  # . /usr/local/lib/python2.7/dist-packages/powerline/bindings/zsh/powerline.zsh
   # lsの色付け
   alias ls='ls --color=auto'
   alias la='ls -a --color=auto'
