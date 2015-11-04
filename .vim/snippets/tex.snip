@@ -1,0 +1,58 @@
+snippet \documentclass
+alias   documentclass
+    \documentclass[${1}]{${2:article}}${0}
+
+# ========== ENVIRONMENT ==========
+
+
+# ========== SECTION ==========
+
+snippet \part*
+alias   part* \part*{
+    \part*{${1}}
+    ${0:TARGET}
+
+snippet \chapter*
+alias   chapter* \chapter*{
+    \chapter*{${1}}
+    ${0:TARGET}
+
+snippet \section*
+alias   section* \section*{
+    \section*{${1}}
+    ${0:TARGET}
+
+snippet \subsection*
+alias   subsection* \subsection*{
+    \subsection*{${1}}
+    ${0:TARGET}
+
+snippet \subsubsection*
+alias   subsubsection* \subsubsection*{
+    \subsubsection*{${1}}
+    ${0:TARGET}
+
+snippet \paragraph
+alias   paragraph \paragraph{
+    \paragraph{${1}}
+    ${0:TARGET}
+
+snippet \subparagraph
+alias   subparagraph \subparagraph{
+    \subparagraph{${1}}
+    ${0:TARGET}
+
+# ========== MATH ==========
+
+# ========== FONT ==========
+
+# ==== BEAMER ====
+
+# ========== TikZ ==========
+
+# ========== BibLaTeX ==========
+
+# ========== OTHERS ==========
+snippet footnote
+alias   \footnote
+    \footnote{${1}}${0}
