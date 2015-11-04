@@ -68,7 +68,6 @@ NeoBundleCheck
 " 256色設定
 set t_Co=256
 python sys.path.append('/usr/local/lib/python2.7/site-packages')  
-python import markdown
 " シンタックスハイライトを有効にする
 syntax on 
 " バックアップファイルを作らない設定にする
@@ -189,6 +188,7 @@ if neobundle#tap('vimfiler')
   let g:vimfiler_safe_mode_by_default = 0
   let g:vimfiler_edit_action = 'tabopen'
   let g:vimfiler_force_overwrite_statusline = 0
+  let g:vimfiler_data_directory = expand('~/.vim/etc/vimfiler')
 
 endif
 
@@ -210,6 +210,7 @@ if neobundle#tap('unite.vim')
   nnoremap <silent> [unite]m :<C-u>Unite<Space>file_mru<CR>
   nnoremap <silent> [unite]r :<C-u>UniteWithBufferDir file<CR>
   nnoremap <silent> ,vr :UniteResume<CR>"
+
   let g:unite_force_overwrite_statusline = 0
 
 endif
@@ -265,6 +266,7 @@ if neobundle#tap('neocomplete')
   let g:neocomplete#enable_quick_match = 1
   let g:neocomplete#force_overwrite_completefunc = 1
   let g:neocomplete#enable_auto_select = 1
+  let g:neocomplete#data_directory = expand('~/.vim/etc/neocomplete')
 
 endif
 
@@ -312,6 +314,9 @@ if neobundle#tap('neosnippet')
   smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
   \ "\<Plug>(neosnippet_expand_or_jump)"
   \: "\<TAB>"
+
+  let g:neosnippet#data_directory     = expand('~/.vim/etc/.cache/neosnippet')
+  let g:neosnippet#snippets_directory = [expand('~/.vim/bundle/neosnippet-snippets/neosnippets'),expand('~/.vim/snippets')]
 
 endif
 
@@ -398,6 +403,8 @@ if neobundle#tap('vimshell')
       \     'mappings' : ['<Plug>(vimshell_switch)']
       \   }
       \ })
+
+  let g:vimshell_temporary_directory  = expand('~/.vim/etc/VimShell')
 
 endif
 
