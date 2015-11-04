@@ -3,4 +3,7 @@
 	url = https://github.com/robbyrussell/oh-my-zsh
 [submodule "oh-my-zsh-powerline-theme"]
 	path = oh-my-zsh-powerline-theme
-	url = git@github.com:jeremyFreeAgent/oh-my-zsh-powerline-theme.git
+	url = https://github.com/jeremyFreeAgent/oh-my-zsh-powerline-theme.git
+[submodule ".vim/bundle/neobundle.vim"]
+	path = .vim/bundle/neobundle.vim
+	url = https://github.com/Shougo/neobundle.vim.git

@@ -68,7 +68,6 @@ NeoBundleCheck
 " 256色設定
 set t_Co=256
 python sys.path.append('/usr/local/lib/python2.7/site-packages')  
-python import markdown
 " シンタックスハイライトを有効にする
 syntax on 
 " バックアップファイルを作らない設定にする
