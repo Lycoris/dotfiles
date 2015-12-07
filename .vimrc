@@ -468,6 +468,7 @@ colorscheme molokai
 " filetypeの追加設定
 au BufNewFile,BufRead *.bbx :set filetype=tex
 au BufNewFile,BufRead *.cbx :set filetype=tex
+let g:tex_flavor = 'tex'
 
 " Powerline
 python from powerline.vim import setup as powerline_setup
