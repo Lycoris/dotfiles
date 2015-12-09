@@ -141,6 +141,7 @@ colorscheme molokai
 " filetypeの追加設定
 au BufNewFile,BufRead *.bbx :set filetype=tex
 au BufNewFile,BufRead *.cbx :set filetype=tex
+let g:tex_flavor='tex'
 
 " Powerline
 python from powerline.vim import setup as powerline_setup
@@ -311,6 +312,9 @@ if neobundle#tap('neosnippet')
   smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
   \ "\<Plug>(neosnippet_expand_or_jump)"
   \: "\<TAB>"
+
+  let g:neosnippet#data_directory     = expand('~/.vim/etc/.cache/neosnippet')
+  let g:neosnippet#snippets_directory = [expand('~/.vim/bundle/neosnippet-snippets/neosnippets'),expand('~/.vim/snippets')]
 
 endif
 
