@@ -4,16 +4,16 @@
 
 [[plugins]]
 repo = 'Shougo/vimshell'
-depends = ['Shougo/vimproc']
+depends = ['vimproc']
 on_cmd = ['VimShellExecute', 'VimShellInteractive', 'VimShellTerminal', 'VimShellPop']
 on_map = ['<Plug>(vimshell_switch)']
 
 [[plugins]]
 repo = 'Shougo/vimfiler'
-depends = ['Shougo/unite.vim']
+depends = ['unite.vim']
 on_cmd =  ['VimFilerTab', 'VimFiler', 'VimFilerExplorer', 'VimFilerBufferDir']
 on_map = ['<Plug>(vimfiler_switch)']
-hook_post_source = '''
+hook_add = '''
   nnoremap <F2> :VimFiler -buffer-name=explorer -split -winwidth=30 -toggle -auto-cd -no-quit -simple<Cr>
   function! s:my_vimfiler_settings()
     nmap     <buffer><expr><Cr> vimfiler#smart_cursor_map("\<Plug>(vimfiler_expand_tree)", "\<Plug>(vimfiler_edit_file)")
@@ -27,12 +27,11 @@ hook_post_source = '''
 
 [[plugins]]
 repo = 'Shougo/unite.vim'
-depends = ['Shougo/neomru.vim', 'Shougo/vimproc']
+depends = ['neomru.vim', 'vimproc']
 on_cmd =  ['Unite', 'UniteWithBufferDir', 'UniteWithCurrentDir']
-hook_post_source = '''
+hook_add = '''
   nnoremap    [unite]   <Nop>
   nmap    <Leader>f [unite]
-  " https://github.com/alwei/dotfiles/blob/3760650625663f3b08f24bc75762ec843ca7e112/.vimrc
   nnoremap [unite]u  :<C-u>Unite -no-split<Space>
   nnoremap <silent> [unite]f :<C-u>Unite<Space>buffer<CR>
   nnoremap <silent> [unite]b :<C-u>Unite<Space>bookmark<CR>
@@ -128,8 +127,8 @@ hook_post_source = '''
 repo = 'lervag/vimtex'
 on_ft = 'tex'
 hook_post_source = '''
-  " let g:vimtex_latexmk_enabled = 1
-  " let g:vimtex_latexmk_options = '-pdfdvi'
+  let g:vimtex_latexmk_enabled = 1
+  let g:tex_flavor='latex'
   let g:vimtex_view_method = 'general'
   let g:vimtex_view_general_viewer = 'open'
   let g:vimtex_fold_sections = [
@@ -140,16 +139,13 @@ hook_post_source = '''
         \ "subsubsection",
         \ ]
   let g:vimtex_fold_enabled = 1
-  let g:vimtex_fold_manual = 1
-  " let g:vimtex_latexmk_continuous = 1
-  " let g:vimtex_latexmk_background = 1
-  " let g:vimtex_latexmk_callback = 0
+  let g:vimtex_fold_automatic = 1
   let g:vimtex_quickfix_ignore_all_warnings = 0
   let g:vimtex_compiler_latexmk_engines = { '_' : '-pdfdvi' }
   let g:vimtex_compiler_latexmk = {
               \ 'background' : 1,
               \ 'build_dir' : '',
-              \ 'callback' : 0,
+              \ 'callback' : 1,
               \ 'continuous' : 1,
               \ 'options' : [
               \   '-pdfdvi',
@@ -171,7 +167,7 @@ hook_post_source = '''
 
 [[plugins]]
 repo = 'gregsexton/gitv'
-depends = ['tpope/vim-fugitive']
+depends = ['vim-fugitive']
 on_cmd = 'Gitv' 
 
 # reference系
@@ -181,7 +177,7 @@ on_ft = ['ruby', 'eruby', 'haml']
 
 [[plugins]]
 repo = 'taka84u9/vim-ref-ri'
-depends = ['Shougo/unite.vim', 'thinca/vim-ref']
+depends = ['unite.vim', 'vim-ref']
 
 [[plugins]]
 repo = 'skwp/vim-rspec'
