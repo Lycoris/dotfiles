@@ -45,7 +45,7 @@ hook_add = '''
 repo = 'Shougo/neocomplete'
 if = "has('lua')"
 on_i = 1
-hook_post_source = '''
+hook_add = '''
   let g:neocomplete#enable_at_startup = 1
   let g:neocomplete#enable_ignore_case = 1
   let g:neocomplete#enable_smart_case = 1
@@ -62,7 +62,7 @@ hook_post_source = '''
 repo = 'Shougo/neocomplcache'
 if = "!has('lua')"
 on_i = 1
-hook_post_source = '''
+hook_add = '''
   let g:neocomplcache_enable_at_startup = 1
   let g:neocomplcache_enable_ignore_case = 1
   let g:neocomplcache_enable_smart_case = 1
@@ -77,10 +77,10 @@ hook_post_source = '''
 
 [[plugins]]
 repo = 'Shougo/neosnippet'
+depends = ['neosnippet-snippets']
 on_i = 1
 on_ft = 'snippet'
 on_cmd = ['NeoSnippetEdit', 'NeoSnippetSource']
-on_ft = 'nsnippet'
 hook_post_source = '''
   imap <C-k> <Plug>(neosnippet_expand_or_jump)
   smap <C-k> <Plug>(neosnippet_expand_or_jump)
@@ -93,7 +93,7 @@ hook_post_source = '''
   \: "\<TAB>"
 
   let g:neosnippet#data_directory     = expand('~/.vim/etc/.cache/neosnippet')
-  let g:neosnippet#snippets_directory = [expand('~/.vim/bundle/neosnippet-snippets/neosnippets'),expand('~/.vim/snippets')]
+  let g:neosnippet#snippets_directory = [expand('~/.vim/dein/repos/github.com/Shougo/neosnippet-snippets/neosnippets'),expand('~/.vim/snippets')]
 '''
 
 
@@ -126,9 +126,10 @@ hook_post_source = '''
 [[plugins]]
 repo = 'lervag/vimtex'
 on_ft = 'tex'
-hook_post_source = '''
+hook_add = '''
   let g:vimtex_latexmk_enabled = 1
   let g:tex_flavor='latex'
+  autocmd FileType tex setlocal foldtext<
   let g:vimtex_view_method = 'general'
   let g:vimtex_view_general_viewer = 'open'
   let g:vimtex_fold_sections = [
