@@ -44,6 +44,8 @@ linux*)
   ;;
 esac
 
+# autossh
+alias autossh='autossh -f -M 0 -N'
 
 # shell関連
 alias pgrep='ps ax | grep'
