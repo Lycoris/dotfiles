@@ -101,8 +101,8 @@ hook_post_source = '''
 repo = 'scrooloose/syntastic'
 on_i = 1
 hook_post_source = '''
-  let g:syntastic_tex_chktex_quiet_messages = { "level": "warnings" }
-  let g:syntastic_tex_lacheck_quiet_messages = { "level": "warnings" }
+  let g:syntastic_tex_checkers=['']
+  let g:syntastic_disabled_filetypes=['tex']
 '''
 
 [[plugins]]
@@ -131,7 +131,14 @@ hook_add = '''
   let g:tex_flavor='latex'
   autocmd FileType tex setlocal foldtext<
   let g:vimtex_view_method = 'general'
-  let g:vimtex_view_general_viewer = 'open'
+  let g:vimtex_view_general_viewer = '/Applications/Skim.app/Contents/SharedSupport/displayline'
+  let g:vimtex_view_general_options = '-r @line @pdf @tex'
+  let g:vimtex_fold_parts = [
+        \ "appendix",
+        \ "frontmatter",
+        \ "mainmatter",
+        \ "backmatter",
+        \ ]
   let g:vimtex_fold_sections = [
         \ "part",
         \ "chapter",
@@ -140,7 +147,7 @@ hook_add = '''
         \ "subsubsection",
         \ ]
   let g:vimtex_fold_enabled = 1
-  let g:vimtex_fold_automatic = 1
+  let g:vimtex_fold_manual = 1
   let g:vimtex_quickfix_ignore_all_warnings = 0
   let g:vimtex_compiler_latexmk_engines = { '_' : '-pdfdvi' }
   let g:vimtex_compiler_latexmk = {
@@ -206,7 +213,4 @@ hook_post_source = '''
 [[plugins]]
 repo = 'mattn/emmet-vim'
 on_ft = ['html', 'xhtml', 'php', 'css', 'xml', 'xls', 'markdown', 'erb']
-
-[[plugins]]
-repo = 'tomasr/molokai'
 

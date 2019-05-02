@@ -47,3 +47,6 @@ repo = 'mattn/webapi-vim'
 [[plugins]]
 repo = 'chriskempson/vim-tomorrow-theme'
 
+[[plugins]]
+repo = 'tomasr/molokai'
+
