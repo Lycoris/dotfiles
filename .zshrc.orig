@@ -44,6 +44,9 @@ linux*)
   ;;
 esac
 
+# proxy関連
+alias proxy='sh ~/dotfiles/proxy.sh'
+
 # autossh
 alias autossh='autossh -f -M 0 -N'
 

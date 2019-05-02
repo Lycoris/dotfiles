@@ -8,4 +8,4 @@ $pdf_mode      = 3; # use dvipdfmx
 $max_repeat    = 5;
 $pdf_update_method = 4;
 $pvc_view_file_via_temporary = 0;
-$pdf_previewer    = 'open -ga /Applications/Skim.app';
+$pdf_previewer = 'open -ga /Applications/Skim.app'
