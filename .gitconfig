@@ -6,7 +6,7 @@
 	diff = true
 [core]
 	quotepath = false
-	editor = vim
+	editor = /Applications/MacVim.app/Contents/MacOS/Vim
   excludesfile = ~/.gitignore
   precomposeunicode = true
 [merge]
