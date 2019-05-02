@@ -1,3 +1,6 @@
+alias tmux='tmux -2 -u'
+alias tnew='tmux new -s'
+
 # OSで分岐する設定
 case ${OSTYPE} in
 darwin*)
@@ -11,10 +14,6 @@ darwin*)
       tnew macbook-pro
     fi
   fi
-  # Powerline関連
-  export PATH=$PATH:~/Library/Python/2.7/bin
-  powerline-daemon -q
-  . ~/Library/Python/2.7/lib/python/site-packages/powerline/bindings/zsh/powerline.zsh
   # lsの色付け
   alias ls='ls -G'
   alias la='ls -aG'
@@ -33,9 +32,9 @@ linux*)
     fi
   fi
   # Powerline関連
-  export PATH=$PATH:/usr/lib/python2.7
-  powerline-daemon -q
-  . /usr/local/lib/python2.7/dist-packages/powerline/bindings/zsh/powerline.zsh
+  # export PATH=$PATH:/usr/lib/python2.7
+  # powerline-daemon -q
+  # . /usr/local/lib/python2.7/dist-packages/powerline/bindings/zsh/powerline.zsh
   # lsの色付け
   alias ls='ls --color=auto'
   alias la='ls -a --color=auto'
@@ -44,6 +43,11 @@ linux*)
   ;;
 esac
 
+# proxy関連
+alias proxy='sh ~/dotfiles/proxy.sh'
+
+# autossh
+alias autossh='autossh -f -M 0 -N'
 
 # shell関連
 alias pgrep='ps ax | grep'
@@ -51,8 +55,6 @@ alias sr='source ~/.zshrc'
 
 # tmux関連
 alias tv='tmux -v'
-alias tmux='tmux -2 -u'
-alias tnew='tmux new -s'
 alias tls='tmux ls'
 alias ta='tmux a -t'
 alias tm='tmux move-window -t'
@@ -74,9 +76,6 @@ bindkey -v
 export TERM=xterm-256color
 export LANG=ja_JP.UTF-8
 export EDITOR="vim"
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
-
 
 autoload -Uz compinit
 compinit
