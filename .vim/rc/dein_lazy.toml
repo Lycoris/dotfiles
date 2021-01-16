@@ -136,7 +136,6 @@ hook_add = '''
   let g:vimtex_fold_types = {}
   let g:vimtex_fold_enabled = 1
   let g:vimtex_fold_manual = 1
-  let g:vimtex_quickfix_ignore_all_warnings = 0
   let g:vimtex_compiler_latexmk_engines = { '_' : '-pdfdvi' }
   let g:vimtex_compiler_latexmk = {
               \ 'background' : 1,
