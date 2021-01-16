@@ -72,6 +72,9 @@ alias wp='vim +":BlogNew"'
 # TeX関連
 alias lmk='latexmk -pvc -pdfdvi'
 
+# TeX関連
+alias lpandoc='pandoc -V documentclass=ltjsarticle --latex-engine=lualatex'
+
 bindkey -v
 
 export TERM=xterm-256color
