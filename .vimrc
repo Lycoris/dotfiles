@@ -62,9 +62,6 @@ set encoding=utf-8
 set fileencoding=utf-8
 set fileencodings=utf-8,iso-2022-jp,euc-jp,cp932,sjis,ucs-2 
 set fillchars+=stl:\ ,stlnc:\
-" GVim用フォント設定
-set guifont=Monaco\ for\ Powerline:h12
-set guifontwide=Monaco\ for\ Powerline:h12
 " オートインデントする
 set autoindent 
 " 行番号を表示する
@@ -81,6 +78,8 @@ set title
 set ruler 
 " 見た目のタブ文字数を2にする
 set tabstop=2 
+" テキストの自動改行をオフ
+" set formatoptions=q
 " autoindentの際に挿入される幅
 set shiftwidth=2
 " タブの入力を空白文字に置き換える
@@ -126,11 +125,6 @@ colorscheme molokai
 au BufNewFile,BufRead *.bbx :set filetype=tex
 au BufNewFile,BufRead *.cbx :set filetype=tex
 let g:tex_flavor='tex'
-
-" Powerline
-" python from powerline.vim import setup as powerline_setup
-" python powerline_setup()
-" python del powerline_setup
 
 " ------------------------------------------
 " Mappings (General)
