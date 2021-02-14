@@ -7,6 +7,18 @@ repo = 'Shougo/dein.vim'
 
 [[plugins]]
 repo = 'itchyny/lightline.vim'
+depends = ['vim-fugitive']
+hook_add = '''
+let g:lightline = {
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+      \ },
+      \ 'component_function': {
+      \   'gitbranch': 'FugitiveHead'
+      \ },
+      \ }
+'''
 
 [[plugins]]
 repo = 'taichouchou2/alpaca_powertabline'

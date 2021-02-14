@@ -98,7 +98,7 @@ hook_post_source = '''
 
 
 [[plugins]]
-repo = 'scrooloose/syntastic'
+repo = 'vim-syntastic/syntastic'
 on_i = 1
 hook_post_source = '''
   let g:syntastic_tex_checkers=['']
@@ -136,6 +136,7 @@ hook_add = '''
   let g:vimtex_fold_types = {}
   let g:vimtex_fold_enabled = 1
   let g:vimtex_fold_manual = 1
+  let g:vimtex_quickfix_mode = 0
   let g:vimtex_compiler_latexmk_engines = { '_' : '-pdfdvi' }
   let g:vimtex_compiler_latexmk = {
               \ 'background' : 1,
