@@ -360,23 +360,6 @@ brew install git
 brew install tig
 brew install python
 
-# download neobundle
-if [ -e ~/dotfiles/.vim/bundle/neobundle.vim ]; then
-    echo "neobundle found"
-    is_existed=true
-else
-    echo "install neobundle"
-    mkdir -p ~/dotfiles/.vim/bundle/
-    git clone https://github.com/Shougo/neobundle.vim ~/dotfiles/.vim/bundle/neobundle.vim
-    is_existed=false
-fi
-
-cd ~/dotfiles
-git clone git@github.com:robbyrussell/oh-my-zsh.git .oh-my-zsh
-ln -sf ~/dotfiles/.oh-my-zsh/ ~/.oh-my-zsh/
-cd ~/.oh-my-zsh/custom/plugins
-git clone git://github.com/zsh-users/zsh-syntax-highlighting.git
-
 # install powerline
 pip install powerline-status
 
