@@ -48,19 +48,16 @@ if [ ! -d ${DOT_DIR} ]; then
         exit 1
     fi
 
+    cd ${DOT_DIR}
     for f in .??*
     do
-      # Force remove the vim directory if it's already there
-      [ -n "${OVERWRITE}" -a -e ${HOME}/${f} ] && rm -f ${HOME}/${f}
-      if [ ! -e ${HOME}/${f} ]; then
-        # If you have ignore files, add file/directory name here
-        [[ ${f} = ".DS_Store" ]] && continue
-        [[ ${f} = ".git" ]] && continue
-        [[ ${f} = ".gitignore" ]] && continue
-        [[ ${f} = "install.sh" ]] && continue
+        [ "$f" = ".DS_Store" ] && continue
+        [ "$f" = ".git" ] && continue
+        [ "$f" = ".gitignore" ] && continue
+        [ "$f" = "install.sh" ] && continue
+
         ln -snf ${DOT_DIR}/${f} ${HOME}/${f}
         echo "Installed $f"
-      fi
     done
 else
     echo "dotfiles already exists"
