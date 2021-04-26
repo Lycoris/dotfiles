@@ -26,7 +26,7 @@ echo "Updating Homebrew..."
 brew update && brew upgrade
 
 echo "Installing applications..."
-brew install git tmux tig pandoc fontforge openssl python ruby hugo
+brew install git tmux tig pandoc fontforge openssl python ruby hugo zplug fzf
 
 # Dotfiles
 if [ ! -d ${DOT_DIR} ]; then
