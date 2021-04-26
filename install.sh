@@ -56,7 +56,7 @@ if [ ! -d ${DOT_DIR} ]; then
         [[ "$f" == "install.sh" ]] && continue
 
         ln -snf $DOT_DIR/"$f" $HOME/"$f"
-        echo "Installed .$f"
+        echo "Installed $f"
     done
 else
     echo "dotfiles already exists"
