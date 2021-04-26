@@ -53,9 +53,10 @@ if [ ! -d ${DOT_DIR} ]; then
     cd ${DOT_DIR}
     for f in *;
     do
+        [[ "$f" == ".DS_Store" ]] && continue
         [[ "$f" == ".git" ]] && continue
         [[ "$f" == ".gitignore" ]] && continue
-        [[ "$f" == ".DS_Store" ]] && continue
+        [[ "$f" == "brew" ]] && continue
         [[ "$f" == "install.sh" ]] && continue
 
         echo "Installed .$f"
