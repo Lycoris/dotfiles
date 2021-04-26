@@ -36,43 +36,43 @@ alias tmux='tmux -2 -u'
 alias tnew='tmux new -s'
 
 # OSで分岐する設定
-case ${OSTYPE} in
-darwin*)
-  alias vi='/Applications/MacVim.app/Contents/MacOS/Vim "$@"'
-  alias vim='/Applications/MacVim.app/Contents/MacOS/Vim "$@"'
-  alias emacs='/Applications/MacVim.app/Contents/MacOS/Vim "$@"'
-  if [ -z $TMUX ]; then
-    if $(tmux has-session); then
-      tmux attach
-    else
-      # tnew macbook-pro
-      tnew imac
-    fi
-  fi
-  # lsの色付け
-  alias ls='ls -G'
-  alias la='ls -aG'
-  alias grep='grep -G'
-  alias ll='ls -lG'
-  ;;
-linux*)
-  alias vim='/usr/bin/vim'
-  alias vi='vim'
-  alias emacs='vim'
-  if [ -z $TMUX ]; then
-    if $(tmux has-session); then
-      tmux attach
-    else
-      tnew remote
-    fi
-  fi
-  # lsの色付け
-  alias ls='ls --color=auto'
-  alias la='ls -a --color=auto'
-  alias grep='grep --color=auto'
-  alias ll='ls -l --color=auto'
-  ;;
-esac
+# case ${OSTYPE} in
+# darwin*)
+alias vi='/Applications/MacVim.app/Contents/MacOS/Vim "$@"'
+alias vim='/Applications/MacVim.app/Contents/MacOS/Vim "$@"'
+alias emacs='/Applications/MacVim.app/Contents/MacOS/Vim "$@"'
+# if [ -z $TMUX ]; then
+#   if $(tmux has-session); then
+#     tmux attach
+#   else
+#     # tnew macbook-pro
+#     tnew imac
+#   fi
+# fi
+# lsの色付け
+alias ls='ls -G'
+alias la='ls -aG'
+alias grep='grep -G'
+alias ll='ls -lG'
+#   ;;
+# linux*)
+#   alias vim='/usr/bin/vim'
+#   alias vi='vim'
+#   alias emacs='vim'
+#   if [ -z $TMUX ]; then
+#     if $(tmux has-session); then
+#       tmux attach
+#     else
+#       tnew remote
+#     fi
+#   fi
+#   # lsの色付け
+#   alias ls='ls --color=auto'
+#   alias la='ls -a --color=auto'
+#   alias grep='grep --color=auto'
+#   alias ll='ls -l --color=auto'
+#   ;;
+# esac
 
 # autossh
 alias autossh='autossh -f -M 0 -N'
@@ -93,33 +93,12 @@ alias tkill='tmux kill-session -t'
 alias gbl='git blame'
 alias gt='git tag'
 
-# vim関連
-alias wp='vim +":BlogNew"'
-
 # TeX関連
 alias lpandoc='pandoc -V documentclass=ltjsarticle --latex-engine=lualatex'
-
-bindkey -v
 
 export TERM=xterm-256color
 export LANG=ja_JP.UTF-8
 export EDITOR="vim"
-
-fpath=(/usr/local/share/zsh-completions $fpath)
-autoload -Uz compinit
-compinit
-autoload -Uz colors
-colors
-
-setopt auto_cd
-function chpwd() { ls -G }
-setopt auto_pushd
-setopt nolistbeep
-setopt no_check_jobs
-setopt listpacked
-setopt hist_ignore_all_dups
-setopt print_eight_bit
-setopt extended_glob
 
 # Source Prezto.
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
