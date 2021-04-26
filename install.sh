@@ -50,12 +50,12 @@ if [ ! -d ${DOT_DIR} ]; then
     cd ${DOT_DIR}
     for f in *;
     do
-        [[ "$f" == ".DS_Store" ]] && continue
-        [[ "$f" == ".git" ]] && continue
-        [[ "$f" == ".gitignore" ]] && continue
-        [[ "$f" == "install.sh" ]] && continue
+        [[ $f == ".DS_Store" ]] && continue
+        [[ $f == ".git" ]] && continue
+        [[ $f == ".gitignore" ]] && continue
+        [[ $f == "install.sh" ]] && continue
 
-        ln -snf $DOT_DIR/"$f" $HOME/"$f"
+        ln -snf $DOT_DIR/$f $HOME/$f
         echo "Installed $f"
     done
 else
