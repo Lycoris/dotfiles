@@ -26,10 +26,7 @@ echo "Updating Homebrew..."
 brew update && brew upgrade
 
 echo "Installing applications..."
-while read -r line
-do
-  brew install "$line"
-done < "$CURRENT_DIR/brew"
+brew install git tmux tig pandoc fontforge openssl python ruby hugo
 
 # Dotfiles
 if [ ! -d ${DOT_DIR} ]; then
@@ -56,9 +53,9 @@ if [ ! -d ${DOT_DIR} ]; then
         [[ "$f" == ".DS_Store" ]] && continue
         [[ "$f" == ".git" ]] && continue
         [[ "$f" == ".gitignore" ]] && continue
-        [[ "$f" == "brew" ]] && continue
         [[ "$f" == "install.sh" ]] && continue
 
+        ln -snf $DOT_DIR/"$f" $HOME/"$f"
         echo "Installed .$f"
     done
 else
