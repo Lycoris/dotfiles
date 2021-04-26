@@ -55,7 +55,7 @@ if [ ! -d ${DOT_DIR} ]; then
         [[ $f == ".gitignore" ]] && continue
         [[ $f == "install.sh" ]] && continue
 
-        ln -snf $DOT_DIR/$f $HOME/$f
+        ln -snf ${DOT_DIR}/$f ${HOME}/$f
         echo "Installed $f"
     done
 else
