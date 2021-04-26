@@ -4,6 +4,7 @@
 
 # https://kisqragi.hatenablog.com/entry/2020/02/17/224129
 # https://blog.fukkatsuso.com/posts/start-dotfiles/
+# https://qiita.com/okamos/items/40966158d0271ae7198b
 
 DOT_DIR="$HOME/dotfiles"
 CURRENT_DIR=$(cd "$(dirname "$0")"; pwd)
@@ -47,16 +48,19 @@ if [ ! -d ${DOT_DIR} ]; then
         exit 1
     fi
 
-    cd ${DOT_DIR}
-    for f in *;
+    for f in .??*
     do
-        [[ $f == ".DS_Store" ]] && continue
-        [[ $f == ".git" ]] && continue
-        [[ $f == ".gitignore" ]] && continue
-        [[ $f == "install.sh" ]] && continue
-
+      # Force remove the vim directory if it's already there
+      [ -n "${OVERWRITE}" -a -e ${HOME}/${f} ] && rm -f ${HOME}/${f}
+      if [ ! -e ${HOME}/${f} ]; then
+        # If you have ignore files, add file/directory name here
+        [[ ${f} = ".DS_Store" ]] && continue
+        [[ ${f} = ".git" ]] && continue
+        [[ ${f} = ".gitignore" ]] && continue
+        [[ ${f} = "install.sh" ]] && continue
         ln -snf ${DOT_DIR}/${f} ${HOME}/${f}
         echo "Installed $f"
+      fi
     done
 else
     echo "dotfiles already exists"
