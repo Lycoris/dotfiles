@@ -90,7 +90,7 @@ set laststatus=2
 set showtabline=2
 " マウスを有効にする
 set mouse=a
-set ttymouse=xterm2
+set ttymouse=sgr
 " スワップファイルを作らない
 set noswapfile
 " exモードの補完
