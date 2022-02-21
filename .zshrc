@@ -22,6 +22,7 @@ zplug "zsh-users/zsh-syntax-highlighting", defer:2
 zplug "plugins/git", from:oh-my-zsh
 zplug "b4b4r07/enhancd", use:init.sh
 zplug "marzocchi/zsh-notify"
+zplug "junegunn/fzf", from:gh-r, as:command, rename-to:fzf
 
 if ! zplug check --verbose; then
   printf 'Install? [y/N]: '
@@ -31,9 +32,6 @@ if ! zplug check --verbose; then
 fi
 
 zplug load --verbose
-
-alias tmux='tmux -2 -u'
-alias tnew='tmux new -s'
 
 # OSで分岐する設定
 case ${OSTYPE} in
@@ -72,6 +70,14 @@ case ${OSTYPE} in
 #   fi
 esac
 
+# cd関連
+setopt auto_cd
+chpwd() {
+    if [[ $(pwd) != $HOME ]]; then;
+        ls
+    fi
+}
+
 # autossh
 alias autossh='autossh -f -M 0 -N'
 
@@ -80,6 +86,8 @@ alias pgrep='ps ax | grep'
 alias sr='source ~/.zshrc'
 
 # tmux関連
+alias tmux='tmux -2 -u'
+alias tnew='tmux new -s'
 alias tv='tmux -v'
 alias tls='tmux ls'
 alias ta='tmux a -t'
