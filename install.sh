@@ -22,7 +22,8 @@ else
   echo "Updating Homebrew..."
   brew update && brew upgrade
   echo "Installing applications..."
-  brew install git tmux tig pandoc fontforge openssl python ruby hugo zplug
+  brew install git tmux tig pandoc fontforge openssl python ruby hugo zsh
+  chsh -s /usr/local/bin/zsh
 fi
 
 
@@ -64,7 +65,14 @@ fi
 # zplug
 if [[ -z $ZPLUG_HOME ]]; then
   echo "Installing zplug..."
-  /usr/local/bin/zsh -c "$(curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh)"
+  /bin/zsh -c "$(curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh)"
+  exec zsh
+  echo "Installing prezto..."
+  setopt EXTENDED_GLOB
+  for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do
+    ln -s "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
+  done
+  ln -s $ZPLUG_HOME/repos/sorin-ionescu/prezto $HOME/.zprezto
 else
   echo "zplug already exists"
 fi
