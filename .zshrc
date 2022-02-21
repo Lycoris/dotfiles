@@ -36,11 +36,16 @@ alias tmux='tmux -2 -u'
 alias tnew='tmux new -s'
 
 # OSで分岐する設定
-# case ${OSTYPE} in
-# darwin*)
-alias vi='/Applications/MacVim.app/Contents/MacOS/Vim "$@"'
-alias vim='/Applications/MacVim.app/Contents/MacOS/Vim "$@"'
-alias emacs='/Applications/MacVim.app/Contents/MacOS/Vim "$@"'
+case ${OSTYPE} in
+  darwin*)
+    alias vi='/Applications/MacVim.app/Contents/MacOS/Vim "$@"'
+    alias vim='/Applications/MacVim.app/Contents/MacOS/Vim "$@"'
+    alias emacs='/Applications/MacVim.app/Contents/MacOS/Vim "$@"'
+    alias ls='ls -G'
+    alias la='ls -aG'
+    alias grep='grep -G'
+    alias ll='ls -lG'
+    ;;
 # if [ -z $TMUX ]; then
 #   if $(tmux has-session); then
 #     tmux attach
@@ -49,16 +54,15 @@ alias emacs='/Applications/MacVim.app/Contents/MacOS/Vim "$@"'
 #     tnew imac
 #   fi
 # fi
-# lsの色付け
-alias ls='ls -G'
-alias la='ls -aG'
-alias grep='grep -G'
-alias ll='ls -lG'
-#   ;;
-# linux*)
-#   alias vim='/usr/bin/vim'
-#   alias vi='vim'
-#   alias emacs='vim'
+  linux*)
+    alias vim='/usr/bin/vim'
+    alias vi='vim'
+    alias emacs='vim'
+    alias ls='ls --color=auto'
+    alias la='ls -a --color=auto'
+    alias grep='grep --color=auto'
+    alias ll='ls -l --color=auto'
+    ;;
 #   if [ -z $TMUX ]; then
 #     if $(tmux has-session); then
 #       tmux attach
@@ -66,13 +70,7 @@ alias ll='ls -lG'
 #       tnew remote
 #     fi
 #   fi
-#   # lsの色付け
-#   alias ls='ls --color=auto'
-#   alias la='ls -a --color=auto'
-#   alias grep='grep --color=auto'
-#   alias ll='ls -l --color=auto'
-#   ;;
-# esac
+esac
 
 # autossh
 alias autossh='autossh -f -M 0 -N'
