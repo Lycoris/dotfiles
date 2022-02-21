@@ -1,5 +1,4 @@
 #!/bin/bash
-# とりあえずmacOS専用で、Ubuntuはそんなに頻繁に環境構築しないのでまたそのとき考える
 # bash -c "$(curl -fsSL https://raw.githubusercontent.com/Lycoris/dotfiles/master/install.sh)
 
 # https://kisqragi.hatenablog.com/entry/2020/02/17/224129
@@ -15,19 +14,17 @@ has() {
 
 
 # Homebrew
-if has "homebrew"; then
+if has "brew"; then
   echo "Homebrew is already installed"
-  exit 1;
 else 
   echo "Installing Homebrew..."
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  echo "Updating Homebrew..."
+  brew update && brew upgrade
+  echo "Installing applications..."
+  brew install git tmux tig pandoc fontforge openssl python ruby hugo zplug
 fi
 
-echo "Updating Homebrew..."
-brew update && brew upgrade
-
-echo "Installing applications..."
-brew install git tmux tig pandoc fontforge openssl python ruby hugo zplug fzf
 
 # Dotfiles
 if [ ! -d ${DOT_DIR} ]; then
@@ -62,5 +59,12 @@ if [ ! -d ${DOT_DIR} ]; then
         ln -snf ${DOT_DIR}/.vim ${HOME}/.vim
 else
     echo "dotfiles already exists"
-    exit 1
+fi
+
+# zplug
+if [[ -z $ZPLUG_HOME ]]; then
+  echo "Installing zplug..."
+  /usr/local/bin/zsh -c "$(curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh)"
+else
+  echo "zplug already exists"
 fi
