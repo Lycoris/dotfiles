@@ -74,5 +74,5 @@ if [[ -z $ZPLUG_HOME ]]; then
   done
   ln -s $ZPLUG_HOME/repos/sorin-ionescu/prezto $HOME/.zprezto
 else
-  echo "zplug already exists"
+  echo "zplug is already installed"
 fi
