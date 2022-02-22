@@ -106,6 +106,14 @@ export TERM=xterm-256color
 export LANG=ja_JP.UTF-8
 export EDITOR="vim"
 
+# brewのPATHを通す
+typeset -U path PATH
+path=(
+    /opt/homebrew/bin(N-/)
+    /usr/local/bin(N-/)
+    $path
+)
+
 # Source Prezto.
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"

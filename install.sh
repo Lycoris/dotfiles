@@ -12,21 +12,6 @@ has() {
     type "$1" > /dev/null 2>&1
 }
 
-
-# Homebrew
-if has "brew"; then
-  echo "Homebrew is already installed"
-else 
-  echo "Installing Homebrew..."
-  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-  echo "Updating Homebrew..."
-  brew update && brew upgrade
-  echo "Installing applications..."
-  brew install git tmux tig pandoc fontforge openssl python ruby hugo zsh
-  chsh -s /usr/local/bin/zsh
-fi
-
-
 # Dotfiles
 if [ ! -d ${DOT_DIR} ]; then
     if has "git"; then
@@ -52,7 +37,9 @@ if [ ! -d ${DOT_DIR} ]; then
         [ "$f" = ".DS_Store" ] && continue
         [ "$f" = ".git" ] && continue
         [ "$f" = ".gitignore" ] && continue
+        [ "$f" = "Brewfile" ] && continue
         [ "$f" = "install.sh" ] && continue
+        [ "$f" = "init_mac.sh" ] && continue
 
         ln -snf ${DOT_DIR}/${f} ${HOME}/${f}
         echo "Installed $f"
@@ -76,3 +63,11 @@ if [[ -z $ZPLUG_HOME ]]; then
 else
   echo "zplug is already installed"
 fi
+
+if [ $(uname) != "Darwin" ] ; then
+	echo "Let's get started!"
+	exit 0
+else
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/init_mac.sh)"
+fi
+
