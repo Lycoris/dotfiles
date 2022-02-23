@@ -27,7 +27,7 @@ repo = 'taichouchou2/alpaca_powertabline'
 repo = 'vim-jp/vimdoc-ja'
 
 [[plugins]]
-repo = 'Shougo/vimproc'
+repo = 'Shougo/vimproc.vim'
 hook_post_update = '''
   if dein#util#_is_windows()
     let cmd = 'tools\\update-dll-mingw'
