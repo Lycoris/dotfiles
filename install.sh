@@ -51,23 +51,23 @@ fi
 
 # zplug
 if [[ -z $ZPLUG_HOME ]]; then
-  echo "Installing zplug..."
-  /bin/zsh -c "$(curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh| zsh)"
-  exec zsh
-  echo "Installing prezto..."
-  ln -s $ZPLUG_HOME/repos/sorin-ionescu/prezto $HOME/.zprezto
-  setopt EXTENDED_GLOB
-  for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do
-    ln -s "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
-  done
+    echo "Installing zplug..."
+    /bin/zsh -c "$(curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh| zsh)"
+    exec zsh
+    echo "Installing prezto..."
+    ln -s $ZPLUG_HOME/repos/sorin-ionescu/prezto $HOME/.zprezto
+    setopt EXTENDED_GLOB
+    for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do
+       ln -s "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
+    done
 else
-  echo "zplug is already installed"
+    echo "zplug is already installed"
 fi
 
 if [ $(uname) != "Darwin" ] ; then
-	echo "Let's get started!"
-	exit 0
+    echo "Let's get started!"
+    exit 0
 else
-  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Lycoris/dotfiles/master/init_mac.sh)"
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Lycoris/dotfiles/master/init_mac.sh)"
 fi
 
