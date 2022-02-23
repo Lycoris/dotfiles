@@ -36,6 +36,7 @@ zplug load --verbose
 # OSで分岐する設定
 case ${OSTYPE} in
   darwin*)
+    export PATH=/opt/homebrew/bin:$PATH
     alias vi='/Applications/MacVim.app/Contents/MacOS/Vim "$@"'
     alias vim='/Applications/MacVim.app/Contents/MacOS/Vim "$@"'
     alias emacs='/Applications/MacVim.app/Contents/MacOS/Vim "$@"'
