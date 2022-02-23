@@ -54,8 +54,8 @@ if [[ -z $ZPLUG_HOME ]]; then
     echo "Installing zplug..."
     curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
     exec zsh
-    echo "Installing prezto..."
 # Prezto初期設定はいったん削除、手動でやる
+#   echo "Installing prezto..."
 #   ln -s $ZPLUG_HOME/repos/sorin-ionescu/prezto $HOME/.zprezto
 #   setopt EXTENDED_GLOB
 #   for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do
