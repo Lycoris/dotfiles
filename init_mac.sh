@@ -89,7 +89,7 @@ sudo softwareupdate --install-rosetta --agree-to-license
 
 # Brewfileからアプリケーションのインストール
 echo "Installing Applications..."
-brew bundle
+brew bundle --global
 chsh -s /usr/local/bin/zsh
 echo "All Done! Let's get started!"
 

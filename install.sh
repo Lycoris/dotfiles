@@ -37,7 +37,6 @@ if [ ! -d ${DOT_DIR} ]; then
         [ "$f" = ".DS_Store" ] && continue
         [ "$f" = ".git" ] && continue
         [ "$f" = ".gitignore" ] && continue
-        [ "$f" = "Brewfile" ] && continue
         [ "$f" = "install.sh" ] && continue
         [ "$f" = "init_mac.sh" ] && continue
 
