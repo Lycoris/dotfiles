@@ -2,7 +2,7 @@ tap "homebrew/bundle"
 tap "homebrew/cask"
 tap "homebrew/core"
 # set arguments for all 'brew install --cask' commands
-cask_args appdir: "~/Applications"
+cask_args appdir: "/Applications"
 
 # 'brew install'
 brew "autoconf", link: false
