@@ -56,10 +56,11 @@ if [[ -z $ZPLUG_HOME ]]; then
     exec zsh
     echo "Installing prezto..."
     ln -s $ZPLUG_HOME/repos/sorin-ionescu/prezto $HOME/.zprezto
-    setopt EXTENDED_GLOB
-    for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do
-       ln -s "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
-    done
+# Prezto初期設定はいったん削除、手動でやる
+#     setopt EXTENDED_GLOB
+#     for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do
+#        ln -s "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
+#     done
 else
     echo "zplug is already installed"
 fi
