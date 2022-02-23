@@ -55,11 +55,11 @@ if [[ -z $ZPLUG_HOME ]]; then
   /bin/zsh -c "$(curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh)"
   exec zsh
   echo "Installing prezto..."
+  ln -s $ZPLUG_HOME/repos/sorin-ionescu/prezto $HOME/.zprezto
   setopt EXTENDED_GLOB
   for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do
     ln -s "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
   done
-  ln -s $ZPLUG_HOME/repos/sorin-ionescu/prezto $HOME/.zprezto
 else
   echo "zplug is already installed"
 fi
@@ -68,6 +68,6 @@ if [ $(uname) != "Darwin" ] ; then
 	echo "Let's get started!"
 	exit 0
 else
-  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/init_mac.sh)"
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Lycoris/dotfiles/master/init_mac.sh)"
 fi
 
