@@ -36,7 +36,14 @@ zplug load --verbose
 # OSで分岐する設定
 case ${OSTYPE} in
   darwin*)
-    export PATH=/opt/homebrew/bin:$PATH
+    # アーキテクチャに応じてhomebrewのパス変更
+    typeset -U path PATH
+    if [ `uname -m` = "arm64" ]; then
+        export PATH=/opt/homebrew/bin:$PATH
+        export PATH=/bin:$PATH
+    else
+      export PATH=/usr/local/bin/brew:$PATH
+    fi
     alias vi='/Applications/MacVim.app/Contents/MacOS/Vim "$@"'
     alias vim='/Applications/MacVim.app/Contents/MacOS/Vim "$@"'
     alias emacs='/Applications/MacVim.app/Contents/MacOS/Vim "$@"'
@@ -45,7 +52,7 @@ case ${OSTYPE} in
     alias grep='grep -G'
     alias ll='ls -lG'
     ;;
-# if [ -z $TMUX ]; then
+  # if [ -z $TMUX ]; then
 #   if $(tmux has-session); then
 #     tmux attach
 #   else
@@ -106,14 +113,6 @@ alias lpandoc='pandoc -V documentclass=ltjsarticle --latex-engine=lualatex'
 export TERM=xterm-256color
 export LANG=ja_JP.UTF-8
 export EDITOR="vim"
-
-# brewのPATHを通す
-typeset -U path PATH
-path=(
-    /opt/homebrew/bin(N-/)
-    /usr/local/bin(N-/)
-    $path
-)
 
 # Source Prezto.
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
