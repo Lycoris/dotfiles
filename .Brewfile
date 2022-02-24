@@ -65,7 +65,7 @@ cask "calibre"
 cask "google-chrome"
 cask "google-japanese-ime"
 cask "iterm2"
-# cask "mactex" -> manual install
+cask "mactex"
 cask "obs"
 cask "skim"
 cask "spotify"
@@ -79,4 +79,3 @@ cask "zotero"
 # 'mas install'
 mas "RunCat", id: 1429033973
 mas "Sensible Paster", id: 1553906835
-
