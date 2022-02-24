@@ -94,7 +94,7 @@ alias pgrep='ps ax | grep'
 alias sr='source ~/.zshrc'
 
 # tmux関連
-# alias tmux='tmux -2 -u'
+alias tmux='tmux -2 -u'
 alias tnew='tmux new -s'
 alias tv='tmux -v'
 alias tls='tmux ls'
