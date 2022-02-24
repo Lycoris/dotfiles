@@ -5,55 +5,56 @@ tap "homebrew/core"
 cask_args appdir: "/Applications"
 
 # 'brew install'
-brew "autoconf", link: false
-brew "autossh", link: false
+brew "autoconf"
+brew "autossh"
 brew "ca-certificates"
-brew "gdbm", link: false
-brew "gettext", link: false
+brew "gdbm"
+brew "gettext"
 brew "libffi"
-brew "pcre", link: false
+brew "pcre"
 brew "openssl@3"
 brew "readline"
 brew "sqlite"
-brew "xz", link: false
-brew "glib", link: false
-brew "pixman", link: false
-brew "pkg-config", link: false
-brew "cairo", link: false
-brew "cmake", link: false
-brew "libssh2", link: false
+brew "xz"
+brew "glib"
+brew "pixman"
+brew "pkg-config"
+brew "cairo"
+brew "cmake"
+brew "libssh2"
 brew "curl", args: ["with-libssh2"]
-brew "libsodium", link: false
-brew "zeromq", link: false
-brew "czmq", link: false
-brew "gobject-introspection", link: false
+brew "libsodium"
+brew "zeromq"
+brew "czmq"
+brew "gobject-introspection"
 brew "icu4c"
-brew "harfbuzz", link: false
-brew "jpeg", link: false
-brew "libtiff", link: false
-brew "libtool", link: false
-brew "pango", link: false
-brew "fontforge", link: false
-brew "jbig2dec", link: false
-brew "little-cms2", link: false
-brew "ghostscript", link: false
-brew "git", link: false
-brew "git-ftp", link: false
+brew "harfbuzz"
+brew "jpeg"
+brew "libtiff"
+brew "libtool"
+brew "pango"
+brew "fontforge"
+brew "jbig2dec"
+brew "little-cms2"
+brew "ghostscript"
+brew "git"
+brew "git-ftp"
 brew "hugo"
-brew "imagemagick", link: false
-brew "libevent", link: false
-brew "libyaml", link: false
-brew "lua", link: false
-brew "mas", link: false
+brew "imagemagick"
+brew "libevent"
+brew "libyaml"
+brew "lua"
+brew "mas"
 brew "macvim"
-brew "pandoc", link: false
-brew "python", link: false
-brew "reattach-to-user-namespace", link: false
-brew "tig", link: false
-brew "tmux", link: false
-brew "wget", link: false
+brew "pandoc"
+brew "python"
+brew "reattach-to-user-namespace"
+brew "terminal-notifier"
+brew "tig"
+brew "tmux"
+brew "wget"
 brew "xpdf"
-brew "zsh", link: false
+brew "zsh"
 
 # 'brew install --cask'
 cask "adobe-digital-editions"
@@ -75,5 +76,7 @@ cask "webex-meetings"
 cask "zoom"
 cask "zotero"
 
-
+# 'mas install'
+mas "RunCat", id: 1429033973
+mas "Sensible Paster", id: 1553906835
 
