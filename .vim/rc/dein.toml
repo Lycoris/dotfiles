@@ -6,6 +6,11 @@
 repo = 'Shougo/dein.vim'
 
 [[plugins]]
+repo = 'vim-denops/denops.vim'
+on_func = 'denops#server#start'
+hook_source = 'call denops#server#start()'
+
+[[plugins]]
 repo = 'itchyny/lightline.vim'
 depends = ['vim-fugitive']
 hook_add = '''
@@ -28,24 +33,15 @@ repo = 'vim-jp/vimdoc-ja'
 
 [[plugins]]
 repo = 'Shougo/vimproc.vim'
-hook_post_update = '''
-  if dein#util#_is_windows()
-    let cmd = 'tools\\update-dll-mingw'
-  elseif dein#util#_is_cygwin()
-    let cmd = 'make -f make_cygwin.mak'
-  elseif executable('gmake')
-    let cmd = 'gmake'
-  else
-    let cmd = 'make'
-  endif
-  let g:dein#plugin.build = cmd
-'''
 
 [[plugins]]
 repo = 'Shougo/neomru.vim'
 
 [[plugins]]
 repo = 'Shougo/neosnippet-snippets'
+
+[[plugins]]
+repo = 'honza/vim-snippets'
 
 [[plugins]]
 repo = 'vim-scripts/sudo.vim'
@@ -55,9 +51,6 @@ repo = 'tpope/vim-surround'
 
 [[plugins]]
 repo = 'fuenor/qfixgrep'
-
-[[plugins]]
-repo = 'mattn/webapi-vim'
 
 [[plugins]]
 repo = 'chriskempson/vim-tomorrow-theme'

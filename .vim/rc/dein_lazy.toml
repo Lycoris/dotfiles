@@ -2,11 +2,11 @@
 # Dein.vim Plugin Management (LAZY)
 # ------------------------------------------
 
-[[plugins]]
-repo = 'Shougo/vimshell'
-depends = ['vimproc']
-on_cmd = ['VimShellExecute', 'VimShellInteractive', 'VimShellTerminal', 'VimShellPop']
-on_map = ['<Plug>(vimshell_switch)']
+# [[plugins]]
+# repo = 'Shougo/vimshell'
+# depends = ['vimproc.vim']
+# on_cmd = ['VimShellExecute', 'VimShellInteractive', 'VimShellTerminal', 'VimShellPop']
+# on_map = ['<Plug>(vimshell_switch)']
 
 [[plugins]]
 repo = 'Shougo/vimfiler'
@@ -27,7 +27,7 @@ hook_add = '''
 
 [[plugins]]
 repo = 'Shougo/unite.vim'
-depends = ['neomru.vim', 'vimproc']
+depends = ['neomru.vim', 'vimproc.vim']
 on_cmd =  ['Unite', 'UniteWithBufferDir', 'UniteWithCurrentDir']
 hook_add = '''
   nnoremap    [unite]   <Nop>
@@ -42,45 +42,53 @@ hook_add = '''
 '''
 
 [[plugins]]
-repo = 'Shougo/neocomplete'
-if = "has('lua')"
-on_i = 1
-hook_add = '''
-  let g:neocomplete#enable_at_startup = 1
-  let g:neocomplete#enable_ignore_case = 1
-  let g:neocomplete#enable_smart_case = 1
-  let g:neocomplete#enable_underbar_completion = 1
-  let g:neocomplete#min_syntax_length = 3
-  let g:neocomplete#auto_completion_start_length = 3
-  let g:neocomplete#enable_camel_case_completion = 1
-  let g:neocomplete#enable_quick_match = 1
-  let g:neocomplete#force_overwrite_completefunc = 1
-  let g:neocomplete#enable_auto_select = 1
+repo = 'Shougo/ddc.vim'
+on_event = 'InsertEnter'
+depends = ['denops.vim']
+hook_source = '''
+  call ddc#custom#patch_global('sources', ['neosnippet', 'around'])
+	call ddc#custom#patch_global('sourceOptions', {
+	    \ '_': {
+	    \   'matchers': ['matcher_head'],
+	    \   'sorters': ['sorter_rank'],
+      \   'converters': ['converter_remove_overlap'],
+	    \ },
+	    \ 'neosnippet': {'mark': 'ns', 'dup': v:true},
+      \ 'around': {'mark': 'A'},
+	    \ })
+
+  call ddc#custom#patch_global('sourceParams', {
+      \ 'around': {'maxSize': 500},
+      \ })
+  inoremap <silent><expr> <TAB>
+      \ ddc#map#pum_visible() ? '<C-n>' :
+      \ (col('.') <= 1 <Bar><Bar> getline('.')[col('.') - 2] =~# '\s') ?
+      \ '<TAB>' : ddc#map#manual_complete()
+  inoremap <expr><S-TAB>  ddc#map#pum_visible() ? '<C-p>' : '<C-h>'
+
+  call ddc#enable()
 '''
 
 [[plugins]]
-repo = 'Shougo/neocomplcache'
-if = "!has('lua')"
-on_i = 1
-hook_add = '''
-  let g:neocomplcache_enable_at_startup = 1
-  let g:neocomplcache_enable_ignore_case = 1
-  let g:neocomplcache_enable_smart_case = 1
-  let g:neocomplcache_enable_underbar_completion = 1
-  let g:neocomplcache_min_syntax_length = 3
-  let g:neocomplcache_auto_completion_start_length = 3
-  let g:neocomplcache_enable_camel_case_completion = 1
-  let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
-  let g:neocomplcache_enable_quick_match = 1
-  let g:neocomplcache_enable_auto_select = 1
-'''
+repo = 'Shougo/ddc-around'
+on_source = 'ddc.vim'
 
 [[plugins]]
-repo = 'Shougo/neosnippet'
+repo = 'Shougo/ddc-matcher_head'
+on_source = 'ddc.vim'
+
+[[plugins]]
+repo = 'Shougo/ddc-sorter_rank'
+on_source = 'ddc.vim'
+
+[[plugins]]
+repo = 'Shougo/ddc-converter_remove_overlap'
+on_source = 'ddc.vim'
+
+[[plugins]]
+repo = 'Shougo/neosnippet.vim'
 depends = ['neosnippet-snippets']
-on_i = 1
-on_ft = 'snippet'
-on_cmd = ['NeoSnippetEdit', 'NeoSnippetSource']
+on_source = 'ddc.vim'
 hook_post_source = '''
   imap <C-k> <Plug>(neosnippet_expand_or_jump)
   smap <C-k> <Plug>(neosnippet_expand_or_jump)
@@ -95,6 +103,42 @@ hook_post_source = '''
   let g:neosnippet#data_directory     = expand('~/.vim/etc/.cache/neosnippet')
   let g:neosnippet#snippets_directory = [expand('~/.vim/dein/repos/github.com/Shougo/neosnippet-snippets/neosnippets'),expand('~/.vim/snippets')]
 '''
+
+
+# [[plugins]]
+# repo = 'Shougo/neocomplete'
+# if = "has('lua')"
+# on_i = 1
+# hook_add = '''
+#   let g:neocomplete#enable_at_startup = 1
+#   let g:neocomplete#enable_ignore_case = 1
+#   let g:neocomplete#enable_smart_case = 1
+#   let g:neocomplete#enable_underbar_completion = 1
+#   let g:neocomplete#min_syntax_length = 3
+#   let g:neocomplete#auto_completion_start_length = 3
+#   let g:neocomplete#enable_camel_case_completion = 1
+#   let g:neocomplete#enable_quick_match = 1
+#   let g:neocomplete#force_overwrite_completefunc = 1
+#   let g:neocomplete#enable_auto_select = 1
+# '''
+# 
+# [[plugins]]
+# repo = 'Shougo/neocomplcache'
+# if = "!has('lua')"
+# on_i = 1
+# hook_add = '''
+#   let g:neocomplcache_enable_at_startup = 1
+#   let g:neocomplcache_enable_ignore_case = 1
+#   let g:neocomplcache_enable_smart_case = 1
+#   let g:neocomplcache_enable_underbar_completion = 1
+#   let g:neocomplcache_min_syntax_length = 3
+#   let g:neocomplcache_auto_completion_start_length = 3
+#   let g:neocomplcache_enable_camel_case_completion = 1
+#   let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
+#   let g:neocomplcache_enable_quick_match = 1
+#   let g:neocomplcache_enable_auto_select = 1
+# '''
+
 
 
 [[plugins]]
@@ -118,7 +162,7 @@ hook_post_source = '''
   \   'exec': ['%c %o %s']}
   \ }
   let g:quickrun_config['_'] = {
-  \   'runner' : 'vimproc',
+  \   'runner' : 'vimproc.vim',
   \   'runner/vimproc/updatetime' : 60,
   \}
 '''
@@ -130,9 +174,9 @@ hook_add = '''
   let g:vimtex_compiler_enabled = 1
   let g:tex_flavor='latex'
   autocmd FileType tex setlocal foldtext<
-  let g:vimtex_view_method = 'general'
-  let g:vimtex_view_general_viewer = '/Applications/Skim.app/Contents/SharedSupport/displayline'
-  let g:vimtex_view_general_options = '-r @line @pdf @tex'
+  let g:vimtex_view_method = 'skim'
+  let g:vimtex_view_skim_activate = 1
+  let g:vimtex_view_skim_sync = 1
   let g:vimtex_fold_types = {}
   let g:vimtex_fold_enabled = 1
   let g:vimtex_fold_manual = 1
@@ -192,15 +236,6 @@ repo = 'thinca/vim-ref'
 
 [[plugins]]
 repo = 'vim-scripts/taglist.vim'
-
-[[plugins]]
-repo = 'tyru/open-browser.vim'
-on_map = ['<Plug>(openbrowser-smart-search)']
-on_cmd = ['OpenBrowserSmartSearch', 'OpenBrowser']
-hook_post_source = '''
-  nmap gx <Plug>(openbrowser-smart-search)
-  vmap gx <Plug>(openbrowser-smart-search)
-'''
 
 [[plugins]]
 repo = 'mattn/emmet-vim'
