@@ -38,6 +38,11 @@ build = 'make'
 [[plugins]]
 repo = 'Shougo/neomru.vim'
 
+# [[plugins]]
+# repo = 'neoclide/coc.nvim'
+# source = 'release'
+# build = 'coc#util#install()'
+
 [[plugins]]
 repo = 'Shougo/neosnippet-snippets'
 

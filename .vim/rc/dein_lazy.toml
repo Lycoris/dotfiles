@@ -46,7 +46,7 @@ repo = 'Shougo/ddc.vim'
 on_event = 'InsertEnter'
 depends = ['denops.vim']
 hook_source = '''
-  call ddc#custom#patch_global('sources', ['neosnippet', 'around'])
+  call ddc#custom#patch_global('sources', ['neosnippet', 'around', 'file', 'buffer'])
 	call ddc#custom#patch_global('sourceOptions', {
 	    \ '_': {
 	    \   'matchers': ['matcher_head'],
@@ -55,11 +55,20 @@ hook_source = '''
 	    \ },
 	    \ 'neosnippet': {'mark': 'ns', 'dup': v:true},
       \ 'around': {'mark': 'A'},
+      \ 'file': {'mark': 'F', 'isVolatile': v:true, 'forceCompletionPattern': '\S/\S*'},
+      \ 'buffer': {'mark': 'B'},
 	    \ })
 
   call ddc#custom#patch_global('sourceParams', {
       \ 'around': {'maxSize': 500},
+      \ 'buffer': {
+      \   'requireSameFiletype': v:false,
+      \   'limitBytes': 5000000,
+      \   'fromAltBuf': v:true,
+      \   'forceCollect': v:true,
+      \ },
       \ })
+
   inoremap <silent><expr> <TAB>
       \ ddc#map#pum_visible() ? '<C-n>' :
       \ (col('.') <= 1 <Bar><Bar> getline('.')[col('.') - 2] =~# '\s') ?
@@ -83,6 +92,14 @@ on_source = 'ddc.vim'
 
 [[plugins]]
 repo = 'Shougo/ddc-converter_remove_overlap'
+on_source = 'ddc.vim'
+
+[[plugins]]
+repo = 'LumaKernel/ddc-file'
+on_source = 'ddc.vim'
+
+[[plugins]]
+repo = 'matsui54/ddc-buffer'
 on_source = 'ddc.vim'
 
 [[plugins]]
@@ -139,7 +156,11 @@ hook_post_source = '''
 #   let g:neocomplcache_enable_auto_select = 1
 # '''
 
-
+[[plugins]]
+repo = 'neoclide/coc.nvim'
+rev = 'release'
+on_i = 1
+merged = '0'
 
 [[plugins]]
 repo = 'vim-syntastic/syntastic'
