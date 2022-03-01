@@ -110,6 +110,7 @@ alias gt='git tag'
 # TeX関連
 alias lpandoc='pandoc -V documentclass=ltjsarticle --latex-engine=lualatex'
 
+export PATH=$HOME/.nodebrew/current/bin:$PATH
 export TERM=xterm-256color
 export LANG=ja_JP.UTF-8
 export EDITOR="vim"
