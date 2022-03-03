@@ -163,9 +163,9 @@ hook_post_source = '''
 repo = 'neoclide/coc.nvim'
 rev = 'release'
 merged = '0'
-on_ft = 'tex'
+on_ft = ['tex', 'toml']
 hook_add = '''
-  let g:coc_global_extensions = ['coc-explorer', 'coc-snippets', 'coc-texlab', 'coc-vimtex']
+  let g:coc_global_extensions = ['coc-explorer', 'coc-snippets', 'coc-neosnippet', 'coc-toml', 'coc-texlab', 'coc-vimtex']
 '''
 hook_on_source = '''
   nmap <silent> gd <Plug>(coc-definition)
