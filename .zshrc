@@ -39,8 +39,8 @@ case ${OSTYPE} in
     # アーキテクチャに応じてhomebrewのパス変更
     typeset -U path PATH
     if [ `uname -m` = "arm64" ]; then
-        export PATH=/opt/homebrew/bin:$PATH
-        export PATH=/bin:$PATH
+      export PATH=/opt/homebrew/bin:$PATH
+      # export PATH=/bin:$PATH
     else
       export PATH=/usr/local/bin/brew:$PATH
     fi
