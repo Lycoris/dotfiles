@@ -51,7 +51,10 @@ syntax enable
 " ------------------------------------------
 " 256色設定
 set t_Co=256
-" python sys.path.append('/usr/local/lib/python2.7/site-packages')  
+let g:python3_host_prog = system('echo -n $(which python3)')
+set pythonthreedll=/opt/homebrew/Frameworks/Python.framework/Versions/3.10/Python
+set pythonthreehome=/opt/homebrew/Frameworks/Python.framework/Versions/3.10
+" python sys.path.append('/opt/homebrew/lib/python3.10/site-packages')
 " シンタックスハイライトを有効にする
 syntax on 
 " バックアップファイルを作らない設定にする
