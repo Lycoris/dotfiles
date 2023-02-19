@@ -105,6 +105,18 @@ on_source = 'ddc.vim'
 repo = 'matsui54/ddc-buffer'
 on_source = 'ddc.vim'
 
+# [[plugins]]
+# repo = 'Shougo/pum.vim'
+# on_source = 'ddc.vim'
+# hook_post_source = '''
+#   inoremap <C-n>   <Cmd>call pum#map#insert_relative(+1)<CR>
+#   inoremap <C-p>   <Cmd>call pum#map#insert_relative(-1)<CR>
+#   inoremap <C-y>   <Cmd>call pum#map#confirm()<CR>
+#   inoremap <C-e>   <Cmd>call pum#map#cancel()<CR>
+#   inoremap <PageDown> <Cmd>call pum#map#insert_relative_page(+1)<CR>
+#   inoremap <PageUp>   <Cmd>call pum#map#insert_relative_page(-1)<CR>
+# '''
+
 [[plugins]]
 repo = 'Shougo/neosnippet.vim'
 depends = ['neosnippet-snippets']
@@ -185,6 +197,10 @@ hook_on_source = '''
       call CocAction('doHover')
     endif
   endfunction
+
+  inoremap <silent><expr> <cr> coc#pum#visible() ? coc#_select_confirm() : "\<C-g>u\<CR>"
+  inoremap <silent><expr> <up> coc#pum#visible() ? coc#pum#prev(0) : "\<up>"
+  inoremap <silent><expr> <down> coc#pum#visible() ? coc#pum#next(0) : "\<down>"
 '''
 
 [[plugins]]
