@@ -18,6 +18,7 @@ brew "clipy"
 brew "cmake"
 brew "curl", args: ["with-libssh2"]
 brew "czmq"
+brew "deepl"
 brew "deno"
 brew "fontforge"
 brew "gdbm"
