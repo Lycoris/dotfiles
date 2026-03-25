@@ -1,16 +1,16 @@
 [user]
-	name = Lycoris_i
-	email = some.chicken@gmail.com
+	name = {{GIT_USER_NAME}}
+	email = {{GIT_USER_EMAIL}}
 [color]
 	ui = true
 	diff = true
 [core]
 	quotepath = false
 	editor = vim
-  excludesfile = ~/.gitignore
-  precomposeunicode = true
+	excludesfile = ~/.gitignore
+	precomposeunicode = true
 [merge]
-  ff = false
+	ff = false
 [pull]
 	ff = only
 [tig "bind"]

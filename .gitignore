@@ -1,5 +1,6 @@
 .DS_Store
 .*.swp
+.gitconfig
 .vim/bundle/*
 .vim/dein/*
 .vim/etc/*

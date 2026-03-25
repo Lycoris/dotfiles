@@ -37,6 +37,8 @@ if [ ! -d ${DOT_DIR} ]; then
         [ "$f" = ".DS_Store" ] && continue
         [ "$f" = ".git" ] && continue
         [ "$f" = ".gitignore" ] && continue
+        [ "$f" = ".gitconfig" ] && continue
+        [ "$f" = ".gitconfig.template" ] && continue
         [ "$f" = ".config" ] && continue
         [ "$f" = "install.sh" ] && continue
         [ "$f" = "init_mac.sh" ] && continue
@@ -45,6 +47,19 @@ if [ ! -d ${DOT_DIR} ]; then
         echo "Installed $f"
     done
         ln -snf ${DOT_DIR}/.vim ${HOME}/.vim
+
+    # .gitconfig をテンプレートから生成
+    if [ ! -f ${HOME}/.gitconfig ]; then
+        echo "Setting up .gitconfig..."
+        printf "Git user name: "; read git_name
+        printf "Git email: "; read git_email
+        sed -e "s/{{GIT_USER_NAME}}/${git_name}/" \
+            -e "s/{{GIT_USER_EMAIL}}/${git_email}/" \
+            ${DOT_DIR}/.gitconfig.template > ${HOME}/.gitconfig
+        echo "Installed .gitconfig"
+    else
+        echo ".gitconfig already exists, skipping"
+    fi
 
     # .config 配下は個別にリンク (他アプリの設定と競合しないように)
     mkdir -p ${HOME}/.config
