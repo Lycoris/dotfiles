@@ -1,47 +1,51 @@
 " ------------------------------------------
-" Dein.vim Plugin Management
-" (https://qiita.com/delphinus/items/00ff2c0ba972c6e41542)
-" (https://qiita.com/kawaz/items/ee725f6214f91337b42b)
+" vim-plug Plugin Management
 " ------------------------------------------
-" プラグインが実際にインストールされるディレクトリ
-let s:dein_dir = expand('~/.vim/dein')
-" dein.vim 本体
-let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
-
-" dein.vim がなければ github から落としてくる
-if &runtimepath !~# '/dein.vim'
-  if !isdirectory(s:dein_repo_dir)
-    execute '!git clone https://github.com/Shougo/dein.vim' s:dein_repo_dir
-  endif
-  execute 'set runtimepath^=' . fnamemodify(s:dein_repo_dir, ':p')
+" vim-plug がなければ自動インストール
+let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
+if empty(glob(data_dir . '/autoload/plug.vim'))
+  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
-" 設定開始
-if dein#load_state(s:dein_dir)
-  call dein#begin(s:dein_dir)
+call plug#begin('~/.vim/plugged')
 
-  " プラグインリストを収めた TOML ファイル
-  let g:rc_dir    = expand('~/.vim/rc')
-  let s:toml      = g:rc_dir . '/dein.toml'
-  let s:lazy_toml = g:rc_dir . '/dein_lazy.toml'
+" ステータスライン
+Plug 'itchyny/lightline.vim'
 
-  " TOML を読み込み、キャッシュしておく
-  call dein#load_toml(s:toml,      {'lazy': 0})
-  call dein#load_toml(s:lazy_toml, {'lazy': 1})
+" カラースキーム
+Plug 'tomasr/molokai'
 
-  " 設定終了
-  call dein#end()
-  call dein#save_state()
-endif
+" LSP / 補完 (texlab等)
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-if dein#check_install(['vimproc.vim'])
-  call dein#install(['vimproc.vim'])
-endif
+" TeX
+Plug 'lervag/vimtex'
 
-" もし、未インストールものものがあったらインストール
-if has('vim_starting') && dein#check_install()
-  call dein#install()
-endif
+" ファイル検索 / grep
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+
+" Git
+Plug 'tpope/vim-fugitive'
+
+" 編集支援
+Plug 'tpope/vim-surround'
+Plug 'tyru/caw.vim'
+
+" HTML/CSS
+Plug 'mattn/emmet-vim'
+
+" 日本語ヘルプ
+Plug 'vim-jp/vimdoc-ja'
+
+" スニペット
+Plug 'honza/vim-snippets'
+
+" TOML シンタックス
+Plug 'cespare/vim-toml'
+
+call plug#end()
 
 filetype plugin indent on
 syntax enable
@@ -49,78 +53,54 @@ syntax enable
 " ------------------------------------------
 " Vim General Settings
 " ------------------------------------------
-" 256色設定
 set t_Co=256
 let g:python3_host_prog = exepath('python3')
 let s:python3_version = system('python3 -c "import sys; print(f\"{sys.version_info.major}.{sys.version_info.minor}\")"')->trim()
 let s:python3_prefix = system('python3 -c "import sys; print(sys.prefix)"')->trim()
 execute 'set pythonthreedll=' . s:python3_prefix . '/Python'
 execute 'set pythonthreehome=' . s:python3_prefix
-" シンタックスハイライトを有効にする
-syntax on 
-" バックアップファイルを作らない設定にする
-set nobackup 
-" デフォルトの文字コード
-set encoding=utf-8 
-" 自動判別に使用する文字コード
+
+syntax on
+set nobackup
+set encoding=utf-8
 set fileencoding=utf-8
-set fileencodings=utf-8,iso-2022-jp,euc-jp,cp932,sjis,ucs-2 
+set fileencodings=utf-8,iso-2022-jp,euc-jp,cp932,sjis,ucs-2
 set fillchars+=stl:\ ,stlnc:\
-" オートインデントする
-set autoindent 
-" 行番号を表示する
-set number 
-" インクリメンタルサーチ
-set incsearch 
-" 検索時に大文字小文字を無視する
-set ignorecase 
-" 対応する括弧のハイライト表示する
-set showmatch 
-" 編集中のファイル名を表示する
-set title 
-" ルーラーの表示する
-set ruler 
-" 見た目のタブ文字数を2にする
-set tabstop=2 
-" テキストの自動改行をオフ
-" set formatoptions=q
-" autoindentの際に挿入される幅
+set autoindent
+set number
+set incsearch
+set ignorecase
+set showmatch
+set title
+set ruler
+set tabstop=2
 set shiftwidth=2
-" タブの入力を空白文字に置き換える
 set expandtab
-" ステータスラインを常時表示
 set laststatus=2
-" タブバーを常時表示
 set showtabline=2
-" マウスを有効にする
 set mouse=a
 set ttymouse=sgr
-" スワップファイルを作らない
 set noswapfile
-" exモードの補完
 set wildmenu
 set wildmode=longest:full,full
-" http://www.kaoriya.net/blog/2014/03/30/
 set noundofile
-" splitする時には右側に新しいウインドウを開く
 set splitright
-" 記号とかでカーソルがずれないようにする
 set ambiwidth=single
-" ビープ音を鳴らさない
 set visualbell t_vb=
 set noerrorbells
-" 検索語が画面の真ん中に来るようにする
-nmap n nzz 
-nmap N Nzz 
-nmap * *zz 
-nmap # #zz 
-nmap g* g*zz 
-nmap g# g#zz
-" ヤンクをクリップボードへコピー
 set clipboard=unnamed,autoselect
 
+" 検索語が画面の真ん中に来るようにする
+nmap n nzz
+nmap N Nzz
+nmap * *zz
+nmap # #zz
+nmap g* g*zz
+nmap g# g#zz
+
+" 全角スペースの表示
 highlight ZenkakuSpace cterm=underline ctermfg=lightblue guibg=darkgray
-match ZenkakuSpace /　/" 全角スペースの表示
+match ZenkakuSpace /　/
 
 " カラースキームの指定
 colorscheme molokai
@@ -128,7 +108,7 @@ colorscheme molokai
 " filetypeの追加設定
 au BufNewFile,BufRead *.bbx :set filetype=tex
 au BufNewFile,BufRead *.cbx :set filetype=tex
-let g:tex_flavor='tex'
+let g:tex_flavor='latex'
 
 " ------------------------------------------
 " Mappings (General)
@@ -148,3 +128,84 @@ nnoremap <Space>. :<C-u>tabedit $MYVIMRC<CR>
 nnoremap <Down> gj
 nnoremap <Up>   gk
 
+" ------------------------------------------
+" lightline.vim
+" ------------------------------------------
+let g:lightline = {
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'gitbranch', 'readonly', 'filename', 'modified', 'cocstatus' ] ]
+      \ },
+      \ 'component_function': {
+      \   'gitbranch': 'FugitiveHead',
+      \   'cocstatus': 'coc#status',
+      \ },
+      \ }
+
+" ------------------------------------------
+" coc.nvim (LSP / 補完)
+" ------------------------------------------
+let g:coc_global_extensions = ['coc-snippets', 'coc-toml', 'coc-texlab', 'coc-vimtex']
+
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+nmap <leader>rn <Plug>(coc-rename)
+
+" カーソル下のシンボルをハイライト
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" K でドキュメント表示
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+function! s:show_documentation()
+  if &filetype == 'vim'
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+" 補完メニューの操作
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#_select_confirm() : "\<C-g>u\<CR>"
+inoremap <silent><expr> <Tab> coc#pum#visible() ? coc#pum#next(1) : "\<Tab>"
+inoremap <silent><expr> <S-Tab> coc#pum#visible() ? coc#pum#prev(1) : "\<S-Tab>"
+
+" ------------------------------------------
+" vimtex (TeX)
+" ------------------------------------------
+let g:vimtex_compiler_enabled = 1
+let g:vimtex_view_method = 'skim'
+let g:vimtex_view_skim_activate = 1
+let g:vimtex_view_skim_sync = 1
+let g:vimtex_quickfix_mode = 2
+let g:vimtex_fold_enabled = 1
+let g:vimtex_fold_manual = 1
+let g:vimtex_compiler_latexmk_engines = { '_' : '-pdfdvi' }
+let g:vimtex_compiler_latexmk = {
+            \ 'background' : 1,
+            \ 'build_dir' : '',
+            \ 'callback' : 1,
+            \ 'continuous' : 1,
+            \ 'options' : [
+            \   '-pdfdvi',
+            \   '-verbose',
+            \   '-file-line-error',
+            \   '-synctex=1',
+            \   '-interaction=nonstopmode',
+            \ ],
+            \}
+
+" ------------------------------------------
+" fzf.vim
+" ------------------------------------------
+command! -bang -nargs=* Rg
+  \ call fzf#vim#grep(
+  \   'rg --line-number --no-heading '.shellescape(<q-args>), 0,
+  \   fzf#vim#with_preview({'options': '--exact --reverse'}, 'right:50%:wrap'))
+
+" ------------------------------------------
+" vim-fugitive
+" ------------------------------------------
+command! Ga Gwrite
+command! Gc Git commit
