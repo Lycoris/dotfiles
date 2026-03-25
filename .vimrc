@@ -51,10 +51,11 @@ syntax enable
 " ------------------------------------------
 " 256色設定
 set t_Co=256
-let g:python3_host_prog = system('echo -n $(which python3)')
-set pythonthreedll=/opt/homebrew/Frameworks/Python.framework/Versions/3.10/Python
-set pythonthreehome=/opt/homebrew/Frameworks/Python.framework/Versions/3.10
-" python sys.path.append('/opt/homebrew/lib/python3.10/site-packages')
+let g:python3_host_prog = exepath('python3')
+let s:python3_version = system('python3 -c "import sys; print(f\"{sys.version_info.major}.{sys.version_info.minor}\")"')->trim()
+let s:python3_prefix = system('python3 -c "import sys; print(sys.prefix)"')->trim()
+execute 'set pythonthreedll=' . s:python3_prefix . '/Python'
+execute 'set pythonthreehome=' . s:python3_prefix
 " シンタックスハイライトを有効にする
 syntax on 
 " バックアップファイルを作らない設定にする

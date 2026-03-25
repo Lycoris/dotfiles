@@ -1,3 +1,10 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 export ZPLUG_HOME=$HOME/.zplug
 source $ZPLUG_HOME/init.zsh
 
@@ -40,7 +47,6 @@ case ${OSTYPE} in
     typeset -U path PATH
     if [ `uname -m` = "arm64" ]; then
       export PATH=/opt/homebrew/bin:$PATH
-      # export PATH=/bin:$PATH
     else
       export PATH=/usr/local/bin/brew:$PATH
     fi
@@ -52,14 +58,6 @@ case ${OSTYPE} in
     alias grep='grep -G'
     alias ll='ls -lG'
     ;;
-  # if [ -z $TMUX ]; then
-#   if $(tmux has-session); then
-#     tmux attach
-#   else
-#     # tnew macbook-pro
-#     tnew imac
-#   fi
-# fi
   linux*)
     alias vim='/usr/bin/vim'
     alias vi='vim'
@@ -69,13 +67,6 @@ case ${OSTYPE} in
     alias grep='grep --color=auto'
     alias ll='ls -l --color=auto'
     ;;
-#   if [ -z $TMUX ]; then
-#     if $(tmux has-session); then
-#       tmux attach
-#     else
-#       tnew remote
-#     fi
-#   fi
 esac
 
 # cd関連
@@ -110,7 +101,6 @@ alias gt='git tag'
 # TeX関連
 alias lpandoc='pandoc -V documentclass=ltjsarticle --latex-engine=lualatex'
 
-export PATH=$HOME/.nodebrew/current/bin:$PATH
 export TERM=xterm-256color
 export LANG=ja_JP.UTF-8
 export EDITOR="vim"
@@ -120,12 +110,10 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# mise (Node.js等のバージョン管理)
+if command -v mise &>/dev/null; then
+  eval "$(mise activate zsh)"
+fi

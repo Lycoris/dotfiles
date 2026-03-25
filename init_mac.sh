@@ -76,20 +76,32 @@ defaults -currentHost write com.apple.screensaver idleTime -int 0
 if !(type "brew" >/dev/null 2>&1); then
   echo "Installing Homebrew..."
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  # Apple Silicon では Homebrew のパスを通す
+  if [ "$(uname -m)" = "arm64" ]; then
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+  fi
   echo "Run brew doctor..."
   brew doctor
   echo "Updating Homebrew..."
   brew update && brew upgrade
-else 
+else
   echo "Homebrew is already installed"
 fi
 
-# Rosettaのインストール
-sudo softwareupdate --install-rosetta --agree-to-license
+# Rosettaのインストール (Apple Silicon のみ)
+if [ "$(uname -m)" = "arm64" ]; then
+  sudo softwareupdate --install-rosetta --agree-to-license
+fi
 
 # Brewfileからアプリケーションのインストール
 echo "Installing Applications..."
 brew bundle --global
-chsh -s /usr/local/bin/zsh
+
+# デフォルトシェルをzshに変更
+if [ "$(uname -m)" = "arm64" ]; then
+  chsh -s /opt/homebrew/bin/zsh
+else
+  chsh -s /usr/local/bin/zsh
+fi
 echo "All Done! Let's get started!"
 
