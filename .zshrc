@@ -57,21 +57,32 @@ case ${OSTYPE} in
     alias vi='/Applications/MacVim.app/Contents/MacOS/Vim "$@"'
     alias vim='/Applications/MacVim.app/Contents/MacOS/Vim "$@"'
     alias emacs='/Applications/MacVim.app/Contents/MacOS/Vim "$@"'
-    alias ls='ls -G'
-    alias la='ls -aG'
-    alias grep='grep -G'
-    alias ll='ls -lG'
     ;;
   linux*)
     alias vim='/usr/bin/vim'
     alias vi='vim'
     alias emacs='vim'
-    alias ls='ls --color=auto'
-    alias la='ls -a --color=auto'
-    alias grep='grep --color=auto'
-    alias ll='ls -l --color=auto'
     ;;
 esac
+
+# モダン CLI ツール (eza, bat, ripgrep)
+if command -v eza &>/dev/null; then
+  alias ls='eza --icons'
+  alias la='eza --icons -a'
+  alias ll='eza --icons -l --git'
+  alias tree='eza --icons --tree'
+else
+  case ${OSTYPE} in
+    darwin*) alias ls='ls -G'; alias la='ls -aG'; alias ll='ls -lG' ;;
+    linux*)  alias ls='ls --color=auto'; alias la='ls -a --color=auto'; alias ll='ls -l --color=auto' ;;
+  esac
+fi
+
+if command -v bat &>/dev/null; then
+  alias cat='bat --paging=never'
+fi
+
+alias grep='grep --color=auto'
 
 # cd時にファイル一覧を表示
 chpwd() {
@@ -119,6 +130,13 @@ export EDITOR="vim"
 # ------------------------------------------
 if command -v fzf &>/dev/null; then
   eval "$(fzf --zsh)"
+fi
+
+# ------------------------------------------
+# zoxide (スマート cd: z foo でよく行くディレクトリへジャンプ)
+# ------------------------------------------
+if command -v zoxide &>/dev/null; then
+  eval "$(zoxide init zsh)"
 fi
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
