@@ -1,0 +1,26 @@
+shell = "zsh"
+
+# Powerlevel10k テーマ
+[plugins.powerlevel10k]
+github = "romkatv/powerlevel10k"
+
+# zsh-autosuggestions: コマンド候補をグレー表示
+[plugins.zsh-autosuggestions]
+github = "zsh-users/zsh-autosuggestions"
+
+# zsh-completions: 追加の補完定義
+[plugins.zsh-completions]
+github = "zsh-users/zsh-completions"
+
+# oh-my-zsh の git プラグイン (gitエイリアス集)
+[plugins.ohmyzsh-git]
+github = "ohmyzsh/ohmyzsh"
+dir = "plugins/git"
+
+# zsh-notify: 長時間コマンド完了時に通知
+[plugins.zsh-notify]
+github = "marzocchi/zsh-notify"
+
+# zsh-syntax-highlighting: コマンドのシンタックスハイライト (最後に読み込む)
+[plugins.zsh-syntax-highlighting]
+github = "zsh-users/zsh-syntax-highlighting"

@@ -37,6 +37,7 @@ if [ ! -d ${DOT_DIR} ]; then
         [ "$f" = ".DS_Store" ] && continue
         [ "$f" = ".git" ] && continue
         [ "$f" = ".gitignore" ] && continue
+        [ "$f" = ".config" ] && continue
         [ "$f" = "install.sh" ] && continue
         [ "$f" = "init_mac.sh" ] && continue
 
@@ -44,24 +45,21 @@ if [ ! -d ${DOT_DIR} ]; then
         echo "Installed $f"
     done
         ln -snf ${DOT_DIR}/.vim ${HOME}/.vim
+
+    # .config 配下は個別にリンク (他アプリの設定と競合しないように)
+    mkdir -p ${HOME}/.config
+    ln -snf ${DOT_DIR}/.config/sheldon ${HOME}/.config/sheldon
+    echo "Installed .config/sheldon"
 else
     echo "dotfiles already exists"
 fi
 
-# zplug
-if [[ -z $ZPLUG_HOME ]]; then
-    echo "Installing zplug..."
-    curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
-    exec zsh
-# Prezto初期設定はいったん削除、手動でやる
-#   echo "Installing prezto..."
-#   ln -s $ZPLUG_HOME/repos/sorin-ionescu/prezto $HOME/.zprezto
-#   setopt EXTENDED_GLOB
-#   for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do
-#      ln -s "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
-#   done
+# sheldon (プラグイン管理)
+if has "sheldon"; then
+    echo "Running sheldon lock..."
+    sheldon lock
 else
-    echo "zplug is already installed"
+    echo "sheldon not found. Install with: brew install sheldon"
 fi
 
 if [ $(uname) != "Darwin" ] ; then

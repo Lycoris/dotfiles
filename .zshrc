@@ -5,47 +5,51 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-export ZPLUG_HOME=$HOME/.zplug
-source $ZPLUG_HOME/init.zsh
-
-zplug "sorin-ionescu/prezto"
-
-# Prezto Plugins
-zplug "modules/environment", from:prezto
-zplug "modules/terminal", from:prezto
-zplug "modules/editor", from:prezto
-zplug "modules/history", from:prezto
-zplug "modules/directory", from:prezto
-zplug "modules/spectrum", from:prezto
-zplug "modules/utility", from:prezto
-zplug "modules/completion", from:prezto
-zplug "modules/prompt", from:prezto
-
-# Others
-zplug "romkatv/powerlevel10k", use:powerlevel10k.zsh-theme, as:theme
-zplug "zsh-users/zsh-autosuggestions"
-zplug "zsh-users/zsh-completions"
-zplug "zsh-users/zsh-syntax-highlighting", defer:2
-zplug "plugins/git", from:oh-my-zsh
-zplug "b4b4r07/enhancd", use:init.sh
-zplug "marzocchi/zsh-notify"
-zplug "junegunn/fzf", from:gh-r, as:command, rename-to:fzf
-
-if ! zplug check --verbose; then
-  printf 'Install? [y/N]: '
-  if read -q; then
-    echo; zplug install
-  fi
+# ------------------------------------------
+# sheldon (プラグイン管理)
+# ------------------------------------------
+if command -v sheldon &>/dev/null; then
+  eval "$(sheldon source)"
 fi
 
-zplug load --verbose
+# ------------------------------------------
+# 履歴設定 (旧prezto modules/history)
+# ------------------------------------------
+HISTFILE="${HOME}/.zsh_history"
+HISTSIZE=10000
+SAVEHIST=10000
+setopt BANG_HIST              # '!' を使った履歴展開を有効化
+setopt EXTENDED_HISTORY       # タイムスタンプ付きで履歴を保存
+setopt SHARE_HISTORY          # セッション間で履歴を共有
+setopt HIST_IGNORE_DUPS       # 連続する重複を記録しない
+setopt HIST_IGNORE_ALL_DUPS   # 古い重複を削除
+setopt HIST_IGNORE_SPACE      # スペースで始まるコマンドを記録しない
+setopt HIST_REDUCE_BLANKS     # 余分な空白を削除して保存
+setopt HIST_VERIFY            # 履歴展開後すぐに実行せず確認
 
+# ------------------------------------------
+# 補完設定 (旧prezto modules/completion)
+# ------------------------------------------
+autoload -Uz compinit && compinit
+zstyle ':completion:*' menu select
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'  # 小文字で大文字もマッチ
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+
+# ------------------------------------------
+# ディレクトリ設定 (旧prezto modules/directory, environment)
+# ------------------------------------------
+setopt AUTO_CD                # ディレクトリ名だけでcd
+setopt AUTO_PUSHD             # cd時にディレクトリスタックに追加
+setopt PUSHD_IGNORE_DUPS      # スタックの重複を防ぐ
+setopt CORRECT                # コマンドのスペル修正
+
+# ------------------------------------------
 # OSで分岐する設定
+# ------------------------------------------
 case ${OSTYPE} in
   darwin*)
-    # アーキテクチャに応じてhomebrewのパス変更
     typeset -U path PATH
-    if [ `uname -m` = "arm64" ]; then
+    if [ "$(uname -m)" = "arm64" ]; then
       export PATH=/opt/homebrew/bin:$PATH
     else
       export PATH=/usr/local/bin/brew:$PATH
@@ -69,22 +73,24 @@ case ${OSTYPE} in
     ;;
 esac
 
-# cd関連
-setopt auto_cd
+# cd時にファイル一覧を表示
 chpwd() {
     if [[ $(pwd) != $HOME ]]; then;
         ls
     fi
 }
 
+# ------------------------------------------
+# エイリアス
+# ------------------------------------------
 # autossh
 alias autossh='autossh -f -M 0 -N'
 
-# shell関連
+# shell
 alias pgrep='ps ax | grep'
 alias sr='source ~/.zshrc'
 
-# tmux関連
+# tmux
 alias tmux='tmux -2 -u'
 alias tnew='tmux new -s'
 alias tv='tmux -v'
@@ -94,20 +100,25 @@ alias tm='tmux move-window -t'
 alias ts='tmux swap-window -t'
 alias tkill='tmux kill-session -t'
 
-# git関連
+# git
 alias gbl='git blame'
 alias gt='git tag'
 
-# TeX関連
+# TeX
 alias lpandoc='pandoc -V documentclass=ltjsarticle --latex-engine=lualatex'
 
+# ------------------------------------------
+# 環境変数
+# ------------------------------------------
 export TERM=xterm-256color
 export LANG=ja_JP.UTF-8
 export EDITOR="vim"
 
-# Source Prezto.
-if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
-  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+# ------------------------------------------
+# fzf (あいまい検索: Ctrl+R=履歴, Ctrl+T=ファイル, Alt+C=cd)
+# ------------------------------------------
+if command -v fzf &>/dev/null; then
+  eval "$(fzf --zsh)"
 fi
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
