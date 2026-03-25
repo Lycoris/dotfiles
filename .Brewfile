@@ -56,6 +56,7 @@ cask "spotify"
 cask "todoist-app"
 cask "toggl-track"
 cask "vlc"
+cask "font-hack-nerd-font"
 cask "zoom"
 cask "zotero"
 

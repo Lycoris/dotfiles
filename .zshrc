@@ -6,6 +6,15 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 # ------------------------------------------
+# 補完設定 (旧prezto modules/completion)
+# ------------------------------------------
+# compinit は sheldon より先に実行する (oh-my-zsh 等が compdef を使うため)
+autoload -Uz compinit && compinit
+zstyle ':completion:*' menu select
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'  # 小文字で大文字もマッチ
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+
+# ------------------------------------------
 # sheldon (プラグイン管理)
 # ------------------------------------------
 if command -v sheldon &>/dev/null; then
@@ -26,14 +35,6 @@ setopt HIST_IGNORE_ALL_DUPS   # 古い重複を削除
 setopt HIST_IGNORE_SPACE      # スペースで始まるコマンドを記録しない
 setopt HIST_REDUCE_BLANKS     # 余分な空白を削除して保存
 setopt HIST_VERIFY            # 履歴展開後すぐに実行せず確認
-
-# ------------------------------------------
-# 補完設定 (旧prezto modules/completion)
-# ------------------------------------------
-autoload -Uz compinit && compinit
-zstyle ':completion:*' menu select
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'  # 小文字で大文字もマッチ
-zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 
 # ------------------------------------------
 # ディレクトリ設定 (旧prezto modules/directory, environment)
@@ -64,6 +65,9 @@ case ${OSTYPE} in
     alias emacs='vim'
     ;;
 esac
+
+# ~/.local/bin (claude 等のスタンドアロンツール用)
+[[ -d "$HOME/.local/bin" ]] && export PATH="$HOME/.local/bin:$PATH"
 
 # モダン CLI ツール (eza, bat, ripgrep)
 if command -v eza &>/dev/null; then
@@ -112,8 +116,16 @@ alias ts='tmux swap-window -t'
 alias tkill='tmux kill-session -t'
 
 # git
+alias ga='git add'
+alias gb='git branch'
+alias gc='git commit'
+alias gco='git checkout'
+alias gf='git fetch'
+alias gst='git status'
 alias gbl='git blame'
 alias gt='git tag'
+alias ggpull='git pull origin $(git rev-parse --abbrev-ref HEAD)'
+alias ggpush='git push origin $(git rev-parse --abbrev-ref HEAD)'
 
 # TeX
 alias lpandoc='pandoc -V documentclass=ltjsarticle --latex-engine=lualatex'
