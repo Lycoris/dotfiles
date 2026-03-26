@@ -1,0 +1,28 @@
+# フォント
+font-family = "Hack Nerd Font"
+font-size = 14
+
+# カラースキーム
+theme = Dark Modern
+
+# ウィンドウ
+window-padding-x = 4
+window-padding-y = 4
+
+# macOS 固有
+macos-option-as-alt = true
+macos-titlebar-style = hidden
+
+# カーソル
+cursor-style = block
+cursor-style-blink = false
+
+# マウス
+copy-on-select = clipboard
+mouse-hide-while-typing = true
+
+# シェル統合
+shell-integration = zsh
+
+# 閉じるときの確認を省略 (tmux 側で管理するため)
+confirm-close-surface = false

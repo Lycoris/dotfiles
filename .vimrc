@@ -15,6 +15,7 @@ Plug 'itchyny/lightline.vim'
 
 " カラースキーム
 Plug 'tomasr/molokai'
+Plug 'sainnhe/sonokai'
 
 " LSP / 補完 (texlab等)
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -104,7 +105,8 @@ highlight ZenkakuSpace cterm=underline ctermfg=lightblue guibg=darkgray
 match ZenkakuSpace /　/
 
 " カラースキームの指定
-colorscheme molokai
+autocmd ColorScheme sonokai highlight Comment ctermfg=242 guifg=#6b7089
+colorscheme sonokai
 
 " filetypeの追加設定
 au BufNewFile,BufRead *.bbx :set filetype=tex
@@ -133,6 +135,7 @@ nnoremap <Up>   gk
 " lightline.vim
 " ------------------------------------------
 let g:lightline = {
+      \ 'colorscheme': 'sonokai',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'gitbranch', 'readonly', 'filename', 'modified', 'cocstatus' ] ]

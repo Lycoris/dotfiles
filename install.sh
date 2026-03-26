@@ -67,6 +67,8 @@ if [ ! -d ${DOT_DIR} ]; then
     mkdir -p ${HOME}/.config
     ln -snf ${DOT_DIR}/.config/sheldon ${HOME}/.config/sheldon
     echo "Installed .config/sheldon"
+    ln -snf ${DOT_DIR}/.config/ghostty ${HOME}/.config/ghostty
+    echo "Installed .config/ghostty"
 else
     echo "dotfiles already exists"
 fi
