@@ -83,6 +83,6 @@ if [ $(uname) != "Darwin" ] ; then
     echo "Let's get started!"
     exit 0
 else
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Lycoris/dotfiles/master/init_mac.sh)"
+    /bin/bash "${DOT_DIR}/init_mac.sh"
 fi
 
