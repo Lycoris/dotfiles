@@ -180,6 +180,7 @@ let g:vimtex_view_method = 'skim'
 let g:vimtex_view_skim_activate = 1
 let g:vimtex_view_skim_sync = 1
 let g:vimtex_quickfix_mode = 2
+let g:vimtex_quickfix_open_on_warning = 0
 let g:vimtex_fold_enabled = 1
 let g:vimtex_fold_manual = 1
 let g:vimtex_compiler_latexmk_engines = { '_' : '-pdfdvi' }
