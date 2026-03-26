@@ -138,10 +138,12 @@ export LANG=ja_JP.UTF-8
 export EDITOR="vim"
 
 # ------------------------------------------
-# fzf (あいまい検索: Ctrl+R=履歴, Ctrl+T=ファイル, Alt+C=cd)
+# fzf (あいまい検索: Ctrl+R=履歴, Ctrl+F=ファイル, Alt+C=cd)
 # ------------------------------------------
 if command -v fzf &>/dev/null; then
   eval "$(fzf --zsh)"
+  bindkey -r '^T'
+  bindkey '^F' fzf-file-widget
 fi
 
 # ------------------------------------------
