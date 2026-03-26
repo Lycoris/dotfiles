@@ -89,7 +89,7 @@ alias grep='grep --color=auto'
 
 # cd時にファイル一覧を表示
 chpwd() {
-    if [[ $(pwd) != $HOME ]]; then;
+    if [[ $(pwd) != $HOME ]]; then
         ls
     fi
 }
