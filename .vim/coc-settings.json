@@ -8,5 +8,6 @@
       "command": "texlab",
       "filetypes": ["tex", "bib", "plaintex", "context"]
     }
-  }
+  },
+  "snippets.ultisnips.pythonPrompt": false
 }

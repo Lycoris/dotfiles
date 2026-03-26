@@ -54,11 +54,12 @@ syntax enable
 " Vim General Settings
 " ------------------------------------------
 set t_Co=256
-let g:python3_host_prog = exepath('python3')
-let s:python3_version = system('python3 -c "import sys; print(f\"{sys.version_info.major}.{sys.version_info.minor}\")"')->trim()
-let s:python3_prefix = system('python3 -c "import sys; print(sys.prefix)"')->trim()
-execute 'set pythonthreedll=' . s:python3_prefix . '/Python'
-execute 'set pythonthreehome=' . s:python3_prefix
+if executable('python3')
+  let g:python3_host_prog = exepath('python3')
+  let s:python3_prefix = system('python3 -c "import sys; print(sys.prefix)"')->trim()
+  execute 'set pythonthreedll=' . s:python3_prefix . '/Python'
+  execute 'set pythonthreehome=' . s:python3_prefix
+endif
 
 syntax on
 set nobackup
