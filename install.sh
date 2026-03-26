@@ -49,13 +49,15 @@ if [ ! -d ${DOT_DIR} ]; then
         ln -snf ${DOT_DIR}/.vim ${HOME}/.vim
 
     # .gitconfig をテンプレートから生成
-    if [ ! -f ${HOME}/.gitconfig ]; then
+    # シンボリックリンクが残っている場合は削除 (テンプレートから実体ファイルを生成するため)
+    [ -L "${HOME}/.gitconfig" ] && rm "${HOME}/.gitconfig"
+    if [ ! -f "${HOME}/.gitconfig" ]; then
         echo "Setting up .gitconfig..."
         printf "Git user name: "; read git_name
         printf "Git email: "; read git_email
         sed -e "s/{{GIT_USER_NAME}}/${git_name}/" \
             -e "s/{{GIT_USER_EMAIL}}/${git_email}/" \
-            ${DOT_DIR}/.gitconfig.template > ${HOME}/.gitconfig
+            "${DOT_DIR}/.gitconfig.template" > "${HOME}/.gitconfig"
         echo "Installed .gitconfig"
     else
         echo ".gitconfig already exists, skipping"
