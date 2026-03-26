@@ -4,18 +4,30 @@ shell = "zsh"
 [plugins.powerlevel10k]
 github = "romkatv/powerlevel10k"
 
-# zsh-autosuggestions: コマンド候補をグレー表示
+# zsh-defer: プラグインの遅延読み込み
+[plugins.zsh-defer]
+github = "romkatv/zsh-defer"
+
+# zsh-autosuggestions: コマンド候補をグレー表示 (遅延読み込み)
 [plugins.zsh-autosuggestions]
 github = "zsh-users/zsh-autosuggestions"
+apply = ["defer"]
 
-# zsh-completions: 追加の補完定義
+# zsh-completions: 追加の補完定義 (遅延読み込み)
 [plugins.zsh-completions]
 github = "zsh-users/zsh-completions"
+apply = ["defer"]
 
-# zsh-notify: 長時間コマンド完了時に通知
+# zsh-notify: 長時間コマンド完了時に通知 (遅延読み込み)
 [plugins.zsh-notify]
 github = "marzocchi/zsh-notify"
+apply = ["defer"]
 
-# zsh-syntax-highlighting: コマンドのシンタックスハイライト (最後に読み込む)
+# zsh-syntax-highlighting: コマンドのシンタックスハイライト (最後に読み込む, 遅延読み込み)
 [plugins.zsh-syntax-highlighting]
 github = "zsh-users/zsh-syntax-highlighting"
+apply = ["defer"]
+
+# 遅延読み込みテンプレート
+[templates]
+defer = { value = 'zsh-defer source "{{ file }}"', each = true }
