@@ -30,4 +30,4 @@ apply = ["defer"]
 
 # 遅延読み込みテンプレート
 [templates]
-defer = { value = 'zsh-defer source "{{ file }}"', each = true }
+defer = """{% for file in files %}zsh-defer source "{{ file }}"\n{% endfor %}"""
