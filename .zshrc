@@ -6,20 +6,19 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 # ------------------------------------------
-# 補完設定 (旧prezto modules/completion)
-# ------------------------------------------
-# compinit は sheldon より先に実行する (oh-my-zsh 等が compdef を使うため)
-autoload -Uz compinit && compinit
-zstyle ':completion:*' menu select
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'  # 小文字で大文字もマッチ
-zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
-
-# ------------------------------------------
 # sheldon (プラグイン管理)
 # ------------------------------------------
 if command -v sheldon &>/dev/null; then
   eval "$(sheldon source)"
 fi
+
+# ------------------------------------------
+# 補完設定 (旧prezto modules/completion)
+# ------------------------------------------
+autoload -Uz compinit && compinit
+zstyle ':completion:*' menu select
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'  # 小文字で大文字もマッチ
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 
 # ------------------------------------------
 # 履歴設定 (旧prezto modules/history)
@@ -120,6 +119,7 @@ alias ga='git add'
 alias gb='git branch'
 alias gc='git commit'
 alias gco='git checkout'
+alias gc='git diff'
 alias gf='git fetch'
 alias gst='git status'
 alias gbl='git blame'
