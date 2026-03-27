@@ -6,6 +6,31 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 # ------------------------------------------
+# OSで分岐する設定 (sheldon等のbrewツールより前にPATHを通す)
+# ------------------------------------------
+case ${OSTYPE} in
+  darwin*)
+    typeset -U path PATH
+    if [ "$(uname -m)" = "arm64" ]; then
+      export PATH=/opt/homebrew/bin:$PATH
+    else
+      export PATH=/usr/local/bin/brew:$PATH
+    fi
+    alias vi='/Applications/MacVim.app/Contents/MacOS/Vim "$@"'
+    alias vim='/Applications/MacVim.app/Contents/MacOS/Vim "$@"'
+    alias emacs='/Applications/MacVim.app/Contents/MacOS/Vim "$@"'
+    ;;
+  linux*)
+    alias vim='/usr/bin/vim'
+    alias vi='vim'
+    alias emacs='vim'
+    ;;
+esac
+
+# ~/.local/bin (claude 等のスタンドアロンツール用)
+[[ -d "$HOME/.local/bin" ]] && export PATH="$HOME/.local/bin:$PATH"
+
+# ------------------------------------------
 # sheldon (プラグイン管理)
 # ------------------------------------------
 if command -v sheldon &>/dev/null; then
@@ -42,31 +67,6 @@ setopt AUTO_CD                # ディレクトリ名だけでcd
 setopt AUTO_PUSHD             # cd時にディレクトリスタックに追加
 setopt PUSHD_IGNORE_DUPS      # スタックの重複を防ぐ
 setopt CORRECT                # コマンドのスペル修正
-
-# ------------------------------------------
-# OSで分岐する設定
-# ------------------------------------------
-case ${OSTYPE} in
-  darwin*)
-    typeset -U path PATH
-    if [ "$(uname -m)" = "arm64" ]; then
-      export PATH=/opt/homebrew/bin:$PATH
-    else
-      export PATH=/usr/local/bin/brew:$PATH
-    fi
-    alias vi='/Applications/MacVim.app/Contents/MacOS/Vim "$@"'
-    alias vim='/Applications/MacVim.app/Contents/MacOS/Vim "$@"'
-    alias emacs='/Applications/MacVim.app/Contents/MacOS/Vim "$@"'
-    ;;
-  linux*)
-    alias vim='/usr/bin/vim'
-    alias vi='vim'
-    alias emacs='vim'
-    ;;
-esac
-
-# ~/.local/bin (claude 等のスタンドアロンツール用)
-[[ -d "$HOME/.local/bin" ]] && export PATH="$HOME/.local/bin:$PATH"
 
 # モダン CLI ツール (eza, bat, ripgrep)
 if command -v eza &>/dev/null; then
