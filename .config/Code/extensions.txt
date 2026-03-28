@@ -1,0 +1,6 @@
+davidanson.vscode-markdownlint
+shd101wyy.markdown-preview-enhanced
+slava0135.sonokai-pro
+streetsidesoftware.code-spell-checker
+vscodevim.vim
+yzhang.markdown-all-in-one

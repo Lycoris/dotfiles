@@ -1,0 +1,115 @@
+{
+    // ------------------------------------------
+    // テーマ・外観
+    // ------------------------------------------
+    "window.autoDetectColorScheme": true,
+    "security.workspace.trust.untrustedFiles": "open",
+    "workbench.preferredLightColorTheme": "Sonokai",
+    "workbench.colorTheme": "Sonokai",
+
+    // ------------------------------------------
+    // エディタ基本設定 (.vimrc の set 系に対応)
+    // ------------------------------------------
+    "editor.fontFamily": "Hack Nerd Font, Hiragino Sans W3, monospace",  // Ghosttyと同じフォント
+    "editor.fontSize": 15,
+    "editor.tabSize": 2,                          // tabstop=2, shiftwidth=2
+    "editor.insertSpaces": true,                   // expandtab
+    "editor.lineNumbers": "on",                    // number
+    "editor.matchBrackets": "always",              // showmatch
+    "editor.autoClosingBrackets": "always",        // imap {} {}<Left> 等
+    "editor.autoClosingQuotes": "always",          // imap "" ""<Left> 等
+    "editor.minimap.enabled": false,
+    "editor.renderWhitespace": "boundary",
+    "editor.rulers": [80],
+    "editor.cursorSurroundingLines": 5,
+    "editor.suggest.insertMode": "replace",
+    "files.encoding": "utf8",                      // encoding=utf-8
+    "files.autoSave": "afterDelay",
+    "files.autoSaveDelay": 1000,
+    "workbench.editor.openSideBySideDirection": "right",  // splitright
+
+    // ------------------------------------------
+    // 検索 (.vimrc の検索系に対応)
+    // ------------------------------------------
+    "editor.find.autoFindInSelection": "never",
+    "search.smartCase": true,                      // ignorecase + smartcase相当
+
+    // ------------------------------------------
+    // Vim 拡張設定
+    // ------------------------------------------
+    "vim.useSystemClipboard": true,                // clipboard=unnamed,autoselect
+    "vim.hlsearch": true,
+    "vim.incsearch": true,                         // incsearch
+    "vim.ignorecase": true,                        // ignorecase
+    "vim.smartcase": true,
+    "vim.surround": true,                          // vim-surround
+    "vim.foldfix": true,                           // カーソル移動で折りたたみが開かないようにする
+    "vim.leader": "\\",
+    "vim.handleKeys": {
+        "<C-a>": false,
+        "<C-c>": false,
+        "<C-v>": false,
+        "<C-x>": false,
+        "<C-z>": false,
+        "<C-f>": false,
+        "<C-b>": false
+    },
+
+    // n/N/*/# で検索後にカーソルを画面中央に (nmap n nzz 等)
+    "vim.normalModeKeyBindingsNonRecursive": [
+        { "before": ["n"],        "after": ["n", "z", "z"] },
+        { "before": ["N"],        "after": ["N", "z", "z"] },
+        { "before": ["*"],        "after": ["*", "z", "z"] },
+        { "before": ["#"],        "after": ["#", "z", "z"] },
+        { "before": ["g", "*"],   "after": ["g", "*", "z", "z"] },
+        { "before": ["g", "#"],   "after": ["g", "#", "z", "z"] },
+        // Down/Up で表示行単位の移動 (gj/gk)
+        { "before": ["<down>"],   "after": ["g", "j"] },
+        { "before": ["<up>"],     "after": ["g", "k"] },
+        // K でホバー表示 (coc.nvim の K 相当)
+        { "before": ["K"],        "commands": ["editor.action.showHover"] },
+        // gd: 定義へジャンプ (coc-definition)
+        { "before": ["g", "d"],   "commands": ["editor.action.revealDefinition"] },
+        // gy: 型定義へジャンプ (coc-type-definition)
+        { "before": ["g", "y"],   "commands": ["editor.action.goToTypeDefinition"] },
+        // gi: 実装へジャンプ (coc-implementation)
+        { "before": ["g", "i"],   "commands": ["editor.action.goToImplementation"] },
+        // gr: 参照一覧 (coc-references)
+        { "before": ["g", "r"],   "commands": ["editor.action.goToReferences"] },
+        // <leader>rn: リネーム (coc-rename)
+        { "before": ["<leader>", "r", "n"], "commands": ["editor.action.rename"] },
+        // Space で折りたたみを開く (vimtex の折りたたみ操作に対応)
+        { "before": ["<space>"], "commands": ["editor.toggleFold"] },
+        // Space+. で設定を開く (nnoremap <Space>. で .vimrc を開いていた)
+        { "before": ["<space>", "."], "commands": ["workbench.action.openSettingsJson"] }
+    ],
+
+    "vim.insertModeKeyBindings": [],
+
+    // ------------------------------------------
+    // Markdown 執筆向け設定
+    // ------------------------------------------
+    "[markdown]": {
+        "editor.wordWrap": "on",
+        "editor.quickSuggestions": {
+            "other": "off",
+            "comments": "off",
+            "strings": "off"
+        },
+        "editor.snippetSuggestions": "top",
+        "editor.suggest.snippetsPreventQuickSuggestions": false,
+        "editor.tabSize": 4,
+        "editor.unicodeHighlight.ambiguousCharacters": false,
+        "editor.rulers": []
+    },
+
+    // ------------------------------------------
+    // 全角スペース可視化 (highlight ZenkakuSpace 相当)
+    // ------------------------------------------
+    "editor.unicodeHighlight.includeStrings": true,
+
+    // ------------------------------------------
+    // ターミナル
+    // ------------------------------------------
+    "terminal.integrated.defaultProfile.osx": "zsh"
+}

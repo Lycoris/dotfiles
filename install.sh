@@ -69,6 +69,29 @@ if [ ! -d ${DOT_DIR} ]; then
     echo "Installed .config/sheldon"
     ln -snf ${DOT_DIR}/.config/ghostty ${HOME}/.config/ghostty
     echo "Installed .config/ghostty"
+
+    # VS Code
+    VSCODE_USER_DIR="${HOME}/Library/Application Support/Code/User"
+    if [ -d "${VSCODE_USER_DIR}" ]; then
+        ln -snf "${DOT_DIR}/.config/Code/User/settings.json" "${VSCODE_USER_DIR}/settings.json"
+        ln -snf "${DOT_DIR}/.config/Code/User/keybindings.json" "${VSCODE_USER_DIR}/keybindings.json"
+        mkdir -p "${VSCODE_USER_DIR}/snippets"
+        ln -snf "${DOT_DIR}/.config/Code/User/snippets/markdown.json" "${VSCODE_USER_DIR}/snippets/markdown.json"
+        echo "Installed VS Code settings"
+    fi
+
+    # VS Code 拡張機能
+    if has "code"; then
+        while IFS= read -r ext; do
+            code --install-extension "$ext" --force
+        done < "${DOT_DIR}/.config/Code/extensions.txt"
+        echo "Installed VS Code extensions"
+    fi
+
+    # Markdown Preview Enhanced (parser.js)
+    mkdir -p "${HOME}/.local/state/crossnote"
+    ln -snf "${DOT_DIR}/.local/state/crossnote/parser.js" "${HOME}/.local/state/crossnote/parser.js"
+    echo "Installed crossnote parser.js"
 else
     echo "dotfiles already exists"
 fi

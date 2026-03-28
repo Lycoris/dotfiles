@@ -1,0 +1,13 @@
+[
+    // Tab / Shift+Tab でタブ切り替え (nmap <Tab> gt / nmap <S-Tab> gT)
+    {
+        "key": "tab",
+        "command": "workbench.action.nextEditor",
+        "when": "!editorTextFocus && !inQuickOpen"
+    },
+    {
+        "key": "shift+tab",
+        "command": "workbench.action.previousEditor",
+        "when": "!editorTextFocus && !inQuickOpen"
+    }
+]
