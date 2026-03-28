@@ -92,7 +92,7 @@
     "[markdown]": {
         "editor.wordWrap": "on",
         "editor.quickSuggestions": {
-            "other": "off",
+            "other": "on",
             "comments": "off",
             "strings": "off"
         },
@@ -100,17 +100,25 @@
         "editor.suggest.snippetsPreventQuickSuggestions": false,
         "editor.tabSize": 4,
         "editor.unicodeHighlight.ambiguousCharacters": false,
-        "editor.rulers": []
+        "editor.rulers": [],
+        "cSpell.enabled": false
     },
 
     // ------------------------------------------
     // 全角スペース可視化 (highlight ZenkakuSpace 相当)
     // ------------------------------------------
     "editor.unicodeHighlight.includeStrings": true,
+    "cSpell.enabledFileTypes": {
+        "markdown": false
+    },
+    "markdownlint.config": {
+        "MD025": false
+    },
 
     // ------------------------------------------
     // ターミナル
     // ------------------------------------------
     "terminal.integrated.defaultProfile.osx": "zsh",
-    "claudeCode.preferredLocation": "panel"
+    "claudeCode.preferredLocation": "panel",
+    "git.openRepositoryInParentFolders": "always"
 }
