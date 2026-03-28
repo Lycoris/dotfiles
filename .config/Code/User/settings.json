@@ -111,5 +111,6 @@
     // ------------------------------------------
     // ターミナル
     // ------------------------------------------
-    "terminal.integrated.defaultProfile.osx": "zsh"
+    "terminal.integrated.defaultProfile.osx": "zsh",
+    "claudeCode.preferredLocation": "panel"
 }

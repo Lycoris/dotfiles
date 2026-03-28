@@ -4,3 +4,4 @@ slava0135.sonokai-pro
 streetsidesoftware.code-spell-checker
 vscodevim.vim
 yzhang.markdown-all-in-one
+anthropic.claude-code
