@@ -30,6 +30,9 @@ esac
 # ~/.local/bin (claude 等のスタンドアロンツール用)
 [[ -d "$HOME/.local/bin" ]] && export PATH="$HOME/.local/bin:$PATH"
 
+# ~/articles/tools/md2docx (Markdown→Word変換)
+[[ -d "$HOME/articles/tools/md2docx" ]] && export PATH="$HOME/articles/tools/md2docx:$PATH"
+
 # ------------------------------------------
 # sheldon (プラグイン管理)
 # ------------------------------------------
