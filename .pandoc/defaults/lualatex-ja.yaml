@@ -1,0 +1,11 @@
+pdf-engine: lualatex
+variables:
+  documentclass: ltjsarticle
+  classoption:
+    - 12pt
+  header-includes: |
+    \usepackage[hiragino-pron,11pt,no-math]{luatexja-preset}
+    \usepackage{luatexja-ruby}
+    \setsansfont{Helvetica Neue}[Scale=0.92]
+    \renewcommand{\headfont}{\gtfamily\sffamily\bfseries}
+    \setlength{\parskip}{0pt}

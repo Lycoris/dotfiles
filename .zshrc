@@ -132,7 +132,7 @@ alias ggpull='git pull origin $(git rev-parse --abbrev-ref HEAD)'
 alias ggpush='git push origin $(git rev-parse --abbrev-ref HEAD)'
 
 # TeX
-alias pandocpdf='pandoc --pdf-engine=lualatex -V documentclass=ltjsarticle'
+alias pandocpdf='pandoc -d lualatex-ja'
 
 # ------------------------------------------
 # 環境変数

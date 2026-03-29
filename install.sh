@@ -88,6 +88,10 @@ if [ ! -d ${DOT_DIR} ]; then
         echo "Installed VS Code extensions"
     fi
 
+    # pandoc
+    ln -snf ${DOT_DIR}/.pandoc ${HOME}/.pandoc
+    echo "Installed .pandoc"
+
     # Markdown Preview Enhanced (parser.js)
     mkdir -p "${HOME}/.local/state/crossnote"
     ln -snf "${DOT_DIR}/.local/state/crossnote/parser.js" "${HOME}/.local/state/crossnote/parser.js"
