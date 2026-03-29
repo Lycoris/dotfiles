@@ -109,10 +109,12 @@
     // ------------------------------------------
     "editor.unicodeHighlight.includeStrings": true,
     "cSpell.enabledFileTypes": {
-        "markdown": false
+        "markdown": false,
+        "latex": false
     },
     "markdownlint.config": {
-        "MD025": false
+        "MD025": false,
+        "MD033": false
     },
 
     // ------------------------------------------
