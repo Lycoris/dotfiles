@@ -4,11 +4,11 @@
     {
         "key": "tab",
         "command": "workbench.action.nextEditor",
-        "when": "!editorTextFocus && !inQuickOpen && activeWebviewPanelId != 'claudeVSCodePanel' && !claude-vscode.sideBarActive"
+        "when": "!editorTextFocus && !terminalFocus && !inQuickOpen && activeWebviewPanelId != 'claudeVSCodePanel' && !claude-vscode.sideBarActive"
     },
     {
         "key": "shift+tab",
         "command": "workbench.action.previousEditor",
-        "when": "!editorTextFocus && !inQuickOpen && activeWebviewPanelId != 'claudeVSCodePanel' && !claude-vscode.sideBarActive"
+        "when": "!editorTextFocus && !terminalFocus && !inQuickOpen && activeWebviewPanelId != 'claudeVSCodePanel' && !claude-vscode.sideBarActive"
     }
 ]
