@@ -1,13 +1,14 @@
 [
     // Tab / Shift+Tab でタブ切り替え (nmap <Tab> gt / nmap <S-Tab> gT)
+    // Claude Code のパネル/サイドバーにフォーカスがあるときは除外
     {
         "key": "tab",
         "command": "workbench.action.nextEditor",
-        "when": "!editorTextFocus && !inQuickOpen"
+        "when": "!editorTextFocus && !inQuickOpen && activeWebviewPanelId != 'claudeVSCodePanel' && !claude-vscode.sideBarActive"
     },
     {
         "key": "shift+tab",
         "command": "workbench.action.previousEditor",
-        "when": "!editorTextFocus && !inQuickOpen"
+        "when": "!editorTextFocus && !inQuickOpen && activeWebviewPanelId != 'claudeVSCodePanel' && !claude-vscode.sideBarActive"
     }
 ]
