@@ -10,5 +10,16 @@
         "key": "shift+tab",
         "command": "workbench.action.previousEditor",
         "when": "!editorTextFocus && !terminalFocus && !inQuickOpen && activeWebviewPanelId != 'claudeVSCodePanel' && !claude-vscode.sideBarActive"
+    },
+    // Vim ノーマルモードでも Tab / Shift+Tab でタブ切り替え
+    {
+        "key": "tab",
+        "command": "workbench.action.nextEditor",
+        "when": "editorTextFocus && vim.mode == 'Normal' && !inQuickOpen"
+    },
+    {
+        "key": "shift+tab",
+        "command": "workbench.action.previousEditor",
+        "when": "editorTextFocus && vim.mode == 'Normal' && !inQuickOpen"
     }
 ]
