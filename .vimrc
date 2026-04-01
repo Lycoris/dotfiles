@@ -116,9 +116,6 @@ let g:tex_flavor='latex'
 " ------------------------------------------
 " Mappings (General)
 " ------------------------------------------
-let g:mapleader = '¥'
-let g:maplocalleader = '¥'
-
 imap {} {}<Left>
 imap [] []<Left>
 imap () ()<Left>
