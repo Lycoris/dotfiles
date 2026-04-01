@@ -30,6 +30,9 @@ window-colorspace = srgb
 # フォント描画 (Retina 向け)
 font-thicken = true
 
+# JISキーボード: ¥キーでバックスラッシュを入力
+keybind = ¥=text:\x5c
+
 # シェル統合
 shell-integration = zsh
 
