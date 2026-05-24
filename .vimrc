@@ -46,6 +46,9 @@ Plug 'honza/vim-snippets'
 " TOML シンタックス
 Plug 'cespare/vim-toml'
 
+" Markdown
+Plug 'preservim/vim-markdown'
+
 call plug#end()
 
 filetype plugin indent on
