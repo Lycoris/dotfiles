@@ -48,6 +48,7 @@ Plug 'cespare/vim-toml'
 
 " Markdown
 Plug 'preservim/vim-markdown'
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown'] }
 
 call plug#end()
 
