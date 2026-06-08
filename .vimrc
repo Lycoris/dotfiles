@@ -48,7 +48,7 @@ Plug 'cespare/vim-toml'
 
 " Markdown
 Plug 'preservim/vim-markdown'
-Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug'] }
+Plug 'jannis-baum/vivify.vim'
 
 call plug#end()
 
@@ -204,6 +204,14 @@ let g:vimtex_compiler_latexmk = {
             \   '-interaction=nonstopmode',
             \ ],
             \}
+
+" ------------------------------------------
+" vivify.vim
+" ------------------------------------------
+" 入力の度ではなく、カーソル停止時にプレビューを更新
+let g:vivify_instant_refresh = 0
+
+nnoremap <silent> <leader>mp :Vivify<CR>
 
 " ------------------------------------------
 " fzf.vim
