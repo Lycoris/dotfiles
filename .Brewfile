@@ -36,6 +36,7 @@ brew "tmux"
 brew "jannis-baum/tap/vivify"
 brew "wget"
 brew "xpdf"
+brew "yazi"
 brew "zoxide"
 brew "zsh"
 

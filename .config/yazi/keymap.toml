@@ -1,0 +1,4 @@
+[mgr]
+prepend_keymap = [
+    { on = "P", run = "shell 'open -a Preview.app %h'", desc = "Previewで開く" },
+]

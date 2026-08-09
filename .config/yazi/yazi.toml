@@ -1,0 +1,9 @@
+[opener]
+preview-app = [
+    { run = 'open -a Preview.app %s', desc = "Preview.appで開く", for = "macos" },
+]
+
+[open]
+prepend_rules = [
+    { url = "*.pdf", use = ["open", "preview-app"] },
+]
