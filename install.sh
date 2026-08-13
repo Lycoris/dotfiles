@@ -69,6 +69,8 @@ if [ ! -d ${DOT_DIR} ]; then
     echo "Installed .config/sheldon"
     ln -snf ${DOT_DIR}/.config/ghostty ${HOME}/.config/ghostty
     echo "Installed .config/ghostty"
+    ln -snf ${DOT_DIR}/.config/yazi ${HOME}/.config/yazi
+    echo "Installed .config/yazi"
 
     # VS Code
     VSCODE_USER_DIR="${HOME}/Library/Application Support/Code/User"
