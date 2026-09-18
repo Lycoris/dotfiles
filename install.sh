@@ -72,24 +72,6 @@ if [ ! -d ${DOT_DIR} ]; then
     ln -snf ${DOT_DIR}/.config/yazi ${HOME}/.config/yazi
     echo "Installed .config/yazi"
 
-    # VS Code
-    VSCODE_USER_DIR="${HOME}/Library/Application Support/Code/User"
-    if [ -d "${VSCODE_USER_DIR}" ]; then
-        ln -snf "${DOT_DIR}/.config/Code/User/settings.json" "${VSCODE_USER_DIR}/settings.json"
-        ln -snf "${DOT_DIR}/.config/Code/User/keybindings.json" "${VSCODE_USER_DIR}/keybindings.json"
-        mkdir -p "${VSCODE_USER_DIR}/snippets"
-        ln -snf "${DOT_DIR}/.config/Code/User/snippets/markdown.json" "${VSCODE_USER_DIR}/snippets/markdown.json"
-        echo "Installed VS Code settings"
-    fi
-
-    # VS Code 拡張機能
-    if has "code"; then
-        while IFS= read -r ext; do
-            code --install-extension "$ext" --force
-        done < "${DOT_DIR}/.config/Code/extensions.txt"
-        echo "Installed VS Code extensions"
-    fi
-
     # pandoc
     ln -snf ${DOT_DIR}/.pandoc ${HOME}/.pandoc
     echo "Installed .pandoc"
